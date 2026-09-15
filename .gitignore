@@ -14,3 +14,6 @@ Historias_de_Usuario.md
 # Carpetas de entorno o IDE
 .vscode/
 .idea/
+
+# Copia de estudio comentada (excluida de la entrega oficial)
+tienda_videojuegos_estudio/
