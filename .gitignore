@@ -1,0 +1,16 @@
+# Dependencias y archivos del sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Materiales de referencia del curso no evaluados en la entrega
+proyecto_front/
+*.pdf
+*.xlsx
+*.docx
+*.zip
+Historias_de_Usuario.md
+
+# Carpetas de entorno o IDE
+.vscode/
+.idea/

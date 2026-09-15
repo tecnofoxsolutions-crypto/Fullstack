@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrito de Compras | PixelVault</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg navbar-steam sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 font-arcade" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+          <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414"/>
+        </svg>
+        <span>Pixel</span>Vault <small class="text-warning ms-1" style="font-size:0.6rem;">[16-BIT]</small>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="carrito.html" class="btn btn-outline-info btn-sm position-relative active">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Carrito
+            <span id="cartCountBadge" class="badge rounded-pill bg-danger d-none">0</span>
+          </a>
+
+          <div id="navAuthLinks" class="d-flex gap-2">
+            <a href="login.html" class="btn btn-primary btn-sm">Ingresar</a>
+          </div>
+
+          <div id="navUserSection" class="d-flex align-items-center gap-2 d-none">
+            <span class="small text-light" id="navUsuario"></span>
+            <button class="btn btn-outline-danger btn-sm" id="btnSalir">Salir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="container py-4">
+
+    <h1 class="h3 text-light mb-1">Carrito de Compras</h1>
+    <p class="text-secondary small mb-3">Revisa las copias físicas seleccionadas y confirma tu pedido.</p>
+
+    <div id="alertaCarrito" class="alert d-none"></div>
+
+    <div class="row g-4">
+
+      <!-- TABLA DE ARTÍCULOS -->
+      <div class="col-lg-8">
+        <div class="card card-juego shadow-sm">
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover table-dark align-middle mb-0">
+                <thead class="table-secondary text-dark">
+                  <tr>
+                    <th>Juego</th>
+                    <th>Plataforma</th>
+                    <th class="text-end">Precio Unit.</th>
+                    <th class="text-center" style="width: 140px;">Cantidad</th>
+                    <th class="text-end">Subtotal</th>
+                    <th class="text-center">Quitar</th>
+                  </tr>
+                </thead>
+                <tbody id="tablaCarritoBody">
+                  <!-- Inyectado por JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <a href="catalogo.html" class="btn btn-outline-info btn-sm">&larr; Continuar Comprando</a>
+          <button type="button" class="btn btn-outline-danger btn-sm" id="btnVaciarCarrito">Vaciar Carrito</button>
+        </div>
+      </div>
+
+      <!-- RESUMEN DE COMPRA -->
+      <div class="col-lg-4">
+        <div class="card card-juego p-3 shadow-sm">
+          <h2 class="h5 card-title text-info mb-3">Resumen del Pedido</h2>
+
+          <div class="d-flex justify-content-between mb-2 small text-secondary">
+            <span>Subtotal Neto:</span>
+            <span id="resumenSubtotal">$0</span>
+          </div>
+
+          <div class="d-flex justify-content-between mb-2 small text-secondary">
+            <span>IVA (19%):</span>
+            <span id="resumenIva">$0</span>
+          </div>
+
+          <div class="d-flex justify-content-between mb-3 small text-secondary">
+            <span>Costo de Despacho:</span>
+            <span class="text-success fw-bold">GRATIS</span>
+          </div>
+
+          <hr class="border-secondary my-2">
+
+          <div class="d-flex justify-content-between mb-3">
+            <strong class="h5 text-light mb-0">Total a Pagar:</strong>
+            <strong class="h5 text-info mb-0" id="resumenTotal">$0</strong>
+          </div>
+
+          <div class="mb-3">
+            <label for="metodoEntrega" class="form-label small text-secondary">Modalidad de entrega:</label>
+            <select class="form-select form-select-sm bg-dark border-secondary" id="metodoEntrega">
+              <option value="retiro">Retiro en Tienda Física (Gratis e inmediato)</option>
+              <option value="despacho">Despacho a Domicilio (Todo Chile)</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn btn-primary w-100 py-2 fw-bold" id="btnFinalizarCompra">
+            Finalizar Compra
+          </button>
+          <small class="text-secondary text-center d-block mt-2">
+            🔒 Simulación de pago seguro y rebaja inmediata de stock en bodega.
+          </small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MODAL DE CONFIRMACIÓN DE COMPRA / COMANDA -->
+    <div class="modal fade" id="modalComprobante" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-juego border-success text-light">
+          <div class="modal-header border-secondary">
+            <div class="d-flex align-items-center gap-2">
+              <span class="display-6 text-success">✓</span>
+              <h3 class="modal-title h5 mb-0 text-success">¡Compra Realizada con Éxito!</h3>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body" id="modalComprobanteBody">
+            <!-- Inyectado dinámicamente -->
+          </div>
+          <div class="modal-footer border-secondary">
+            <a href="catalogo.html" class="btn btn-primary btn-sm">Volver al Catálogo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-steam py-4 mt-auto">
+    <div class="container text-center small">
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
+        <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
+        <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+      </div>
+      <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
+      <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const KEY_SESION    = "pixelvault_sesion";
+    const KEY_PRODUCTOS = "pixelvault_productos_v2";
+    const KEY_CARRITO   = "pixelvault_carrito";
+
+    let modalCompBs = null;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const sesion = leerSesion();
+      actualizarNavbar(sesion);
+      modalCompBs = new bootstrap.Modal(document.getElementById("modalComprobante"));
+
+      pintarTablaCarrito();
+
+      document.getElementById("btnVaciarCarrito").addEventListener("click", vaciarCarrito);
+      document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
+    });
+
+    function pintarTablaCarrito() {
+      const carrito = cargarCarrito();
+      const productos = cargarProductos();
+      const tbody = document.getElementById("tablaCarritoBody");
+      tbody.replaceChildren();
+
+      if (carrito.length === 0) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = 6;
+        td.className = "text-center text-secondary py-5";
+        td.innerHTML = `
+          <div class="py-3">
+            <p class="lead mb-2">Tu carrito de videojuegos está vacío.</p>
+            <a href="catalogo.html" class="btn btn-outline-info btn-sm">Explorar el Catálogo de Juegos</a>
+          </div>
+        `;
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+
+        document.getElementById("resumenSubtotal").textContent = "$0";
+        document.getElementById("resumenIva").textContent      = "$0";
+        document.getElementById("resumenTotal").textContent    = "$0";
+        document.getElementById("btnFinalizarCompra").disabled = true;
+        document.getElementById("btnVaciarCarrito").disabled   = true;
+        return;
+      }
+
+      document.getElementById("btnFinalizarCompra").disabled = false;
+      document.getElementById("btnVaciarCarrito").disabled   = false;
+
+      let subtotalTotal = 0;
+
+      carrito.forEach(function (item) {
+        const prodBodega = productos.find(p => p.id === item.id);
+        const stockActual = prodBodega ? prodBodega.stock : item.stockMax;
+
+        const subtotalItem = item.precio * item.cantidad;
+        subtotalTotal += subtotalItem;
+
+        const tr = document.createElement("tr");
+
+        // Col 1: Imagen y Título
+        const tdJuego = document.createElement("td");
+        tdJuego.className = "d-flex align-items-center gap-2";
+        const img = document.createElement("img");
+        img.src = item.imagen;
+        img.alt = item.nombre;
+        img.style.width = "48px";
+        img.style.height = "56px";
+        img.style.objectFit = "cover";
+        img.className = "rounded border border-secondary";
+        const txt = document.createElement("span");
+        txt.className = "small fw-bold text-light";
+        txt.textContent = item.nombre;
+        tdJuego.appendChild(img);
+        tdJuego.appendChild(txt);
+        tr.appendChild(tdJuego);
+
+        // Col 2: Plataforma
+        const tdPlat = document.createElement("td");
+        const bPlat = document.createElement("span");
+        bPlat.className = "badge text-bg-primary";
+        bPlat.textContent = item.plataforma;
+        tdPlat.appendChild(bPlat);
+        tr.appendChild(tdPlat);
+
+        // Col 3: Precio
+        const tdPre = document.createElement("td");
+        tdPre.className = "text-end";
+        tdPre.textContent = formatoCLP(item.precio);
+        tr.appendChild(tdPre);
+
+        // Col 4: Cantidad (Validada contra stock)
+        const tdCant = document.createElement("td");
+        tdCant.className = "text-center";
+
+        const inpCant = document.createElement("input");
+        inpCant.type = "number";
+        inpCant.className = "form-control form-control-sm bg-dark border-secondary text-center mx-auto";
+        inpCant.style.maxWidth = "80px";
+        inpCant.value = item.cantidad;
+        inpCant.min = 1;
+        inpCant.max = stockActual;
+
+        inpCant.addEventListener("change", function () {
+          modificarCantidadItem(item.id, parseInt(inpCant.value, 10), stockActual);
+        });
+
+        tdCant.appendChild(inpCant);
+        tr.appendChild(tdCant);
+
+        // Col 5: Subtotal
+        const tdSub = document.createElement("td");
+        tdSub.className = "text-end text-info fw-bold";
+        tdSub.textContent = formatoCLP(subtotalItem);
+        tr.appendChild(tdSub);
+
+        // Col 6: Quitar
+        const tdDel = document.createElement("td");
+        tdDel.className = "text-center";
+        const btnDel = document.createElement("button");
+        btnDel.className = "btn btn-sm btn-outline-danger";
+        btnDel.textContent = "✕";
+        btnDel.title = "Quitar del carrito";
+        btnDel.addEventListener("click", function () {
+          quitarItemCarrito(item.id);
+        });
+        tdDel.appendChild(btnDel);
+        tr.appendChild(tdDel);
+
+        tbody.appendChild(tr);
+      });
+
+      const totalConIva = subtotalTotal;
+      const neto = Math.round(totalConIva / 1.19);
+      const iva  = totalConIva - neto;
+
+      document.getElementById("resumenSubtotal").textContent = formatoCLP(neto);
+      document.getElementById("resumenIva").textContent      = formatoCLP(iva);
+      document.getElementById("resumenTotal").textContent    = formatoCLP(totalConIva);
+    }
+
+    function modificarCantidadItem(id, nuevaCant, stockBodega) {
+      const carrito = cargarCarrito();
+      const item = carrito.find(x => x.id === id);
+      if (!item) return;
+
+      if (isNaN(nuevaCant) || nuevaCant < 1) {
+        mostrarAlerta("La cantidad mínima es 1 copia.", "warning");
+        pintarTablaCarrito();
+        return;
+      }
+
+      if (nuevaCant > stockBodega) {
+        mostrarAlerta("No puedes pedir " + nuevaCant + " copias. El stock máximo disponible es " + stockBodega + ".", "warning");
+        item.cantidad = stockBodega;
+      } else {
+        item.cantidad = nuevaCant;
+      }
+
+      guardarCarrito(carrito);
+      pintarTablaCarrito();
+    }
+
+    function quitarItemCarrito(id) {
+      let carrito = cargarCarrito();
+      carrito = carrito.filter(x => x.id !== id);
+      guardarCarrito(carrito);
+      pintarTablaCarrito();
+      mostrarAlerta("Producto retirado del carrito.", "info");
+    }
+
+    function vaciarCarrito() {
+      if (!confirm("¿Deseas vaciar el carrito?")) return;
+      guardarCarrito([]);
+      pintarTablaCarrito();
+      mostrarAlerta("Tu carrito ha sido vaciado.", "info");
+    }
+
+    function finalizarCompra() {
+      const carrito = cargarCarrito();
+      if (carrito.length === 0) return;
+
+      const productos = cargarProductos();
+
+      for (let item of carrito) {
+        const prod = productos.find(p => p.id === item.id);
+        if (!prod || prod.stock < item.cantidad) {
+          mostrarAlerta("No hay suficiente stock en bodega para \"" + item.nombre + "\".", "danger");
+          return;
+        }
+      }
+
+      carrito.forEach(function (item) {
+        const prod = productos.find(p => p.id === item.id);
+        if (prod) prod.stock -= item.cantidad;
+      });
+      guardarProductos(productos);
+
+      const sesion = leerSesion();
+      const compradorNombre = sesion ? sesion.nombre : "Cliente Geek";
+      const totalPagado = carrito.reduce((acc, it) => acc + (it.precio * it.cantidad), 0);
+      const modoEntrega = document.getElementById("metodoEntrega").options[document.getElementById("metodoEntrega").selectedIndex].text;
+      const ordenNum = "PV-" + Math.floor(100000 + Math.random() * 900000);
+
+      const modalBody = document.getElementById("modalComprobanteBody");
+      let itemsHtml = "";
+      carrito.forEach(function (it) {
+        itemsHtml += `
+          <li class="list-group-item bg-dark text-light border-secondary d-flex justify-content-between align-items-center">
+            <div>
+              <span class="fw-bold">${it.nombre}</span> <span class="badge text-bg-primary">${it.plataforma}</span>
+              <div class="small text-secondary">${it.cantidad} un. x ${formatoCLP(it.precio)}</div>
+            </div>
+            <span class="text-info fw-bold">${formatoCLP(it.cantidad * it.precio)}</span>
+          </li>
+        `;
+      });
+
+      modalBody.innerHTML = `
+        <div class="p-2">
+          <p class="mb-1 text-secondary small">N° de Orden: <strong class="text-light">${ordenNum}</strong></p>
+          <p class="mb-2 text-secondary small">Comprador: <strong class="text-light">${compradorNombre}</strong></p>
+          <p class="mb-3 text-secondary small">Modalidad: <span class="badge text-bg-info">${modoEntrega}</span></p>
+
+          <h6 class="text-light mb-2">Detalle de Videojuegos Físicos:</h6>
+          <ul class="list-group mb-3 border-secondary">
+            ${itemsHtml}
+          </ul>
+
+          <div class="d-flex justify-content-between h5 text-light fw-bold">
+            <span>Total Pagado:</span>
+            <span class="text-success">${formatoCLP(totalPagado)}</span>
+          </div>
+          <div class="alert alert-success mt-3 mb-0 small">
+            ✓ Las unidades físicas han sido rebajadas automáticamente del inventario de bodega en <code>localStorage</code>.
+          </div>
+        </div>
+      `;
+
+      guardarCarrito([]);
+      pintarTablaCarrito();
+      modalCompBs.show();
+    }
+
+    function mostrarAlerta(msg, tipo) {
+      const box = document.getElementById("alertaCarrito");
+      box.className = "alert alert-" + (tipo || "info");
+      box.textContent = msg;
+      box.classList.remove("d-none");
+      setTimeout(function () {
+        box.classList.add("d-none");
+      }, 4000);
+    }
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario || !s.rol) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function actualizarNavbar(sesion) {
+      const navUsuario     = document.getElementById("navUsuario");
+      const btnSalir       = document.getElementById("btnSalir");
+      const navAuthLinks   = document.getElementById("navAuthLinks");
+      const navUserSection = document.getElementById("navUserSection");
+
+      if (sesion) {
+        if (navUserSection) navUserSection.classList.remove("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.add("d-none");
+        if (navUsuario) {
+          navUsuario.textContent = sesion.nombre + " (" + (sesion.rol === "admin" ? "Admin" : "Cliente") + ")";
+        }
+        if (btnSalir) {
+          btnSalir.onclick = function () {
+            sessionStorage.removeItem(KEY_SESION);
+            window.location.replace("login.html");
+          };
+        }
+      } else {
+        if (navUserSection) navUserSection.classList.add("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.remove("d-none");
+      }
+
+      actualizarBadgeCarrito();
+    }
+
+    function cargarProductos() {
+      try {
+        return JSON.parse(localStorage.getItem(KEY_PRODUCTOS) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function guardarProductos(prods) {
+      localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(prods));
+    }
+
+    function cargarCarrito() {
+      try {
+        return JSON.parse(localStorage.getItem(KEY_CARRITO) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function guardarCarrito(cart) {
+      localStorage.setItem(KEY_CARRITO, JSON.stringify(cart));
+      actualizarBadgeCarrito();
+    }
+
+    function actualizarBadgeCarrito() {
+      const badge = document.getElementById("cartCountBadge");
+      if (!badge) return;
+      const cart = cargarCarrito();
+      const total = cart.reduce((acc, it) => acc + it.cantidad, 0);
+      badge.textContent = total;
+      if (total > 0) badge.classList.remove("d-none");
+      else badge.classList.add("d-none");
+    }
+
+    function formatoCLP(valor) {
+      return new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(valor);
+    }
+  </script>
+</body>
+</html>

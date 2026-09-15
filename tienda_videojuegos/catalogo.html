@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo | PixelVault</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg navbar-steam sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 font-arcade" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+          <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414"/>
+        </svg>
+        <span>Pixel</span>Vault <small class="text-warning ms-1" style="font-size:0.6rem;">[16-BIT]</small>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="carrito.html" class="btn btn-outline-info btn-sm position-relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Carrito
+            <span id="cartCountBadge" class="badge rounded-pill bg-danger d-none">0</span>
+          </a>
+
+          <div id="navAuthLinks" class="d-flex gap-2">
+            <a href="login.html" class="btn btn-primary btn-sm">Ingresar</a>
+          </div>
+
+          <div id="navUserSection" class="d-flex align-items-center gap-2 d-none">
+            <span class="small text-light" id="navUsuario"></span>
+            <button class="btn btn-outline-danger btn-sm" id="btnSalir">Salir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="container py-4">
+
+    <!-- CABECERA Y BOTÓN ADMIN -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+      <div>
+        <h1 class="h3 mb-0 text-light">Catálogo de Videojuegos Físicos</h1>
+        <p class="text-secondary small mb-0" id="subtituloCatalogo">Ediciones de colección en formato físico.</p>
+      </div>
+
+      <div class="d-flex gap-2 align-items-center">
+        <!-- Selector de vista (Tarjetas / Tabla para admin) -->
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-outline-secondary active" id="btnVistaCards">Cuadrícula</button>
+          <button type="button" class="btn btn-outline-secondary" id="btnVistaTabla">Tabla</button>
+        </div>
+        <!-- Botón exclusivo para Admin -->
+        <button class="btn btn-primary btn-sm d-none" id="btnNuevoJuego">+ Nuevo Videojuego</button>
+      </div>
+    </div>
+
+    <!-- ALERTA DE NOTIFICACIONES -->
+    <div id="alertaGlobal" class="alert d-none"></div>
+
+    <!-- BARRA DE FILTROS EN TIEMPO REAL -->
+    <div class="card card-juego p-3 mb-4">
+      <div class="row g-2">
+        <div class="col-md-6">
+          <label for="buscador" class="form-label small text-secondary">Búsqueda rápida</label>
+          <div class="input-group">
+            <span class="input-group-text bg-dark border-secondary">🔍</span>
+            <input type="search" class="form-control bg-dark border-secondary" id="buscador" 
+                   placeholder="Buscar por título, código o sinopsis...">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="filtroPlataforma" class="form-label small text-secondary">Plataforma</label>
+          <select class="form-select bg-dark border-secondary" id="filtroPlataforma">
+            <option value="">Todas las plataformas</option>
+            <option value="PlayStation 5">PlayStation 5</option>
+            <option value="Nintendo Switch">Nintendo Switch</option>
+            <option value="Xbox Series X">Xbox Series X</option>
+            <option value="PC">PC</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label for="filtroCategoria" class="form-label small text-secondary">Género / Categoría</label>
+          <select class="form-select bg-dark border-secondary" id="filtroCategoria">
+            <option value="">Todos los géneros</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL FORMULARIO: ALTA Y EDICIÓN (SOLO ADMIN) -->
+    <div class="card card-juego mb-4 d-none" id="panelForm">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h5 card-title text-info mb-0" id="tituloForm">Nuevo Videojuego Físico</h2>
+          <button type="button" class="btn-close" id="btnCerrarFormX"></button>
+        </div>
+
+        <div id="errorForm" class="alert alert-danger d-none"></div>
+        <input type="hidden" id="prodId">
+
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label for="prodCodigo" class="form-label">Código</label>
+            <input type="text" class="form-control bg-dark border-secondary" id="prodCodigo" maxlength="20" placeholder="Ej: PS5-009">
+          </div>
+          <div class="col-md-5">
+            <label for="prodNombre" class="form-label">Título del Videojuego</label>
+            <input type="text" class="form-control bg-dark border-secondary" id="prodNombre" maxlength="100" placeholder="Nombre completo">
+          </div>
+          <div class="col-md-4">
+            <label for="prodPlataforma" class="form-label">Plataforma</label>
+            <select class="form-select bg-dark border-secondary" id="prodPlataforma">
+              <option value="PlayStation 5">PlayStation 5</option>
+              <option value="Nintendo Switch">Nintendo Switch</option>
+              <option value="Xbox Series X">Xbox Series X</option>
+              <option value="PC">PC</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="prodCategoria" class="form-label">Género</label>
+            <input type="text" class="form-control bg-dark border-secondary" id="prodCategoria" maxlength="40" placeholder="Ej: RPG, Acción" list="sugerenciasCategorias">
+            <datalist id="sugerenciasCategorias"></datalist>
+          </div>
+          <div class="col-md-3">
+            <label for="prodPrecio" class="form-label">Precio (CLP)</label>
+            <input type="number" class="form-control bg-dark border-secondary" id="prodPrecio" min="0" step="100" placeholder="39990">
+          </div>
+          <div class="col-md-3">
+            <label for="prodStock" class="form-label">Stock en Bodega</label>
+            <input type="number" class="form-control bg-dark border-secondary" id="prodStock" min="0" step="1" placeholder="Cantidad física">
+          </div>
+          <div class="col-md-3">
+            <label for="prodStockCritico" class="form-label">Stock Crítico</label>
+            <input type="number" class="form-control bg-dark border-secondary" id="prodStockCritico" min="0" step="1" placeholder="Ej: 2">
+          </div>
+
+          <div class="col-md-8">
+            <label for="prodImagen" class="form-label">URL de Carátula (Imagen)</label>
+            <input type="url" class="form-control bg-dark border-secondary" id="prodImagen" placeholder="https://ejemplo.com/caratula.jpg">
+          </div>
+          <div class="col-md-4 d-flex align-items-end">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="prodActivo" checked>
+              <label class="form-check-label" for="prodActivo">Disponible en Catálogo (Activo)</label>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="prodDescripcion" class="form-label">Sinopsis y Características</label>
+            <textarea class="form-control bg-dark border-secondary" id="prodDescripcion" rows="2" maxlength="500" placeholder="Descripción de la edición física..."></textarea>
+          </div>
+        </div>
+
+        <div class="mt-3 d-flex gap-2">
+          <button type="button" class="btn btn-primary" id="btnGuardar">Guardar Videojuego</button>
+          <button type="button" class="btn btn-outline-secondary" id="btnCancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR DE PRODUCTOS: MODO TARJETAS (CUADRÍCULA) -->
+    <div id="vistaCardsContainer" class="row g-3">
+      <!-- Inyectado por JavaScript -->
+    </div>
+
+    <!-- CONTENEDOR DE PRODUCTOS: MODO TABLA (ADMIN O DETALLADO) -->
+    <div id="vistaTablaContainer" class="card card-juego d-none">
+      <div class="table-responsive">
+        <table class="table table-hover table-dark align-middle mb-0">
+          <thead>
+            <tr class="table-secondary text-dark">
+              <th>Código</th>
+              <th>Título</th>
+              <th>Plataforma</th>
+              <th>Género</th>
+              <th class="text-end">Precio</th>
+              <th class="text-end" id="thStockAdmin">Stock</th>
+              <th id="thEstadoAdmin">Estado</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaProductosBody">
+            <!-- Inyectado por JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= MODAL DETALLE DE VIDEOJUEGO ================= -->
+  <!-- En este modal no debe aparecer el código de inventario ni la etiqueta de copias físicas en stock para clientes -->
+  <div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content card-juego border-secondary text-light">
+        <div class="modal-header border-secondary">
+          <div class="d-flex align-items-center gap-2">
+            <span id="modalPlataformaBadge" class="badge text-bg-primary"></span>
+            <h3 class="modal-title h5 mb-0" id="modalDetalleLabel">Detalle del Videojuego</h3>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div id="modalAviso" class="alert d-none"></div>
+
+          <div class="row g-3">
+            <div class="col-md-5 text-center">
+              <img id="modalImg" src="" alt="Carátula" class="img-fluid rounded border border-secondary shadow" style="max-height: 320px; width: 100%; object-fit: cover;">
+            </div>
+
+            <div class="col-md-7 d-flex flex-column">
+              <h4 class="h4 text-light mb-1" id="modalTitulo"></h4>
+              <p class="text-info h4 fw-bold my-2" id="modalPrecio"></p>
+
+              <div class="mb-3 d-flex flex-wrap gap-2 align-items-center">
+                <span class="badge text-bg-secondary" id="modalCategoria"></span>
+              </div>
+
+              <p class="text-secondary small mb-3" id="modalDescripcion"></p>
+
+              <!-- SECCIÓN COMPRA (CLIENTE Y PÚBLICO) -->
+              <div class="card bg-dark border-secondary p-3 mt-auto" id="seccionCompraCliente">
+                <label for="modalCantidad" class="form-label small text-secondary">Cantidad a comprar:</label>
+                <div class="d-flex gap-2 align-items-center">
+                  <input type="number" class="form-control bg-dark border-secondary text-center" 
+                         id="modalCantidad" value="1" min="1" style="max-width: 100px;">
+                  <button type="button" class="btn btn-primary flex-grow-1" id="btnModalAgregarCarrito">
+                    Añadir al Carrito
+                  </button>
+                </div>
+              </div>
+
+              <!-- SECCIÓN ADMIN: GESTIÓN DIRECTA DESDE EL MODAL -->
+              <div class="card bg-dark border-primary p-3 mt-3 d-none" id="seccionAdminModal">
+                <h6 class="text-info mb-2">⚡ Gestión Administrativa (Solo Administrador)</h6>
+                <div class="d-flex gap-2 align-items-center mb-2">
+                  <label for="adminModalStock" class="small text-secondary text-nowrap">Ajustar Stock:</label>
+                  <input type="number" class="form-control form-control-sm bg-dark border-secondary" id="adminModalStock" min="0">
+                  <button type="button" class="btn btn-sm btn-outline-info" id="btnAdminModalGuardarStock">Guardar</button>
+                </div>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-sm btn-outline-primary" id="btnAdminModalEditar">Editar Datos</button>
+                  <button type="button" class="btn btn-sm btn-outline-danger" id="btnAdminModalEliminar">Eliminar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-steam py-4 mt-auto">
+    <div class="container text-center small">
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
+        <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
+        <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+      </div>
+      <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
+      <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- LÓGICA JAVASCRIPT INTEGRADA (ESTILO PROYECTO_FRONT) -->
+  <script>
+    /* ============ SEMILLA DE 15 VIDEOJUEGOS ============ */
+    const SEED_PRODUCTOS = [
+      { id: 1,  codigo: "PS5-001", nombre: "The Witcher 3: Wild Hunt - Complete Edition", categoria: "RPG", plataforma: "PlayStation 5", precio: 34990, stock: 5, stockCritico: 2, descripcion: "Edición física completa con juego base, Hearts of Stone y Blood and Wine.", imagen: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 2,  codigo: "PC-002",  nombre: "Cyberpunk 2077: Ultimate Edition (Caja Física)", categoria: "Acción", plataforma: "PC", precio: 39990, stock: 8, stockCritico: 3, descripcion: "Edición física coleccionista con mapa, postales y expansión Phantom Liberty.", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 3,  codigo: "NSW-003", nombre: "The Legend of Zelda: Tears of the Kingdom", categoria: "Aventura", plataforma: "Nintendo Switch", precio: 49990, stock: 2, stockCritico: 2, descripcion: "Cartucho físico original. Una aventura épica por la tierra y los cielos de Hyrule.", imagen: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 4,  codigo: "XSX-004", nombre: "Elden Ring - Shadow of the Erdtree Edition", categoria: "RPG", plataforma: "Xbox Series X", precio: 44990, stock: 4, stockCritico: 2, descripcion: "Disco físico con la obra maestra de FromSoftware y la expansión.", imagen: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 5,  codigo: "PS5-005", nombre: "Resident Evil 4 Remake - Steelbook Edition", categoria: "Terror", plataforma: "PlayStation 5", precio: 42990, stock: 3, stockCritico: 2, descripcion: "Caja metálica coleccionable. La reimaginación del clásico de supervivencia.", imagen: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 6,  codigo: "XSX-006", nombre: "Halo Infinite - Edición Limitada Física", categoria: "Shooter", plataforma: "Xbox Series X", precio: 29990, stock: 0, stockCritico: 2, descripcion: "Campaña del Jefe Maestro con estuche coleccionable.", imagen: "https://images.unsplash.com/photo-1552824722-ddab1374e622?auto=format&fit=crop&w=800&q=80", activo: false },
+      { id: 7,  codigo: "NSW-007", nombre: "Super Mario Bros. Wonder", categoria: "Plataformas", plataforma: "Nintendo Switch", precio: 45990, stock: 12, stockCritico: 3, descripcion: "Cartucho físico oficial Nintendo con efectos maravilla.", imagen: "https://images.unsplash.com/photo-1500990702037-7620ccb6a60a?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 8,  codigo: "PC-008",  nombre: "Red Dead Redemption 2 - Special Box Edition", categoria: "Mundo Abierto", plataforma: "PC", precio: 36990, stock: 7, stockCritico: 2, descripcion: "Caja de colección con mapa físico detallado y libro de arte.", imagen: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 9,  codigo: "PS5-009", nombre: "Street Fighter 6 - Arcade Deluxe Edition", categoria: "Peleas / Arcade", plataforma: "PlayStation 5", precio: 41990, stock: 6, stockCritico: 2, descripcion: "La cúspide del género de lucha arcade con steelbook coleccionable.", imagen: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 10, codigo: "NSW-010", nombre: "TMNT: Shredder's Revenge - 16-Bit Retro Edition", categoria: "Arcade / Beat 'em up", plataforma: "Nintendo Switch", precio: 32990, stock: 9, stockCritico: 3, descripcion: "Homenaje total a los salones arcade de los 90 en glorioso pixel-art.", imagen: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 11, codigo: "XSX-011", nombre: "Cuphead - Physical Collector's Edition", categoria: "Arcade / Acción", plataforma: "Xbox Series X", precio: 35990, stock: 4, stockCritico: 2, descripcion: "Juego físico, DLC Delicious Last Course y arte interior exclusivo.", imagen: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 12, codigo: "PC-012",  nombre: "Metal Slug Tactics - Big Box Edition", categoria: "Estrategia / Arcade", plataforma: "PC", precio: 28990, stock: 5, stockCritico: 2, descripcion: "Edición nostálgica en caja grande estilo PC clásico con pixel-art SNK.", imagen: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 13, codigo: "NSW-013", nombre: "Metroid Prime Remastered - Cartucho Físico", categoria: "Aventura / Sci-Fi", plataforma: "Nintendo Switch", precio: 38990, stock: 3, stockCritico: 2, descripcion: "Obra maestra remasterizada con carátula reversible.", imagen: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 14, codigo: "PS5-014", nombre: "Hollow Knight - Edición Coleccionista Física", categoria: "Metroidvania", plataforma: "PlayStation 5", precio: 29990, stock: 6, stockCritico: 2, descripcion: "Caja física con mapa desplegable de Hallownest y expansiones.", imagen: "https://images.unsplash.com/photo-1579202673506-ca3ce28943ef?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 15, codigo: "XSX-015", nombre: "Sonic Superstars - Retro Launch Edition", categoria: "Plataformas / 16-Bit", plataforma: "Xbox Series X", precio: 36990, stock: 8, stockCritico: 3, descripcion: "Velocidad 2D clásica con carátula lenticular y póster.", imagen: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=800&q=80", activo: true }
+    ];
+
+    const KEY_SESION    = "pixelvault_sesion";
+    const KEY_PRODUCTOS = "pixelvault_productos_v2";
+    const KEY_CARRITO   = "pixelvault_carrito";
+
+    let productos = [];
+    let esAdmin   = false;
+    let modalBs   = null;
+    let juegoSeleccionadoId = null;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const sesion = leerSesion();
+      esAdmin = (sesion && sesion.rol === "admin");
+
+      actualizarNavbar(sesion);
+      modalBs = new bootstrap.Modal(document.getElementById("modalDetalle"));
+
+      if (esAdmin) {
+        document.getElementById("btnNuevoJuego").classList.remove("d-none");
+        document.getElementById("subtituloCatalogo").textContent = "Modo Administrador: Puedes crear, editar y gestionar stock.";
+      } else {
+        // En tabla oculta columnas internas si no es admin
+        document.getElementById("thStockAdmin").classList.add("d-none");
+        document.getElementById("thEstadoAdmin").classList.add("d-none");
+      }
+
+      productos = cargarProductos();
+      llenarFiltroCategorias();
+      renderizarProductos();
+
+      // Verificar si venimos con un id en la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramId = urlParams.get("id");
+      if (paramId) {
+        abrirModalDetalle(Number(paramId));
+      }
+
+      // Eventos de filtros
+      document.getElementById("buscador").addEventListener("input", renderizarProductos);
+      document.getElementById("filtroPlataforma").addEventListener("change", renderizarProductos);
+      document.getElementById("filtroCategoria").addEventListener("change", renderizarProductos);
+
+      // Botones de vistas
+      document.getElementById("btnVistaCards").addEventListener("click", function () {
+        document.getElementById("vistaCardsContainer").classList.remove("d-none");
+        document.getElementById("vistaTablaContainer").classList.add("d-none");
+        this.classList.add("active");
+        document.getElementById("btnVistaTabla").classList.remove("active");
+      });
+
+      document.getElementById("btnVistaTabla").addEventListener("click", function () {
+        document.getElementById("vistaCardsContainer").classList.add("d-none");
+        document.getElementById("vistaTablaContainer").classList.remove("d-none");
+        this.classList.add("active");
+        document.getElementById("btnVistaCards").classList.remove("active");
+      });
+
+      // Panel Form Admin
+      document.getElementById("btnNuevoJuego").addEventListener("click", function () {
+        abrirFormularioAdmin(null);
+      });
+      document.getElementById("btnCancelar").addEventListener("click", cerrarFormularioAdmin);
+      document.getElementById("btnCerrarFormX").addEventListener("click", cerrarFormularioAdmin);
+      document.getElementById("btnGuardar").addEventListener("click", guardarJuegoAdmin);
+
+      // Modal Comprar
+      document.getElementById("btnModalAgregarCarrito").addEventListener("click", agregarAlCarritoDesdeModal);
+
+      // Modal Admin
+      document.getElementById("btnAdminModalGuardarStock").addEventListener("click", actualizarStockDesdeModal);
+      document.getElementById("btnAdminModalEditar").addEventListener("click", function () {
+        modalBs.hide();
+        abrirFormularioAdmin(juegoSeleccionadoId);
+      });
+      document.getElementById("btnAdminModalEliminar").addEventListener("click", function () {
+        eliminarJuego(juegoSeleccionadoId);
+        modalBs.hide();
+      });
+    });
+
+    /* ============ RENDERIZADO ============ */
+
+    function renderizarProductos() {
+      const texto      = document.getElementById("buscador").value.trim().toLowerCase();
+      const plataforma = document.getElementById("filtroPlataforma").value;
+      const categoria  = document.getElementById("filtroCategoria").value;
+
+      const filtrados = productos.filter(function (p) {
+        const coincideActivo = esAdmin ? true : p.activo;
+        const coincideTexto = !texto ||
+          p.nombre.toLowerCase().includes(texto) ||
+          p.codigo.toLowerCase().includes(texto) ||
+          p.categoria.toLowerCase().includes(texto) ||
+          p.descripcion.toLowerCase().includes(texto);
+        const coincidePlat = !plataforma || p.plataforma === plataforma;
+        const coincideCat  = !categoria  || p.categoria === categoria;
+
+        return coincideActivo && coincideTexto && coincidePlat && coincideCat;
+      });
+
+      renderizarCards(filtrados);
+      renderizarTabla(filtrados);
+    }
+
+    function renderizarCards(lista) {
+      const container = document.getElementById("vistaCardsContainer");
+      container.replaceChildren();
+
+      if (lista.length === 0) {
+        const col = document.createElement("div");
+        col.className = "col-12 text-center py-5";
+        const p = document.createElement("p");
+        p.className = "text-secondary lead";
+        p.textContent = "No se encontraron videojuegos físicos con los filtros seleccionados.";
+        col.appendChild(p);
+        container.appendChild(col);
+        return;
+      }
+
+      lista.forEach(function (juego) {
+        const col = document.createElement("div");
+        col.className = "col-12 col-md-6 col-lg-4 col-xl-3";
+
+        const card = document.createElement("div");
+        card.className = "card card-juego h-100 shadow-sm position-relative";
+
+        const img = document.createElement("img");
+        img.src = juego.imagen;
+        img.alt = juego.nombre;
+        img.className = "card-img-top card-juego-img";
+        card.appendChild(img);
+
+        const body = document.createElement("div");
+        body.className = "card-body d-flex flex-column";
+
+        // Badges superiores
+        const topBadges = document.createElement("div");
+        topBadges.className = "d-flex justify-content-between align-items-center mb-2";
+
+        const bPlat = document.createElement("span");
+        bPlat.className = "badge text-bg-primary";
+        bPlat.textContent = juego.plataforma;
+        topBadges.appendChild(bPlat);
+
+        // REGLA CLAVE: El estado en la cuadrícula NO es visible para usuarios comunes, SOLO para administradores
+        if (esAdmin) {
+          const badgeEstado = document.createElement("span");
+          if (!juego.activo) {
+            badgeEstado.className = "badge text-bg-secondary";
+            badgeEstado.textContent = "Pausado";
+          } else if (juego.stock === 0) {
+            badgeEstado.className = "badge text-bg-danger";
+            badgeEstado.textContent = "Agotado";
+          } else if (juego.stock <= juego.stockCritico) {
+            badgeEstado.className = "badge text-bg-warning";
+            badgeEstado.textContent = "Stock Crítico: " + juego.stock;
+          } else {
+            badgeEstado.className = "badge text-bg-success";
+            badgeEstado.textContent = juego.stock + " un.";
+          }
+          topBadges.appendChild(badgeEstado);
+        }
+
+        body.appendChild(topBadges);
+
+        const titulo = document.createElement("h3");
+        titulo.className = "h6 card-title text-light mb-1";
+        titulo.textContent = juego.nombre;
+        body.appendChild(titulo);
+
+        const cat = document.createElement("p");
+        cat.className = "small text-secondary mb-2";
+        cat.textContent = juego.categoria;
+        body.appendChild(cat);
+
+        const precio = document.createElement("p");
+        precio.className = "h5 fw-bold text-info my-2 mt-auto";
+        precio.textContent = formatoCLP(juego.precio);
+        body.appendChild(precio);
+
+        const btnGroup = document.createElement("div");
+        btnGroup.className = "d-flex gap-2 mt-2";
+
+        const btnDetalle = document.createElement("button");
+        btnDetalle.className = "btn btn-outline-info btn-sm w-100";
+        btnDetalle.textContent = "Ver Detalles";
+        btnDetalle.addEventListener("click", function () {
+          abrirModalDetalle(juego.id);
+        });
+        btnGroup.appendChild(btnDetalle);
+
+        if (esAdmin) {
+          const btnEditar = document.createElement("button");
+          btnEditar.className = "btn btn-outline-warning btn-sm";
+          btnEditar.textContent = "✏️";
+          btnEditar.title = "Editar juego";
+          btnEditar.addEventListener("click", function () {
+            abrirFormularioAdmin(juego.id);
+          });
+          btnGroup.appendChild(btnEditar);
+        }
+
+        body.appendChild(btnGroup);
+        card.appendChild(body);
+        col.appendChild(card);
+        container.appendChild(col);
+      });
+    }
+
+    function renderizarTabla(lista) {
+      const tbody = document.getElementById("tablaProductosBody");
+      tbody.replaceChildren();
+
+      if (lista.length === 0) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = esAdmin ? 8 : 6;
+        td.className = "text-center text-secondary py-4";
+        td.textContent = "No hay productos que coincidan.";
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        return;
+      }
+
+      lista.forEach(function (p) {
+        const tr = document.createElement("tr");
+
+        tr.appendChild(celda(p.codigo));
+        tr.appendChild(celda(p.nombre));
+        tr.appendChild(celda(p.plataforma));
+        tr.appendChild(celda(p.categoria));
+        tr.appendChild(celda(formatoCLP(p.precio), "text-end text-info fw-bold"));
+
+        // En modo admin muestra columnas de stock y estado
+        if (esAdmin) {
+          tr.appendChild(celda(String(p.stock), "text-end"));
+          const tdEstado = document.createElement("td");
+          const badge = document.createElement("span");
+          if (!p.activo) {
+            badge.className = "badge text-bg-secondary";
+            badge.textContent = "Inactivo";
+          } else if (p.stock === 0) {
+            badge.className = "badge text-bg-danger";
+            badge.textContent = "Agotado";
+          } else if (p.stock <= p.stockCritico) {
+            badge.className = "badge text-bg-warning";
+            badge.textContent = "Stock Crítico";
+          } else {
+            badge.className = "badge text-bg-success";
+            badge.textContent = "Activo";
+          }
+          tdEstado.appendChild(badge);
+          tr.appendChild(tdEstado);
+        }
+
+        const tdAcc = document.createElement("td");
+        tdAcc.className = "text-end text-nowrap";
+
+        const btnVer = document.createElement("button");
+        btnVer.className = "btn btn-sm btn-outline-info me-1";
+        btnVer.textContent = "Ver";
+        btnVer.addEventListener("click", function () { abrirModalDetalle(p.id); });
+        tdAcc.appendChild(btnVer);
+
+        if (esAdmin) {
+          const btnEdit = document.createElement("button");
+          btnEdit.className = "btn btn-sm btn-outline-warning me-1";
+          btnEdit.textContent = "Editar";
+          btnEdit.addEventListener("click", function () { abrirFormularioAdmin(p.id); });
+          tdAcc.appendChild(btnEdit);
+
+          const btnDel = document.createElement("button");
+          btnDel.className = "btn btn-sm btn-outline-danger";
+          btnDel.textContent = "Eliminar";
+          btnDel.addEventListener("click", function () { eliminarJuego(p.id); });
+          tdAcc.appendChild(btnDel);
+        }
+
+        tr.appendChild(tdAcc);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function celda(texto, clase) {
+      const td = document.createElement("td");
+      td.textContent = texto;
+      if (clase) td.className = clase;
+      return td;
+    }
+
+    function llenarFiltroCategorias() {
+      const categorias = productos.map(p => p.categoria)
+        .filter((c, i, arr) => arr.indexOf(c) === i)
+        .sort();
+
+      const select = document.getElementById("filtroCategoria");
+      select.length = 1;
+      const datalist = document.getElementById("sugerenciasCategorias");
+      datalist.replaceChildren();
+
+      categorias.forEach(function (c) {
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.textContent = c;
+        select.appendChild(opt);
+
+        const optData = document.createElement("option");
+        optData.value = c;
+        datalist.appendChild(optData);
+      });
+    }
+
+    /* ============ MODAL DE DETALLE ============ */
+    /* REGLA CLAVE: En el modal NO aparece el código de inventario ni la etiqueta de copias físicas en stock */
+    function abrirModalDetalle(id) {
+      const juego = productos.find(x => x.id === id);
+      if (!juego) return;
+
+      juegoSeleccionadoId = juego.id;
+      ocultarAvisoModal();
+
+      document.getElementById("modalDetalleLabel").textContent = juego.nombre;
+      document.getElementById("modalTitulo").textContent = juego.nombre;
+      document.getElementById("modalPlataformaBadge").textContent = juego.plataforma;
+      document.getElementById("modalCategoria").textContent = "Género: " + juego.categoria;
+      document.getElementById("modalPrecio").textContent = formatoCLP(juego.precio);
+      document.getElementById("modalDescripcion").textContent = juego.descripcion || "Edición física original sellada de fábrica.";
+      document.getElementById("modalImg").src = juego.imagen;
+
+      const inpCant    = document.getElementById("modalCantidad");
+      const btnAgregar = document.getElementById("btnModalAgregarCarrito");
+
+      inpCant.value = 1;
+      inpCant.max   = juego.stock; // Validación lógica interna
+
+      if (!juego.activo || juego.stock === 0) {
+        inpCant.disabled = true;
+        btnAgregar.disabled = true;
+        btnAgregar.textContent = "No disponible";
+      } else {
+        inpCant.disabled = false;
+        btnAgregar.disabled = false;
+        btnAgregar.textContent = "Añadir al Carrito";
+      }
+
+      // Panel exclusivo para administradores dentro del modal
+      const seccionAdmin = document.getElementById("seccionAdminModal");
+      if (esAdmin) {
+        seccionAdmin.classList.remove("d-none");
+        document.getElementById("adminModalStock").value = juego.stock;
+      } else {
+        seccionAdmin.classList.add("d-none");
+      }
+
+      modalBs.show();
+    }
+
+    function agregarAlCarritoDesdeModal() {
+      if (!juegoSeleccionadoId) return;
+      const juego = productos.find(x => x.id === juegoSeleccionadoId);
+      if (!juego || !juego.activo || juego.stock === 0) return;
+
+      const inpCant = document.getElementById("modalCantidad");
+      const cantidadPedida = parseInt(inpCant.value, 10);
+
+      // Validación lógica de stock
+      if (isNaN(cantidadPedida) || cantidadPedida < 1) {
+        mostrarAvisoModal("Debes seleccionar al menos 1 unidad.", "warning");
+        return;
+      }
+
+      const cart = cargarCarrito();
+      const itemExistente = cart.find(x => x.id === juego.id);
+      const enCarritoActualmente = itemExistente ? itemExistente.cantidad : 0;
+
+      if (enCarritoActualmente + cantidadPedida > juego.stock) {
+        mostrarAvisoModal("No puedes agregar " + cantidadPedida + " copias más. Ya tienes " + enCarritoActualmente + " en el carrito y no hay suficiente stock disponible.", "warning");
+        return;
+      }
+
+      if (itemExistente) {
+        itemExistente.cantidad += cantidadPedida;
+      } else {
+        cart.push({
+          id: juego.id,
+          codigo: juego.codigo,
+          nombre: juego.nombre,
+          plataforma: juego.plataforma,
+          precio: juego.precio,
+          imagen: juego.imagen,
+          cantidad: cantidadPedida,
+          stockMax: juego.stock
+        });
+      }
+
+      guardarCarrito(cart);
+      mostrarAvisoModal("¡Agregado! Se añadieron " + cantidadPedida + " copias al carrito.", "success");
+
+      setTimeout(function () {
+        modalBs.hide();
+        mostrarAvisoGlobal("Agregaste \"" + juego.nombre + "\" a tu carrito.", "success");
+      }, 1200);
+    }
+
+    function actualizarStockDesdeModal() {
+      if (!esAdmin || !juegoSeleccionadoId) return;
+      const nuevoStock = parseInt(document.getElementById("adminModalStock").value, 10);
+
+      if (isNaN(nuevoStock) || nuevoStock < 0) {
+        mostrarAvisoModal("El stock debe ser un número entero mayor o igual a 0.", "danger");
+        return;
+      }
+
+      const juego = productos.find(x => x.id === juegoSeleccionadoId);
+      if (!juego) return;
+
+      juego.stock = nuevoStock;
+      guardarProductos(productos);
+      renderizarProductos();
+      mostrarAvisoModal("Stock actualizado a " + nuevoStock + " unidades.", "success");
+    }
+
+    function mostrarAvisoModal(msg, tipo) {
+      const box = document.getElementById("modalAviso");
+      box.className = "alert alert-" + (tipo || "info");
+      box.textContent = msg;
+      box.classList.remove("d-none");
+    }
+
+    function ocultarAvisoModal() {
+      const box = document.getElementById("modalAviso");
+      box.className = "alert d-none";
+      box.textContent = "";
+    }
+
+    /* ============ CRUD ADMINISTRADOR ============ */
+
+    function abrirFormularioAdmin(id) {
+      if (!esAdmin) return;
+      const p = id ? productos.find(x => x.id === id) : null;
+
+      document.getElementById("errorForm").classList.add("d-none");
+      document.getElementById("tituloForm").textContent = id ? "Editar Videojuego" : "Nuevo Videojuego Físico";
+
+      document.getElementById("prodId").value          = p ? p.id           : "";
+      document.getElementById("prodCodigo").value      = p ? p.codigo       : "";
+      document.getElementById("prodNombre").value      = p ? p.nombre       : "";
+      document.getElementById("prodPlataforma").value  = p ? p.plataforma   : "PlayStation 5";
+      document.getElementById("prodCategoria").value   = p ? p.categoria    : "";
+      document.getElementById("prodPrecio").value      = p ? p.precio       : "";
+      document.getElementById("prodStock").value       = p ? p.stock        : "";
+      document.getElementById("prodStockCritico").value= p ? p.stockCritico : 2;
+      document.getElementById("prodImagen").value      = p ? p.imagen       : "";
+      document.getElementById("prodDescripcion").value = p ? p.descripcion  : "";
+      document.getElementById("prodActivo").checked    = p ? p.activo       : true;
+
+      const panel = document.getElementById("panelForm");
+      panel.classList.remove("d-none");
+      panel.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("prodCodigo").focus();
+    }
+
+    function cerrarFormularioAdmin() {
+      document.getElementById("panelForm").classList.add("d-none");
+    }
+
+    function guardarJuegoAdmin() {
+      if (!esAdmin) return;
+
+      const idTexto = document.getElementById("prodId").value;
+      const id      = idTexto ? Number(idTexto) : null;
+
+      const datos = {
+        codigo:       document.getElementById("prodCodigo").value.trim(),
+        nombre:       document.getElementById("prodNombre").value.trim(),
+        plataforma:   document.getElementById("prodPlataforma").value,
+        categoria:    document.getElementById("prodCategoria").value.trim(),
+        precio:       Number(document.getElementById("prodPrecio").value),
+        stock:        Number(document.getElementById("prodStock").value),
+        stockCritico: Number(document.getElementById("prodStockCritico").value) || 2,
+        imagen:       document.getElementById("prodImagen").value.trim() || "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+        descripcion:  document.getElementById("prodDescripcion").value.trim(),
+        activo:       document.getElementById("prodActivo").checked
+      };
+
+      const error = validarJuego(datos, id);
+      if (error) {
+        const caja = document.getElementById("errorForm");
+        caja.textContent = error;
+        caja.classList.remove("d-none");
+        return;
+      }
+
+      if (id) {
+        const i = productos.findIndex(x => x.id === id);
+        productos[i] = Object.assign({}, productos[i], datos);
+        mostrarAvisoGlobal("Videojuego actualizado con éxito.", "success");
+      } else {
+        const nuevoId = productos.length ? Math.max.apply(null, productos.map(x => x.id)) + 1 : 1;
+        productos.push(Object.assign({ id: nuevoId }, datos));
+        mostrarAvisoGlobal("Nuevo videojuego agregado al catálogo.", "success");
+      }
+
+      guardarProductos(productos);
+      llenarFiltroCategorias();
+      renderizarProductos();
+      cerrarFormularioAdmin();
+    }
+
+    function validarJuego(d, id) {
+      if (!d.codigo) return "El código es obligatorio.";
+      if (d.codigo.length < 3) return "El código debe tener al menos 3 caracteres.";
+      if (!/^[A-Za-z0-9-]{3,20}$/.test(d.codigo)) return "El código solo admite letras, números y guiones.";
+      if (productos.some(p => p.codigo.toLowerCase() === d.codigo.toLowerCase() && p.id !== id))
+        return "Ya existe otro videojuego con ese código de inventario.";
+      if (d.nombre.length < 3) return "El título debe tener al menos 3 caracteres.";
+      if (d.nombre.length > 100) return "El título no puede superar los 100 caracteres.";
+      if (!d.categoria) return "El género / categoría es obligatorio.";
+      if (!Number.isFinite(d.precio) || d.precio < 0) return "El precio debe ser mayor o igual a 0.";
+      if (!Number.isInteger(d.stock) || d.stock < 0) return "El stock debe ser un número entero mayor o igual a 0.";
+      return null;
+    }
+
+    function eliminarJuego(id) {
+      if (!esAdmin) return;
+      const juego = productos.find(x => x.id === id);
+      if (!juego) return;
+
+      if (!confirm("¿Eliminar \"" + juego.nombre + "\"? Esta acción es irreversible.")) {
+        return;
+      }
+
+      productos = productos.filter(x => x.id !== id);
+      guardarProductos(productos);
+      llenarFiltroCategorias();
+      renderizarProductos();
+      cerrarFormularioAdmin();
+      mostrarAvisoGlobal("Videojuego eliminado del inventario.", "warning");
+    }
+
+    function mostrarAvisoGlobal(msg, tipo) {
+      const box = document.getElementById("alertaGlobal");
+      box.className = "alert alert-" + (tipo || "success");
+      box.textContent = msg;
+      box.classList.remove("d-none");
+      setTimeout(function () {
+        box.classList.add("d-none");
+      }, 4000);
+    }
+
+    /* ============ UTILIDADES Y PERSISTENCIA ============ */
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario || !s.rol) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function actualizarNavbar(sesion) {
+      const navUsuario     = document.getElementById("navUsuario");
+      const btnSalir       = document.getElementById("btnSalir");
+      const navAuthLinks   = document.getElementById("navAuthLinks");
+      const navUserSection = document.getElementById("navUserSection");
+
+      if (sesion) {
+        if (navUserSection) navUserSection.classList.remove("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.add("d-none");
+        if (navUsuario) {
+          navUsuario.textContent = sesion.nombre + " (" + (sesion.rol === "admin" ? "Admin" : "Cliente") + ")";
+        }
+        if (btnSalir) {
+          btnSalir.onclick = function () {
+            sessionStorage.removeItem(KEY_SESION);
+            window.location.replace("login.html");
+          };
+        }
+      } else {
+        if (navUserSection) navUserSection.classList.add("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.remove("d-none");
+      }
+
+      actualizarBadgeCarrito();
+    }
+
+    function cargarProductos() {
+      const guardados = localStorage.getItem(KEY_PRODUCTOS);
+      if (guardados) {
+        try {
+          const parsed = JSON.parse(guardados);
+          if (Array.isArray(parsed) && parsed.length >= 15) return parsed;
+        } catch (e) {}
+      }
+      localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(SEED_PRODUCTOS));
+      return SEED_PRODUCTOS.slice();
+    }
+
+    function guardarProductos(prods) {
+      localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(prods));
+    }
+
+    function cargarCarrito() {
+      try {
+        return JSON.parse(localStorage.getItem(KEY_CARRITO) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function guardarCarrito(cart) {
+      localStorage.setItem(KEY_CARRITO, JSON.stringify(cart));
+      actualizarBadgeCarrito();
+    }
+
+    function actualizarBadgeCarrito() {
+      const badge = document.getElementById("cartCountBadge");
+      if (!badge) return;
+      const cart = cargarCarrito();
+      const total = cart.reduce((acc, it) => acc + it.cantidad, 0);
+      badge.textContent = total;
+      if (total > 0) badge.classList.remove("d-none");
+      else badge.classList.add("d-none");
+    }
+
+    function formatoCLP(valor) {
+      return new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(valor);
+    }
+  </script>
+</body>
+</html>
