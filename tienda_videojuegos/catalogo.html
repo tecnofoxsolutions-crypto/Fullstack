@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,15 +9,19 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
+
 <body>
 
   <!-- ================= NAVBAR ================= -->
   <nav class="navbar navbar-expand-lg navbar-steam sticky-top py-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2 font-arcade" href="index.html">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-controller text-info" viewBox="0 0 16 16">
-          <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
-          <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+          class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path
+            d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z" />
+          <path
+            d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414" />
         </svg>
         <span>Pixel</span>Vault <small class="text-warning ms-1" style="font-size:0.6rem;">[16-BIT]</small>
       </a>
@@ -34,8 +39,10 @@
 
         <div class="d-flex align-items-center gap-3">
           <a href="carrito.html" class="btn btn-outline-info btn-sm position-relative">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1" viewBox="0 0 16 16">
-              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
             </svg>
             Carrito
             <span id="cartCountBadge" class="badge rounded-pill bg-danger d-none">0</span>
@@ -85,8 +92,8 @@
           <label for="buscador" class="form-label small text-secondary">Búsqueda rápida</label>
           <div class="input-group">
             <span class="input-group-text bg-dark border-secondary">🔍</span>
-            <input type="search" class="form-control bg-dark border-secondary" id="buscador" 
-                   placeholder="Buscar por título, código o sinopsis...">
+            <input type="search" class="form-control bg-dark border-secondary" id="buscador"
+              placeholder="Buscar por título, código o sinopsis...">
           </div>
         </div>
 
@@ -124,11 +131,13 @@
         <div class="row g-3">
           <div class="col-md-3">
             <label for="prodCodigo" class="form-label">Código</label>
-            <input type="text" class="form-control bg-dark border-secondary" id="prodCodigo" maxlength="20" placeholder="Ej: PS5-009">
+            <input type="text" class="form-control bg-dark border-secondary" id="prodCodigo" maxlength="20"
+              placeholder="Ej: PS5-009">
           </div>
           <div class="col-md-5">
             <label for="prodNombre" class="form-label">Título del Videojuego</label>
-            <input type="text" class="form-control bg-dark border-secondary" id="prodNombre" maxlength="100" placeholder="Nombre completo">
+            <input type="text" class="form-control bg-dark border-secondary" id="prodNombre" maxlength="100"
+              placeholder="Nombre completo">
           </div>
           <div class="col-md-4">
             <label for="prodPlataforma" class="form-label">Plataforma</label>
@@ -142,25 +151,30 @@
 
           <div class="col-md-3">
             <label for="prodCategoria" class="form-label">Género</label>
-            <input type="text" class="form-control bg-dark border-secondary" id="prodCategoria" maxlength="40" placeholder="Ej: RPG, Acción" list="sugerenciasCategorias">
+            <input type="text" class="form-control bg-dark border-secondary" id="prodCategoria" maxlength="40"
+              placeholder="Ej: RPG, Acción" list="sugerenciasCategorias">
             <datalist id="sugerenciasCategorias"></datalist>
           </div>
           <div class="col-md-3">
             <label for="prodPrecio" class="form-label">Precio (CLP)</label>
-            <input type="number" class="form-control bg-dark border-secondary" id="prodPrecio" min="0" step="100" placeholder="39990">
+            <input type="number" class="form-control bg-dark border-secondary" id="prodPrecio" min="0" step="100"
+              placeholder="39990">
           </div>
           <div class="col-md-3">
             <label for="prodStock" class="form-label">Stock en Bodega</label>
-            <input type="number" class="form-control bg-dark border-secondary" id="prodStock" min="0" step="1" placeholder="Cantidad física">
+            <input type="number" class="form-control bg-dark border-secondary" id="prodStock" min="0" step="1"
+              placeholder="Cantidad física">
           </div>
           <div class="col-md-3">
             <label for="prodStockCritico" class="form-label">Stock Crítico</label>
-            <input type="number" class="form-control bg-dark border-secondary" id="prodStockCritico" min="0" step="1" placeholder="Ej: 2">
+            <input type="number" class="form-control bg-dark border-secondary" id="prodStockCritico" min="0" step="1"
+              placeholder="Ej: 2">
           </div>
 
           <div class="col-md-8">
             <label for="prodImagen" class="form-label">URL de Carátula (Imagen)</label>
-            <input type="url" class="form-control bg-dark border-secondary" id="prodImagen" placeholder="https://ejemplo.com/caratula.jpg">
+            <input type="url" class="form-control bg-dark border-secondary" id="prodImagen"
+              placeholder="https://ejemplo.com/caratula.jpg">
           </div>
           <div class="col-md-4 d-flex align-items-end">
             <div class="form-check">
@@ -171,7 +185,8 @@
 
           <div class="col-12">
             <label for="prodDescripcion" class="form-label">Sinopsis y Características</label>
-            <textarea class="form-control bg-dark border-secondary" id="prodDescripcion" rows="2" maxlength="500" placeholder="Descripción de la edición física..."></textarea>
+            <textarea class="form-control bg-dark border-secondary" id="prodDescripcion" rows="2" maxlength="500"
+              placeholder="Descripción de la edición física..."></textarea>
           </div>
         </div>
 
@@ -230,7 +245,8 @@
 
           <div class="row g-3">
             <div class="col-md-5 text-center">
-              <img id="modalImg" src="" alt="Carátula" class="img-fluid rounded border border-secondary shadow" style="max-height: 320px; width: 100%; object-fit: cover;">
+              <img id="modalImg" src="" alt="Carátula" class="img-fluid rounded border border-secondary shadow"
+                style="max-height: 320px; width: 100%; object-fit: cover;">
             </div>
 
             <div class="col-md-7 d-flex flex-column">
@@ -247,8 +263,8 @@
               <div class="card bg-dark border-secondary p-3 mt-auto" id="seccionCompraCliente">
                 <label for="modalCantidad" class="form-label small text-secondary">Cantidad a comprar:</label>
                 <div class="d-flex gap-2 align-items-center">
-                  <input type="number" class="form-control bg-dark border-secondary text-center" 
-                         id="modalCantidad" value="1" min="1" style="max-width: 100px;">
+                  <input type="number" class="form-control bg-dark border-secondary text-center" id="modalCantidad"
+                    value="1" min="1" style="max-width: 100px;">
                   <button type="button" class="btn btn-primary flex-grow-1" id="btnModalAgregarCarrito">
                     Añadir al Carrito
                   </button>
@@ -260,12 +276,16 @@
                 <h6 class="text-info mb-2">⚡ Gestión Administrativa (Solo Administrador)</h6>
                 <div class="d-flex gap-2 align-items-center mb-2">
                   <label for="adminModalStock" class="small text-secondary text-nowrap">Ajustar Stock:</label>
-                  <input type="number" class="form-control form-control-sm bg-dark border-secondary" id="adminModalStock" min="0">
-                  <button type="button" class="btn btn-sm btn-outline-info" id="btnAdminModalGuardarStock">Guardar</button>
+                  <input type="number" class="form-control form-control-sm bg-dark border-secondary"
+                    id="adminModalStock" min="0">
+                  <button type="button" class="btn btn-sm btn-outline-info"
+                    id="btnAdminModalGuardarStock">Guardar</button>
                 </div>
                 <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-primary" id="btnAdminModalEditar">Editar Datos</button>
-                  <button type="button" class="btn btn-sm btn-outline-danger" id="btnAdminModalEliminar">Eliminar</button>
+                  <button type="button" class="btn btn-sm btn-outline-primary" id="btnAdminModalEditar">Editar
+                    Datos</button>
+                  <button type="button" class="btn btn-sm btn-outline-danger"
+                    id="btnAdminModalEliminar">Eliminar</button>
                 </div>
               </div>
 
@@ -300,30 +320,30 @@
   <script>
     /* ============ SEMILLA DE 15 VIDEOJUEGOS ============ */
     const SEED_PRODUCTOS = [
-      { id: 1,  codigo: "PS5-001", nombre: "The Witcher 3: Wild Hunt - Complete Edition", categoria: "RPG", plataforma: "PlayStation 5", precio: 34990, stock: 5, stockCritico: 2, descripcion: "Edición física completa con juego base, Hearts of Stone y Blood and Wine.", imagen: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 2,  codigo: "PC-002",  nombre: "Cyberpunk 2077: Ultimate Edition (Caja Física)", categoria: "Acción", plataforma: "PC", precio: 39990, stock: 8, stockCritico: 3, descripcion: "Edición física coleccionista con mapa, postales y expansión Phantom Liberty.", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 3,  codigo: "NSW-003", nombre: "The Legend of Zelda: Tears of the Kingdom", categoria: "Aventura", plataforma: "Nintendo Switch", precio: 49990, stock: 2, stockCritico: 2, descripcion: "Cartucho físico original. Una aventura épica por la tierra y los cielos de Hyrule.", imagen: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 4,  codigo: "XSX-004", nombre: "Elden Ring - Shadow of the Erdtree Edition", categoria: "RPG", plataforma: "Xbox Series X", precio: 44990, stock: 4, stockCritico: 2, descripcion: "Disco físico con la obra maestra de FromSoftware y la expansión.", imagen: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 5,  codigo: "PS5-005", nombre: "Resident Evil 4 Remake - Steelbook Edition", categoria: "Terror", plataforma: "PlayStation 5", precio: 42990, stock: 3, stockCritico: 2, descripcion: "Caja metálica coleccionable. La reimaginación del clásico de supervivencia.", imagen: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 6,  codigo: "XSX-006", nombre: "Halo Infinite - Edición Limitada Física", categoria: "Shooter", plataforma: "Xbox Series X", precio: 29990, stock: 0, stockCritico: 2, descripcion: "Campaña del Jefe Maestro con estuche coleccionable.", imagen: "https://images.unsplash.com/photo-1552824722-ddab1374e622?auto=format&fit=crop&w=800&q=80", activo: false },
-      { id: 7,  codigo: "NSW-007", nombre: "Super Mario Bros. Wonder", categoria: "Plataformas", plataforma: "Nintendo Switch", precio: 45990, stock: 12, stockCritico: 3, descripcion: "Cartucho físico oficial Nintendo con efectos maravilla.", imagen: "https://images.unsplash.com/photo-1500990702037-7620ccb6a60a?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 8,  codigo: "PC-008",  nombre: "Red Dead Redemption 2 - Special Box Edition", categoria: "Mundo Abierto", plataforma: "PC", precio: 36990, stock: 7, stockCritico: 2, descripcion: "Caja de colección con mapa físico detallado y libro de arte.", imagen: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 9,  codigo: "PS5-009", nombre: "Street Fighter 6 - Arcade Deluxe Edition", categoria: "Peleas / Arcade", plataforma: "PlayStation 5", precio: 41990, stock: 6, stockCritico: 2, descripcion: "La cúspide del género de lucha arcade con steelbook coleccionable.", imagen: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 1, codigo: "PS5-001", nombre: "The Witcher 3: Wild Hunt - Complete Edition", categoria: "RPG", plataforma: "PlayStation 5", precio: 34990, stock: 5, stockCritico: 2, descripcion: "Edición física completa con juego base, Hearts of Stone y Blood and Wine.", imagen: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 2, codigo: "PC-002", nombre: "Cyberpunk 2077: Ultimate Edition (Caja Física)", categoria: "Acción", plataforma: "PC", precio: 39990, stock: 8, stockCritico: 3, descripcion: "Edición física coleccionista con mapa, postales y expansión Phantom Liberty.", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 3, codigo: "NSW-003", nombre: "The Legend of Zelda: Tears of the Kingdom", categoria: "Aventura", plataforma: "Nintendo Switch", precio: 49990, stock: 2, stockCritico: 2, descripcion: "Cartucho físico original. Una aventura épica por la tierra y los cielos de Hyrule.", imagen: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 4, codigo: "XSX-004", nombre: "Elden Ring - Shadow of the Erdtree Edition", categoria: "RPG", plataforma: "Xbox Series X", precio: 44990, stock: 4, stockCritico: 2, descripcion: "Disco físico con la obra maestra de FromSoftware y la expansión.", imagen: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 5, codigo: "PS5-005", nombre: "Resident Evil 4 Remake - Steelbook Edition", categoria: "Terror", plataforma: "PlayStation 5", precio: 42990, stock: 3, stockCritico: 2, descripcion: "Caja metálica coleccionable. La reimaginación del clásico de supervivencia.", imagen: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 6, codigo: "XSX-006", nombre: "Halo Infinite - Edición Limitada Física", categoria: "Shooter", plataforma: "Xbox Series X", precio: 29990, stock: 0, stockCritico: 2, descripcion: "Campaña del Jefe Maestro con estuche coleccionable.", imagen: "https://images.unsplash.com/photo-1552824722-ddab1374e622?auto=format&fit=crop&w=800&q=80", activo: false },
+      { id: 7, codigo: "NSW-007", nombre: "Super Mario Bros. Wonder", categoria: "Plataformas", plataforma: "Nintendo Switch", precio: 45990, stock: 12, stockCritico: 3, descripcion: "Cartucho físico oficial Nintendo con efectos maravilla.", imagen: "https://images.unsplash.com/photo-1500990702037-7620ccb6a60a?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 8, codigo: "PC-008", nombre: "Red Dead Redemption 2 - Special Box Edition", categoria: "Mundo Abierto", plataforma: "PC", precio: 36990, stock: 7, stockCritico: 2, descripcion: "Caja de colección con mapa físico detallado y libro de arte.", imagen: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 9, codigo: "PS5-009", nombre: "Street Fighter 6 - Arcade Deluxe Edition", categoria: "Peleas / Arcade", plataforma: "PlayStation 5", precio: 41990, stock: 6, stockCritico: 2, descripcion: "La cúspide del género de lucha arcade con steelbook coleccionable.", imagen: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80", activo: true },
       { id: 10, codigo: "NSW-010", nombre: "TMNT: Shredder's Revenge - 16-Bit Retro Edition", categoria: "Arcade / Beat 'em up", plataforma: "Nintendo Switch", precio: 32990, stock: 9, stockCritico: 3, descripcion: "Homenaje total a los salones arcade de los 90 en glorioso pixel-art.", imagen: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", activo: true },
       { id: 11, codigo: "XSX-011", nombre: "Cuphead - Physical Collector's Edition", categoria: "Arcade / Acción", plataforma: "Xbox Series X", precio: 35990, stock: 4, stockCritico: 2, descripcion: "Juego físico, DLC Delicious Last Course y arte interior exclusivo.", imagen: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=800&q=80", activo: true },
-      { id: 12, codigo: "PC-012",  nombre: "Metal Slug Tactics - Big Box Edition", categoria: "Estrategia / Arcade", plataforma: "PC", precio: 28990, stock: 5, stockCritico: 2, descripcion: "Edición nostálgica en caja grande estilo PC clásico con pixel-art SNK.", imagen: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=800&q=80", activo: true },
+      { id: 12, codigo: "PC-012", nombre: "Metal Slug Tactics - Big Box Edition", categoria: "Estrategia / Arcade", plataforma: "PC", precio: 28990, stock: 5, stockCritico: 2, descripcion: "Edición nostálgica en caja grande estilo PC clásico con pixel-art SNK.", imagen: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=800&q=80", activo: true },
       { id: 13, codigo: "NSW-013", nombre: "Metroid Prime Remastered - Cartucho Físico", categoria: "Aventura / Sci-Fi", plataforma: "Nintendo Switch", precio: 38990, stock: 3, stockCritico: 2, descripcion: "Obra maestra remasterizada con carátula reversible.", imagen: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80", activo: true },
       { id: 14, codigo: "PS5-014", nombre: "Hollow Knight - Edición Coleccionista Física", categoria: "Metroidvania", plataforma: "PlayStation 5", precio: 29990, stock: 6, stockCritico: 2, descripcion: "Caja física con mapa desplegable de Hallownest y expansiones.", imagen: "https://images.unsplash.com/photo-1579202673506-ca3ce28943ef?auto=format&fit=crop&w=800&q=80", activo: true },
       { id: 15, codigo: "XSX-015", nombre: "Sonic Superstars - Retro Launch Edition", categoria: "Plataformas / 16-Bit", plataforma: "Xbox Series X", precio: 36990, stock: 8, stockCritico: 3, descripcion: "Velocidad 2D clásica con carátula lenticular y póster.", imagen: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=800&q=80", activo: true }
     ];
 
-    const KEY_SESION    = "pixelvault_sesion";
+    const KEY_SESION = "pixelvault_sesion";
     const KEY_PRODUCTOS = "pixelvault_productos_v2";
-    const KEY_CARRITO   = "pixelvault_carrito";
+    const KEY_CARRITO = "pixelvault_carrito";
 
     let productos = [];
-    let esAdmin   = false;
-    let modalBs   = null;
+    let esAdmin = false;
+    let modalBs = null;
     let juegoSeleccionadoId = null;
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -399,9 +419,9 @@
     /* ============ RENDERIZADO ============ */
 
     function renderizarProductos() {
-      const texto      = document.getElementById("buscador").value.trim().toLowerCase();
+      const texto = document.getElementById("buscador").value.trim().toLowerCase();
       const plataforma = document.getElementById("filtroPlataforma").value;
-      const categoria  = document.getElementById("filtroCategoria").value;
+      const categoria = document.getElementById("filtroCategoria").value;
 
       const filtrados = productos.filter(function (p) {
         const coincideActivo = esAdmin ? true : p.activo;
@@ -411,7 +431,7 @@
           p.categoria.toLowerCase().includes(texto) ||
           p.descripcion.toLowerCase().includes(texto);
         const coincidePlat = !plataforma || p.plataforma === plataforma;
-        const coincideCat  = !categoria  || p.categoria === categoria;
+        const coincideCat = !categoria || p.categoria === categoria;
 
         return coincideActivo && coincideTexto && coincidePlat && coincideCat;
       });
@@ -645,11 +665,11 @@
       document.getElementById("modalDescripcion").textContent = juego.descripcion || "Edición física original sellada de fábrica.";
       document.getElementById("modalImg").src = juego.imagen;
 
-      const inpCant    = document.getElementById("modalCantidad");
+      const inpCant = document.getElementById("modalCantidad");
       const btnAgregar = document.getElementById("btnModalAgregarCarrito");
 
       inpCant.value = 1;
-      inpCant.max   = juego.stock; // Validación lógica interna
+      inpCant.max = juego.stock; // Validación lógica interna
 
       if (!juego.activo || juego.stock === 0) {
         inpCant.disabled = true;
@@ -760,17 +780,17 @@
       document.getElementById("errorForm").classList.add("d-none");
       document.getElementById("tituloForm").textContent = id ? "Editar Videojuego" : "Nuevo Videojuego Físico";
 
-      document.getElementById("prodId").value          = p ? p.id           : "";
-      document.getElementById("prodCodigo").value      = p ? p.codigo       : "";
-      document.getElementById("prodNombre").value      = p ? p.nombre       : "";
-      document.getElementById("prodPlataforma").value  = p ? p.plataforma   : "PlayStation 5";
-      document.getElementById("prodCategoria").value   = p ? p.categoria    : "";
-      document.getElementById("prodPrecio").value      = p ? p.precio       : "";
-      document.getElementById("prodStock").value       = p ? p.stock        : "";
-      document.getElementById("prodStockCritico").value= p ? p.stockCritico : 2;
-      document.getElementById("prodImagen").value      = p ? p.imagen       : "";
-      document.getElementById("prodDescripcion").value = p ? p.descripcion  : "";
-      document.getElementById("prodActivo").checked    = p ? p.activo       : true;
+      document.getElementById("prodId").value = p ? p.id : "";
+      document.getElementById("prodCodigo").value = p ? p.codigo : "";
+      document.getElementById("prodNombre").value = p ? p.nombre : "";
+      document.getElementById("prodPlataforma").value = p ? p.plataforma : "PlayStation 5";
+      document.getElementById("prodCategoria").value = p ? p.categoria : "";
+      document.getElementById("prodPrecio").value = p ? p.precio : "";
+      document.getElementById("prodStock").value = p ? p.stock : "";
+      document.getElementById("prodStockCritico").value = p ? p.stockCritico : 2;
+      document.getElementById("prodImagen").value = p ? p.imagen : "";
+      document.getElementById("prodDescripcion").value = p ? p.descripcion : "";
+      document.getElementById("prodActivo").checked = p ? p.activo : true;
 
       const panel = document.getElementById("panelForm");
       panel.classList.remove("d-none");
@@ -786,19 +806,19 @@
       if (!esAdmin) return;
 
       const idTexto = document.getElementById("prodId").value;
-      const id      = idTexto ? Number(idTexto) : null;
+      const id = idTexto ? Number(idTexto) : null;
 
       const datos = {
-        codigo:       document.getElementById("prodCodigo").value.trim(),
-        nombre:       document.getElementById("prodNombre").value.trim(),
-        plataforma:   document.getElementById("prodPlataforma").value,
-        categoria:    document.getElementById("prodCategoria").value.trim(),
-        precio:       Number(document.getElementById("prodPrecio").value),
-        stock:        Number(document.getElementById("prodStock").value),
+        codigo: document.getElementById("prodCodigo").value.trim(),
+        nombre: document.getElementById("prodNombre").value.trim(),
+        plataforma: document.getElementById("prodPlataforma").value,
+        categoria: document.getElementById("prodCategoria").value.trim(),
+        precio: Number(document.getElementById("prodPrecio").value),
+        stock: Number(document.getElementById("prodStock").value),
         stockCritico: Number(document.getElementById("prodStockCritico").value) || 2,
-        imagen:       document.getElementById("prodImagen").value.trim() || "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
-        descripcion:  document.getElementById("prodDescripcion").value.trim(),
-        activo:       document.getElementById("prodActivo").checked
+        imagen: document.getElementById("prodImagen").value.trim() || "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+        descripcion: document.getElementById("prodDescripcion").value.trim(),
+        activo: document.getElementById("prodActivo").checked
       };
 
       const error = validarJuego(datos, id);
@@ -883,14 +903,14 @@
     }
 
     function actualizarNavbar(sesion) {
-      const navUsuario     = document.getElementById("navUsuario");
-      const btnSalir       = document.getElementById("btnSalir");
-      const navAuthLinks   = document.getElementById("navAuthLinks");
+      const navUsuario = document.getElementById("navUsuario");
+      const btnSalir = document.getElementById("btnSalir");
+      const navAuthLinks = document.getElementById("navAuthLinks");
       const navUserSection = document.getElementById("navUserSection");
 
       if (sesion) {
         if (navUserSection) navUserSection.classList.remove("d-none");
-        if (navAuthLinks)   navAuthLinks.classList.add("d-none");
+        if (navAuthLinks) navAuthLinks.classList.add("d-none");
         if (navUsuario) {
           navUsuario.textContent = sesion.nombre + " (" + (sesion.rol === "admin" ? "Admin" : "Cliente") + ")";
         }
@@ -902,7 +922,7 @@
         }
       } else {
         if (navUserSection) navUserSection.classList.add("d-none");
-        if (navAuthLinks)   navAuthLinks.classList.remove("d-none");
+        if (navAuthLinks) navAuthLinks.classList.remove("d-none");
       }
 
       actualizarBadgeCarrito();
@@ -914,7 +934,7 @@
         try {
           const parsed = JSON.parse(guardados);
           if (Array.isArray(parsed) && parsed.length >= 15) return parsed;
-        } catch (e) {}
+        } catch (e) { }
       }
       localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(SEED_PRODUCTOS));
       return SEED_PRODUCTOS.slice();
@@ -952,4 +972,5 @@
     }
   </script>
 </body>
+
 </html>
