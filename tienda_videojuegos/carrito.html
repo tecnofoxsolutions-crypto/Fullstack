@@ -29,7 +29,13 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item d-none" id="navItemMisCompras"><a class="nav-link text-success fw-bold" href="pedidos.html">🛍️ Mis Compras</a></li>
+          <li class="nav-item d-none" id="navItemPedidos"><a class="nav-link text-info fw-bold position-relative" href="pedidos.html">📦 Pedidos <span id="pedidosBadgeNotif" class="badge-notif-pedidos d-none ms-1">0</span></a></li>
+          <li class="nav-item d-none" id="navItemUsuarios"><a class="nav-link text-warning fw-bold" href="usuarios.html">👥 Usuarios</a></li>
+          <li class="nav-item d-none" id="navItemHistorial"><a class="nav-link text-warning fw-bold" href="historial.html">📜 Historial</a></li>
         </ul>
 
         <div class="d-flex align-items-center gap-3">
@@ -43,6 +49,7 @@
 
           <div id="navAuthLinks" class="d-flex gap-2">
             <a href="login.html" class="btn btn-primary btn-sm">Ingresar</a>
+            <a href="registro.html" class="btn btn-outline-info btn-sm">Registrarse</a>
           </div>
 
           <div id="navUserSection" class="d-flex align-items-center gap-2 d-none">
@@ -111,7 +118,7 @@
 
           <div class="d-flex justify-content-between mb-3 small text-secondary">
             <span>Costo de Despacho:</span>
-            <span class="text-success fw-bold">GRATIS</span>
+            <span id="resumenCostoDespacho" class="text-success fw-bold">GRATIS</span>
           </div>
 
           <hr class="border-secondary my-2">
@@ -125,7 +132,7 @@
             <label for="metodoEntrega" class="form-label small text-secondary">Modalidad de entrega:</label>
             <select class="form-select form-select-sm bg-dark border-secondary" id="metodoEntrega">
               <option value="retiro">Retiro en Tienda Física (Gratis e inmediato)</option>
-              <option value="despacho">Despacho a Domicilio (Todo Chile)</option>
+              <option value="despacho">Despacho a Domicilio (Solo Región Metropolitana - $4.000)</option>
             </select>
           </div>
 
@@ -138,6 +145,45 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- MODAL REGISTRO OBLIGATORIO PARA FINALIZAR COMPRA (HU-24) -->
+    <div class="modal fade" id="modalRegistroObligatorio" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-juego border-warning text-light shadow-lg">
+          <div class="modal-header border-secondary">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4 text-warning">🔒</span>
+              <h3 class="modal-title h5 mb-0 text-warning font-arcade">Registro Requerido para Comprar</h3>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center py-4">
+            <div class="mb-3">
+              <span class="badge text-bg-warning text-dark font-arcade px-3 py-2 fs-6">CUENTA REGISTRADA OBLIGATORIA</span>
+            </div>
+            <p class="text-light mb-3">
+              Para finalizar tu compra y emitir tu comanda oficial de despacho o retiro en tienda (<strong>PV-XXXXXX</strong>), debes contar con una cuenta registrada en <strong>PixelVault</strong>.
+            </p>
+            <p class="text-secondary small mb-4">
+              El registro toma menos de 1 minuto y te permitirá realizar el seguimiento de tus pedidos físicos en <strong>"Mis Compras"</strong>. Tus videojuegos agregados al carro permanecerán guardados.
+            </p>
+
+            <div class="d-grid gap-2 mb-3">
+              <a href="registro.html?origen=carrito" class="btn btn-warning py-2 fw-bold font-arcade">
+                📝 Registrarme Ahora (Crear Cuenta) &rarr;
+              </a>
+              <a href="login.html?origen=carrito" class="btn btn-outline-info py-2 fw-bold">
+                🔑 Ya tengo cuenta (Iniciar Sesión)
+              </a>
+            </div>
+          </div>
+          <div class="modal-footer border-secondary justify-content-between">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Seguir Explorando</button>
+            <small class="text-secondary">El carro no se perderá al iniciar sesión</small>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- MODAL DE CONFIRMACIÓN DE COMPRA / COMANDA -->
@@ -169,7 +215,9 @@
       <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
         <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
         <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="blog.html" class="text-secondary text-decoration-none">Blog</a>
         <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+        <a href="contacto.html" class="text-secondary text-decoration-none">Contacto</a>
       </div>
       <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
       <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
@@ -180,21 +228,209 @@
 
   <script>
     const KEY_SESION    = "pixelvault_sesion";
-    const KEY_PRODUCTOS = "pixelvault_productos_v2";
+    const KEY_PRODUCTOS = "pixelvault_productos_v4";
     const KEY_CARRITO   = "pixelvault_carrito";
+    const KEY_PEDIDOS   = "pixelvault_pedidos";
+    const KEY_HISTORIAL = "pixelvault_historial_movimientos";
 
     let modalCompBs = null;
+    let modalAuthBs = null;
 
     document.addEventListener("DOMContentLoaded", function () {
       const sesion = leerSesion();
       actualizarNavbar(sesion);
       modalCompBs = new bootstrap.Modal(document.getElementById("modalComprobante"));
+      modalAuthBs = new bootstrap.Modal(document.getElementById("modalRegistroObligatorio"));
 
       pintarTablaCarrito();
 
       document.getElementById("btnVaciarCarrito").addEventListener("click", vaciarCarrito);
-      document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
+      document.getElementById("btnFinalizarCompra").addEventListener("click", clickFinalizarCompra);
+      document.getElementById("metodoEntrega").addEventListener("change", pintarTablaCarrito);
     });
+
+    function clickFinalizarCompra() {
+      const carrito = cargarCarrito();
+      if (carrito.length === 0) {
+        mostrarAlerta("Tu carrito está vacío. Agrega juegos para comprar.", "warning");
+        return;
+      }
+
+      const sesion = leerSesion();
+      if (!sesion) {
+        // Usuario no autenticado: requerir registro obligatorio (HU-24)
+        modalAuthBs.show();
+      } else {
+        // Usuario autenticado: procesar directamente asociando la compra a su cuenta
+        procesarOrden(sesion.usuario, sesion.nombre, sesion.email || (sesion.usuario + "@pixelvault.cl"), false);
+      }
+    }
+
+    function procesarOrden(usuario, nombre, email, esInvitado) {
+      const carrito = cargarCarrito();
+      if (carrito.length === 0) return;
+
+      const productos = cargarProductos();
+
+      // Validar stock antes de confirmar
+      for (let item of carrito) {
+        const prod = productos.find(p => p.id === item.id);
+        if (!prod || prod.stock < item.cantidad) {
+          mostrarAlerta("No hay suficiente stock en bodega para \"" + item.nombre + "\".", "danger");
+          return;
+        }
+      }
+
+      // Rebajar stock en bodega
+      carrito.forEach(function (item) {
+        const prod = productos.find(p => p.id === item.id);
+        if (prod) prod.stock -= item.cantidad;
+      });
+      guardarProductos(productos);
+
+      const selEntrega = document.getElementById("metodoEntrega");
+      const modoEntregaVal = selEntrega.value;
+      const modoEntregaTxt = selEntrega.options[selEntrega.selectedIndex].text;
+      const costoDespacho = modoEntregaVal === "despacho" ? 4000 : 0;
+      const subtotalProductos = carrito.reduce((acc, it) => acc + (it.precio * it.cantidad), 0);
+      const totalPagado = subtotalProductos + costoDespacho;
+      const ordenNum = generarCodigoPedido();
+
+      // Crear registro de pedido (HU-20)
+      const nuevoPedido = {
+        id: "PED-" + Date.now(),
+        codigo: ordenNum,
+        fecha: new Date().toISOString(),
+        fechaLegible: new Date().toLocaleString("es-CL"),
+        clienteUsuario: usuario,
+        clienteNombre: nombre,
+        clienteEmail: email,
+        esInvitado: esInvitado,
+        items: carrito.map(it => ({
+          id: it.id,
+          nombre: it.nombre,
+          plataforma: it.plataforma,
+          precio: it.precio,
+          cantidad: it.cantidad,
+          subtotal: it.precio * it.cantidad,
+          imagen: it.imagen
+        })),
+        subtotal: subtotalProductos,
+        costoDespacho: costoDespacho,
+        total: totalPagado,
+        tipoEntrega: modoEntregaVal, // 'retiro' | 'despacho'
+        modoEntregaTexto: modoEntregaTxt,
+        estado: "En preparación" // Estado inicial
+      };
+
+      // Guardar en pedidos
+      const pedidos = cargarPedidos();
+      pedidos.unshift(nuevoPedido);
+      guardarPedidos(pedidos);
+
+      // Registrar en historial de movimientos (HU-19)
+      registrarHistorial(
+        "Compras",
+        "Nueva Compra",
+        `Orden ${ordenNum} finalizada por ${nombre} (${usuario}). Modalidad: ${modoEntregaVal}. Total: ${formatoCLP(totalPagado)}`
+      );
+
+      // Armar comprobante en modal
+      const modalBody = document.getElementById("modalComprobanteBody");
+      let itemsHtml = "";
+      carrito.forEach(function (it) {
+        itemsHtml += `
+          <li class="list-group-item bg-dark text-light border-secondary d-flex justify-content-between align-items-center">
+            <div>
+              <span class="fw-bold">${it.nombre}</span> <span class="badge text-bg-primary">${it.plataforma}</span>
+              <div class="small text-secondary">${it.cantidad} un. x ${formatoCLP(it.precio)}</div>
+            </div>
+            <span class="text-info fw-bold">${formatoCLP(it.cantidad * it.precio)}</span>
+          </li>
+        `;
+      });
+
+      modalBody.innerHTML = `
+        <div class="p-2">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="small text-secondary">N° de Orden: <strong class="text-light font-monospace fs-6">${ordenNum}</strong></span>
+            <span class="badge bg-warning text-dark fw-bold">📦 En preparación</span>
+          </div>
+          <p class="mb-1 text-secondary small">Cliente: <strong class="text-light">${nombre}</strong> (${email})</p>
+          <p class="mb-3 text-secondary small">Entrega: <span class="badge text-bg-info">${modoEntregaTxt}</span></p>
+
+          <h6 class="text-light mb-2">Detalle de Videojuegos Físicos:</h6>
+          <ul class="list-group mb-3 border-secondary">
+            ${itemsHtml}
+          </ul>
+
+          <div class="d-flex justify-content-between small text-secondary mb-1">
+            <span>Subtotal Videojuegos:</span>
+            <span class="text-light">${formatoCLP(subtotalProductos)}</span>
+          </div>
+          <div class="d-flex justify-content-between small text-secondary mb-2">
+            <span>Costo de Despacho:</span>
+            <span class="${costoDespacho > 0 ? 'text-info fw-bold' : 'text-success fw-bold'}">${costoDespacho > 0 ? formatoCLP(costoDespacho) : 'GRATIS'}</span>
+          </div>
+          <div class="d-flex justify-content-between h5 text-light fw-bold border-top border-secondary pt-2">
+            <span>Total Pagado:</span>
+            <span class="text-success">${formatoCLP(totalPagado)}</span>
+          </div>
+          <div class="alert alert-success mt-3 mb-0 small">
+            ✓ Pedido registrado exitosamente. Las unidades físicas han sido rebajadas del inventario.
+            ${esInvitado ? '<br>Guarda tu código <strong>' + ordenNum + '</strong> para consultar el seguimiento de tu compra.' : '<br>Ya puedes revisar el estado en tiempo real en tu sección <strong>"Mis Compras"</strong>.'}
+          </div>
+        </div>
+      `;
+
+      // Actualizar footer del modal con link a pedidos.html
+      const modalFooter = document.querySelector("#modalComprobante .modal-footer");
+      if (modalFooter) {
+        modalFooter.innerHTML = `
+          <a href="catalogo.html" class="btn btn-outline-secondary btn-sm">Volver al Catálogo</a>
+          <a href="pedidos.html?codigo=${ordenNum}" class="btn btn-success btn-sm fw-bold">🛍️ Ver Seguimiento del Pedido</a>
+        `;
+      }
+
+      guardarCarrito([]);
+      pintarTablaCarrito();
+      actualizarNavbar(leerSesion());
+      modalCompBs.show();
+    }
+
+    function cargarPedidos() {
+      try {
+        return JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function guardarPedidos(p) {
+      localStorage.setItem(KEY_PEDIDOS, JSON.stringify(p));
+    }
+
+    function registrarHistorial(categoria, accion, detalle) {
+      try {
+        const sesion = leerSesion();
+        const autor = sesion ? `${sesion.nombre} (@${sesion.usuario} - ${sesion.rol})` : "Invitado / Anónimo";
+        const registros = JSON.parse(localStorage.getItem(KEY_HISTORIAL) || "[]");
+        const nuevo = {
+          id: "HIST-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+          fecha: new Date().toISOString(),
+          fechaLegible: new Date().toLocaleString("es-CL"),
+          categoria: categoria,
+          usuario: autor,
+          accion: accion,
+          detalle: detalle
+        };
+        registros.unshift(nuevo);
+        if (registros.length > 200) registros.pop();
+        localStorage.setItem(KEY_HISTORIAL, JSON.stringify(registros));
+      } catch (e) {
+        console.warn("No se pudo registrar historial:", e);
+      }
+    }
 
     function pintarTablaCarrito() {
       const carrito = cargarCarrito();
@@ -314,9 +550,22 @@
       const neto = Math.round(totalConIva / 1.19);
       const iva  = totalConIva - neto;
 
+      const selEntrega = document.getElementById("metodoEntrega");
+      const costoDespacho = selEntrega && selEntrega.value === "despacho" ? 4000 : 0;
+      const elCostoDespacho = document.getElementById("resumenCostoDespacho");
+      if (elCostoDespacho) {
+        if (costoDespacho > 0) {
+          elCostoDespacho.textContent = formatoCLP(costoDespacho);
+          elCostoDespacho.className = "text-info fw-bold";
+        } else {
+          elCostoDespacho.textContent = "GRATIS";
+          elCostoDespacho.className = "text-success fw-bold";
+        }
+      }
+
       document.getElementById("resumenSubtotal").textContent = formatoCLP(neto);
       document.getElementById("resumenIva").textContent      = formatoCLP(iva);
-      document.getElementById("resumenTotal").textContent    = formatoCLP(totalConIva);
+      document.getElementById("resumenTotal").textContent    = formatoCLP(totalConIva + costoDespacho);
     }
 
     function modificarCantidadItem(id, nuevaCant, stockBodega) {
@@ -356,107 +605,46 @@
       mostrarAlerta("Tu carrito ha sido vaciado.", "info");
     }
 
-    function finalizarCompra() {
-      const carrito = cargarCarrito();
-      if (carrito.length === 0) return;
-
-      const productos = cargarProductos();
-
-      for (let item of carrito) {
-        const prod = productos.find(p => p.id === item.id);
-        if (!prod || prod.stock < item.cantidad) {
-          mostrarAlerta("No hay suficiente stock en bodega para \"" + item.nombre + "\".", "danger");
-          return;
-        }
-      }
-
-      carrito.forEach(function (item) {
-        const prod = productos.find(p => p.id === item.id);
-        if (prod) prod.stock -= item.cantidad;
-      });
-      guardarProductos(productos);
-
-      const sesion = leerSesion();
-      const compradorNombre = sesion ? sesion.nombre : "Cliente Geek";
-      const totalPagado = carrito.reduce((acc, it) => acc + (it.precio * it.cantidad), 0);
-      const modoEntrega = document.getElementById("metodoEntrega").options[document.getElementById("metodoEntrega").selectedIndex].text;
-      const ordenNum = "PV-" + Math.floor(100000 + Math.random() * 900000);
-
-      const modalBody = document.getElementById("modalComprobanteBody");
-      let itemsHtml = "";
-      carrito.forEach(function (it) {
-        itemsHtml += `
-          <li class="list-group-item bg-dark text-light border-secondary d-flex justify-content-between align-items-center">
-            <div>
-              <span class="fw-bold">${it.nombre}</span> <span class="badge text-bg-primary">${it.plataforma}</span>
-              <div class="small text-secondary">${it.cantidad} un. x ${formatoCLP(it.precio)}</div>
-            </div>
-            <span class="text-info fw-bold">${formatoCLP(it.cantidad * it.precio)}</span>
-          </li>
-        `;
-      });
-
-      modalBody.innerHTML = `
-        <div class="p-2">
-          <p class="mb-1 text-secondary small">N° de Orden: <strong class="text-light">${ordenNum}</strong></p>
-          <p class="mb-2 text-secondary small">Comprador: <strong class="text-light">${compradorNombre}</strong></p>
-          <p class="mb-3 text-secondary small">Modalidad: <span class="badge text-bg-info">${modoEntrega}</span></p>
-
-          <h6 class="text-light mb-2">Detalle de Videojuegos Físicos:</h6>
-          <ul class="list-group mb-3 border-secondary">
-            ${itemsHtml}
-          </ul>
-
-          <div class="d-flex justify-content-between h5 text-light fw-bold">
-            <span>Total Pagado:</span>
-            <span class="text-success">${formatoCLP(totalPagado)}</span>
-          </div>
-          <div class="alert alert-success mt-3 mb-0 small">
-            ✓ Las unidades físicas han sido rebajadas automáticamente del inventario de bodega en <code>localStorage</code>.
-          </div>
-        </div>
-      `;
-
-      guardarCarrito([]);
-      pintarTablaCarrito();
-      modalCompBs.show();
-    }
-
-    function mostrarAlerta(msg, tipo) {
-      const box = document.getElementById("alertaCarrito");
-      box.className = "alert alert-" + (tipo || "info");
-      box.textContent = msg;
-      box.classList.remove("d-none");
-      setTimeout(function () {
-        box.classList.add("d-none");
-      }, 4000);
-    }
-
-    function leerSesion() {
-      try {
-        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
-        if (!s || !s.usuario || !s.rol) return null;
-        if (s.expira && Date.now() > s.expira) {
-          sessionStorage.removeItem(KEY_SESION);
-          return null;
-        }
-        return s;
-      } catch (e) {
-        return null;
-      }
-    }
-
     function actualizarNavbar(sesion) {
-      const navUsuario     = document.getElementById("navUsuario");
-      const btnSalir       = document.getElementById("btnSalir");
-      const navAuthLinks   = document.getElementById("navAuthLinks");
-      const navUserSection = document.getElementById("navUserSection");
+      const navUsuario        = document.getElementById("navUsuario");
+      const btnSalir          = document.getElementById("btnSalir");
+      const navAuthLinks      = document.getElementById("navAuthLinks");
+      const navUserSection    = document.getElementById("navUserSection");
+      const navItemUsuarios   = document.getElementById("navItemUsuarios");
+      const navItemHistorial  = document.getElementById("navItemHistorial");
+      const navItemPedidos    = document.getElementById("navItemPedidos");
+      const navItemMisCompras = document.getElementById("navItemMisCompras");
+
+      if (navItemUsuarios) {
+        navItemUsuarios.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemHistorial) {
+        navItemHistorial.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemPedidos) {
+        navItemPedidos.classList.toggle("d-none", !(sesion && (sesion.rol === "admin" || sesion.rol === "operador" || sesion.rol === "repartidor")));
+      }
+      if (navItemMisCompras) {
+        let tieneCompras = false;
+        if (sesion && sesion.rol === "user") {
+          try {
+            const pedidos = JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+            tieneCompras = pedidos.some(p => p.clienteUsuario === sesion.usuario || (sesion.email && p.clienteEmail === sesion.email));
+          } catch (e) {}
+        }
+        navItemMisCompras.classList.toggle("d-none", !tieneCompras);
+      }
 
       if (sesion) {
         if (navUserSection) navUserSection.classList.remove("d-none");
         if (navAuthLinks)   navAuthLinks.classList.add("d-none");
         if (navUsuario) {
-          navUsuario.textContent = sesion.nombre + " (" + (sesion.rol === "admin" ? "Admin" : "Cliente") + ")";
+          let badgeRol = "Cliente";
+          if (sesion.rol === "admin") badgeRol = "Admin";
+          else if (sesion.rol === "operador") badgeRol = "Operador";
+          else if (sesion.rol === "repartidor") badgeRol = "Repartidor";
+          else if (sesion.rol === "editor") badgeRol = "Editor";
+          navUsuario.textContent = sesion.nombre + " (" + badgeRol + ")";
         }
         if (btnSalir) {
           btnSalir.onclick = function () {
@@ -470,6 +658,26 @@
       }
 
       actualizarBadgeCarrito();
+
+      // Notificación reactiva de Pedidos (HU-27)
+      const badgePedidos = document.getElementById("pedidosBadgeNotif");
+      if (badgePedidos && sesion) {
+        try {
+          const pedidos = JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+          let count = 0;
+          if (sesion.rol === "admin" || sesion.rol === "operador") {
+            count = pedidos.filter(p => p.estado === "En preparación").length;
+          } else if (sesion.rol === "repartidor") {
+            count = pedidos.filter(p => p.repartidorUsuario === sesion.usuario && (p.estado === "Asignado a repartidor" || p.estado === "Asignado")).length;
+          }
+          if (count > 0) {
+            badgePedidos.textContent = count;
+            badgePedidos.classList.remove("d-none");
+          } else {
+            badgePedidos.classList.add("d-none");
+          }
+        } catch (e) {}
+      }
     }
 
     function cargarProductos() {
@@ -509,6 +717,47 @@
 
     function formatoCLP(valor) {
       return new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(valor);
+    }
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario || !s.rol) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function cargarPedidos() {
+      try {
+        const p = JSON.parse(localStorage.getItem(KEY_PEDIDOS));
+        if (Array.isArray(p)) return p;
+      } catch (e) {}
+      return [];
+    }
+
+    function guardarPedidos(p) {
+      localStorage.setItem(KEY_PEDIDOS, JSON.stringify(p));
+    }
+
+    function generarCodigoPedido() {
+      const pedidos = cargarPedidos();
+      let maxNum = 0;
+      pedidos.forEach(p => {
+        if (p.codigo) {
+          const m = p.codigo.match(/PV-(\d+)/);
+          if (m) {
+            const n = parseInt(m[1], 10);
+            if (!isNaN(n) && n > maxNum) maxNum = n;
+          }
+        }
+      });
+      return "PV-" + String(maxNum + 1).padStart(6, "0");
     }
   </script>
 </body>

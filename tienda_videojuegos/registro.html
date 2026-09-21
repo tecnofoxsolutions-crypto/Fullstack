@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear Cuenta | PixelVault</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="d-flex align-items-center justify-content-center py-4" style="min-height: 100vh;">
+
+  <main class="container" style="max-width: 480px;">
+
+    <div class="text-center mb-3">
+      <a href="index.html" class="text-decoration-none text-light d-inline-flex align-items-center gap-2 mb-2 font-arcade">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+          <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414"/>
+        </svg>
+        <span class="h4 mb-0 fw-bold"><span class="text-info">Pixel</span>Vault</span>
+      </a>
+      <p class="text-secondary small">Únete a la comunidad de coleccionistas de videojuegos físicos.</p>
+    </div>
+
+    <div class="card card-juego shadow">
+      <div class="card-body p-4">
+
+        <h1 class="h4 mb-3 text-light">Crear Cuenta de Cliente</h1>
+
+        <div id="alertaRegistro" class="alert d-none"></div>
+
+        <form id="formRegistro" novalidate>
+          <div class="mb-3">
+            <label for="nombreCompleto" class="form-label small text-secondary">Nombre y Apellido</label>
+            <input type="text" class="form-control bg-dark border-secondary" id="nombreCompleto" 
+                   maxlength="60" required placeholder="Ej: Carlos Gómez">
+          </div>
+
+          <div class="mb-3">
+            <label for="usuario" class="form-label small text-secondary">Nombre de Usuario</label>
+            <input type="text" class="form-control bg-dark border-secondary" id="usuario" 
+                   maxlength="30" required placeholder="Ej: cgomez">
+            <div class="form-text small text-secondary">Mínimo 3 caracteres, sin espacios.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label small text-secondary">Correo Electrónico</label>
+            <input type="email" class="form-control bg-dark border-secondary" id="email" 
+                   maxlength="80" required placeholder="tuemail@ejemplo.com">
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-md-6">
+              <label for="clave" class="form-label small text-secondary">Contraseña</label>
+              <input type="password" class="form-control bg-dark border-secondary" id="clave" 
+                     maxlength="64" required placeholder="••••••••">
+            </div>
+            <div class="col-md-6">
+              <label for="confirmarClave" class="form-label small text-secondary">Confirmar Contraseña</label>
+              <input type="password" class="form-control bg-dark border-secondary" id="confirmarClave" 
+                     maxlength="64" required placeholder="••••••••">
+            </div>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="terminos" required>
+            <label class="form-check-label small text-secondary" for="terminos">
+              Acepto los <a href="#" id="linkTerminos" class="text-info text-decoration-underline fw-bold">términos</a> de compra y preservación de PixelVault
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 py-2 fw-bold mb-3" id="btnRegistrar">
+            Registrarme como Cliente
+          </button>
+        </form>
+
+        <hr class="border-secondary my-3">
+
+        <div class="text-center">
+          <span class="text-secondary small">¿Ya tienes una cuenta? </span>
+          <a href="login.html" class="text-info text-decoration-none small fw-bold">Inicia Sesión aquí</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <a href="index.html" class="text-secondary small text-decoration-none">&larr; Volver a la página principal</a>
+    </div>
+
+  </main>
+
+  <!-- MODAL TÉRMINOS DE COMPRA Y PRESERVACIÓN (HU-25) -->
+  <div class="modal fade" id="modalTerminos" tabindex="-1" aria-labelledby="modalTerminosTitulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content card-juego border-info text-light shadow-lg">
+        <div class="modal-header border-secondary">
+          <div class="d-flex align-items-center gap-2">
+            <span class="fs-4 text-info">📜</span>
+            <h3 class="modal-title h5 mb-0 text-info font-arcade" id="modalTerminosTitulo">
+              Términos de Compra y Preservación
+            </h3>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body small text-secondary">
+          <h6 class="text-light fw-bold font-arcade mb-2">1. Autenticidad de Copias Físicas</h6>
+          <p class="mb-3">
+            En PixelVault garantizamos que cada videojuego, cartucho o disco físico es 100% original, inspeccionado por nuestros operadores de bodega para asegurar la integridad de la caja, manual y soporte magnético/óptico.
+          </p>
+
+          <h6 class="text-light fw-bold font-arcade mb-2">2. Cadena de Custodia y Respaldo de Entrega</h6>
+          <p class="mb-3">
+            Los despachos a domicilio son ejecutados por nuestro equipo logístico de repartidores oficiales. Para garantizar la entrega efectiva, certificar la recepción y proteger al comprador, el repartidor registrará una fotografía del paquete entregado en el domicilio.
+          </p>
+
+          <h6 class="text-light fw-bold font-arcade mb-2">3. Retiro en Tienda Física</h6>
+          <p class="mb-3">
+            Las compras con retiro en tienda son reservadas inmediatamente y se entregan en el mesón de bodega previa presentación del código correlativo único (PV-XXXXXX).
+          </p>
+
+          <h6 class="text-light fw-bold font-arcade mb-2">4. Preservación y Garantía</h6>
+          <p class="mb-0">
+            Fomentamos la preservación cultural del formato físico. Todas las compras cuentan con garantía de funcionamiento de 90 días conforme a la normativa legal vigente.
+          </p>
+        </div>
+        <div class="modal-footer border-secondary justify-content-between">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-info btn-sm fw-bold font-arcade" id="btnAceptarTerminosModal">
+            ✓ Aceptar Términos
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ============ SEMILLA Y CLAVES STORAGE ============ */
+    const SEED_USUARIOS = [
+      { id: 1, usuario: "Jim",         nombre: "Jim Charles",        email: "j.charles@duoc.cl",   clave: "admin",      rol: "admin",      activo: true },
+      { id: 2, usuario: "Emanuel",     nombre: "Emanuel Reyes",      email: "e.reyes@duoc.cl",     clave: "admin",      rol: "admin",      activo: true },
+      { id: 3, usuario: "Maximiliano", nombre: "Maximiliano Peral",  email: "m.peral@duoc.cl",     clave: "admin",      rol: "admin",      activo: true },
+      { id: 4, usuario: "fernando",    nombre: "Fernando Sierra",    email: "f.sierra@pixelvault.cl", clave: "operador", rol: "operador",   activo: true },
+      { id: 5, usuario: "adriana",     nombre: "Adriana Quispe",     email: "a.quispe@pixelvault.cl", clave: "editor",   rol: "editor",     activo: true },
+      { id: 6, usuario: "ilie",        nombre: "Ilie Flores",        email: "i.flores@pixelvault.cl", clave: "repartidor",rol: "repartidor", activo: true },
+      { id: 7, usuario: "francisco",   nombre: "Francisco Calabran", email: "f.calabran@gmail.com", clave: "cliente",    rol: "user",       activo: true }
+    ];
+
+    const KEY_SESION    = "pixelvault_sesion";
+    const KEY_USUARIOS  = "pixelvault_usuarios_v2";
+    const KEY_HISTORIAL = "pixelvault_historial_movimientos";
+
+    const alerta         = document.getElementById("alertaRegistro");
+    const form           = document.getElementById("formRegistro");
+    const inpNombre      = document.getElementById("nombreCompleto");
+    const inpUsuario     = document.getElementById("usuario");
+    const inpEmail       = document.getElementById("email");
+    const inpClave       = document.getElementById("clave");
+    const inpConfirmar   = document.getElementById("confirmarClave");
+    const chkTerminos    = document.getElementById("terminos");
+    const btnRegistrar   = document.getElementById("btnRegistrar");
+
+    let modalTerminosBs = null;
+
+    // Si ya existe sesión, redirigir
+    const sesion = leerSesion();
+    if (sesion) {
+      window.location.replace("catalogo.html");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      modalTerminosBs = new bootstrap.Modal(document.getElementById("modalTerminos"));
+
+      document.getElementById("linkTerminos").addEventListener("click", function (e) {
+        e.preventDefault();
+        modalTerminosBs.show();
+      });
+
+      document.getElementById("btnAceptarTerminosModal").addEventListener("click", function () {
+        chkTerminos.checked = true;
+        modalTerminosBs.hide();
+      });
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      registrar();
+    });
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function obtenerUsuarios() {
+      try {
+        const raw = localStorage.getItem(KEY_USUARIOS);
+        if (!raw) {
+          localStorage.setItem(KEY_USUARIOS, JSON.stringify(SEED_USUARIOS));
+          return [...SEED_USUARIOS];
+        }
+        const lista = JSON.parse(raw);
+        return Array.isArray(lista) && lista.length ? lista : [...SEED_USUARIOS];
+      } catch (e) {
+        return [...SEED_USUARIOS];
+      }
+    }
+
+    function mostrarAlerta(mensaje, tipo = "danger") {
+      alerta.className = `alert alert-${tipo}`;
+      alerta.textContent = mensaje;
+      alerta.classList.remove("d-none");
+    }
+
+    function ocultarAlerta() {
+      alerta.classList.add("d-none");
+    }
+
+    function registrar() {
+      ocultarAlerta();
+
+      const nombre = inpNombre.value.trim();
+      const usuario = inpUsuario.value.trim();
+      const email = inpEmail.value.trim().toLowerCase();
+      const clave = inpClave.value;
+      const confirmar = inpConfirmar.value;
+
+      // Validaciones
+      if (!nombre || !usuario || !email || !clave || !confirmar) {
+        mostrarAlerta("Por favor, completa todos los campos del formulario.", "warning");
+        return;
+      }
+
+      if (usuario.length < 3) {
+        mostrarAlerta("El nombre de usuario debe contener al menos 3 caracteres.", "warning");
+        inpUsuario.focus();
+        return;
+      }
+
+      if (/\s/.test(usuario)) {
+        mostrarAlerta("El nombre de usuario no puede contener espacios en blanco.", "warning");
+        inpUsuario.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        mostrarAlerta("Por favor, ingresa un correo electrónico válido.", "warning");
+        inpEmail.focus();
+        return;
+      }
+
+      if (clave.length < 4) {
+        mostrarAlerta("La contraseña debe tener al menos 4 caracteres.", "warning");
+        inpClave.focus();
+        return;
+      }
+
+      if (clave !== confirmar) {
+        mostrarAlerta("Las contraseñas ingresadas no coinciden.", "danger");
+        inpConfirmar.focus();
+        return;
+      }
+
+      if (!chkTerminos.checked) {
+        mostrarAlerta("Debes aceptar los términos de compra para registrarte.", "warning");
+        chkTerminos.focus();
+        return;
+      }
+
+      const usuarios = obtenerUsuarios();
+
+      // Comprobar si ya existe usuario o email
+      const usuarioExiste = usuarios.some(u => u.usuario.toLowerCase() === usuario.toLowerCase());
+      if (usuarioExiste) {
+        mostrarAlerta(`El usuario "${usuario}" ya se encuentra registrado. Por favor, elige otro.`, "danger");
+        inpUsuario.focus();
+        return;
+      }
+
+      const emailExiste = usuarios.some(u => u.email.toLowerCase() === email);
+      if (emailExiste) {
+        mostrarAlerta(`El correo "${email}" ya está asociado a una cuenta existente.`, "danger");
+        inpEmail.focus();
+        return;
+      }
+
+      // Generar siguiente ID correlativo numérico entero (HU-29)
+      let maxId = 0;
+      usuarios.forEach(u => {
+        const n = parseInt(u.id, 10);
+        if (!isNaN(n) && n > maxId) maxId = n;
+      });
+      const siguienteId = maxId + 1;
+
+      // Crear nuevo usuario con rol 'user'
+      const nuevoUsuario = {
+        id: siguienteId,
+        usuario: usuario,
+        nombre: nombre,
+        email: email,
+        clave: clave,
+        rol: "user",
+        activo: true
+      };
+
+      usuarios.push(nuevoUsuario);
+      localStorage.setItem(KEY_USUARIOS, JSON.stringify(usuarios));
+
+      // Registrar en historial de movimientos (HU-19)
+      registrarHistorial("Usuarios", "Registro de Nuevo Usuario", `Nuevo usuario registrado: ${nombre} (@${usuario}, ${email})`);
+
+      // Iniciar sesión automáticamente
+      const nuevaSesion = {
+        id: nuevoUsuario.id,
+        usuario: nuevoUsuario.usuario,
+        nombre: nuevoUsuario.nombre,
+        email: nuevoUsuario.email,
+        rol: nuevoUsuario.rol,
+        expira: Date.now() + 8 * 60 * 60 * 1000 // 8 horas
+      };
+      sessionStorage.setItem(KEY_SESION, JSON.stringify(nuevaSesion));
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const origenParam = urlParams.get("origen");
+
+      if (origenParam === "carrito") {
+        mostrarAlerta(`¡Bienvenido a PixelVault, ${nombre}! Cuenta creada con éxito. Redirigiendo a tu carrito de compras...`, "success");
+        btnRegistrar.disabled = true;
+        setTimeout(() => {
+          window.location.replace("carrito.html");
+        }, 1200);
+      } else {
+        mostrarAlerta(`¡Bienvenido a PixelVault, ${nombre}! Cuenta creada con éxito. Redirigiendo al catálogo...`, "success");
+        btnRegistrar.disabled = true;
+        setTimeout(() => {
+          window.location.replace("catalogo.html");
+        }, 1200);
+      }
+    }
+
+    function registrarHistorial(categoria, accion, detalle) {
+      try {
+        const registros = JSON.parse(localStorage.getItem(KEY_HISTORIAL) || "[]");
+        const nuevo = {
+          id: "HIST-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+          fecha: new Date().toISOString(),
+          fechaLegible: new Date().toLocaleString("es-CL"),
+          categoria: categoria,
+          usuario: "Visitante Anónimo (Registro)",
+          accion: accion,
+          detalle: detalle
+        };
+        registros.unshift(nuevo);
+        if (registros.length > 200) registros.pop();
+        localStorage.setItem(KEY_HISTORIAL, JSON.stringify(registros));
+      } catch (e) {
+        console.warn("No se pudo registrar historial:", e);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seguimiento y Gestión de Pedidos | PixelVault</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .stepper-step {
+      position: relative;
+      padding-bottom: 1.5rem;
+    }
+    .stepper-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 36px;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--bs-secondary);
+    }
+    .stepper-step.completed:not(:last-child)::after {
+      background-color: var(--bs-success);
+    }
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      z-index: 1;
+    }
+    .order-card-entregada {
+      border-left: 4px solid #198754 !important;
+    }
+    .order-card-preparacion {
+      border-left: 4px solid #ffc107 !important;
+    }
+    .order-card-camino {
+      border-left: 4px solid #0dcaf0 !important;
+    }
+    .order-card-retiro {
+      border-left: 4px solid #6f42c1 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg navbar-steam sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 font-arcade" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+          <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414"/>
+        </svg>
+        <span>Pixel</span>Vault <small class="text-warning ms-1" style="font-size:0.6rem;">[16-BIT]</small>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item d-none" id="navItemMisCompras"><a class="nav-link text-success fw-bold active" href="pedidos.html">🛍️ Mis Compras</a></li>
+          <li class="nav-item d-none" id="navItemPedidos"><a class="nav-link text-info fw-bold active position-relative" href="pedidos.html">📦 Pedidos <span id="pedidosBadgeNotif" class="badge-notif-pedidos d-none ms-1">0</span></a></li>
+          <li class="nav-item d-none" id="navItemUsuarios"><a class="nav-link text-warning fw-bold" href="usuarios.html">👥 Usuarios</a></li>
+          <li class="nav-item d-none" id="navItemHistorial"><a class="nav-link text-warning fw-bold" href="historial.html">📜 Historial</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="carrito.html" class="btn btn-outline-info btn-sm position-relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Carrito
+            <span id="cartCountBadge" class="badge rounded-pill bg-danger d-none">0</span>
+          </a>
+
+          <div id="navAuthLinks" class="d-flex gap-2">
+            <a href="login.html" class="btn btn-primary btn-sm">Ingresar</a>
+            <a href="registro.html" class="btn btn-outline-info btn-sm">Registrarse</a>
+          </div>
+
+          <div id="navUserSection" class="d-flex align-items-center gap-2 d-none">
+            <span class="small text-light" id="navUsuario"></span>
+            <button class="btn btn-outline-danger btn-sm" id="btnSalir">Salir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <main class="container py-4">
+
+    <!-- HEADER DINÁMICO -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <h1 class="h3 text-light mb-1" id="tituloModulo">📦 Seguimiento y Gestión de Pedidos</h1>
+        <p class="text-secondary small mb-0" id="subtituloModulo">
+          Monitorea el ciclo de vida y entrega de los videojuegos físicos despachados desde bodega.
+        </p>
+      </div>
+      <div id="accionesCabecera" class="d-flex gap-2">
+        <a href="catalogo.html" class="btn btn-outline-info btn-sm">🎮 Ir al Catálogo</a>
+      </div>
+    </div>
+
+    <!-- ALERTA GLOBAL -->
+    <div id="alertaPedidos" class="alert d-none py-2 mb-4"></div>
+
+    <!-- VISTA PARA EDITOR: SIN ACCESO -->
+    <div id="vistaEditorBloqueado" class="card card-juego border-warning p-4 text-center d-none my-4">
+      <h3 class="h4 text-warning mb-2">Acceso Restringido para Perfil Editor</h3>
+      <p class="text-secondary mb-3">
+        Como <strong>Editor</strong>, tu rol en PixelVault está especializado en la redacción, curaduría y publicación de crónicas en el Blog. La gestión logística de pedidos está reservada exclusivamente para el Operador, Repartidor y Administrador.
+      </p>
+      <div>
+        <a href="blog.html" class="btn btn-primary btn-sm">Ir a Gestión de Crónicas en el Blog</a>
+      </div>
+    </div>
+
+    <!-- VISTA DE GESTIÓN (ADMIN Y ALMACENISTA - HU-18 / HU-20) -->
+    <div id="vistaGestionAdmin" class="d-none">
+
+      <!-- TARJETAS DE MÉTRICAS -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-secondary">
+            <small class="text-secondary text-uppercase fw-bold">Total Pedidos</small>
+            <div class="display-6 fw-bold text-light my-1" id="statTotal">0</div>
+            <small class="text-info">Histórico global</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-warning">
+            <small class="text-warning text-uppercase fw-bold">En Preparación</small>
+            <div class="display-6 fw-bold text-warning my-1" id="statPrep">0</div>
+            <small class="text-secondary">En bodega física</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-info">
+            <small class="text-info text-uppercase fw-bold">En Camino / Retiro</small>
+            <div class="display-6 fw-bold text-info my-1" id="statTransito">0</div>
+            <small class="text-secondary">Rumbo a cliente o tienda</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-success">
+            <small class="text-success text-uppercase fw-bold">Entregadas</small>
+            <div class="display-6 fw-bold text-success my-1" id="statEntregadas">0</div>
+            <small class="text-secondary">Finalizadas (Cerradas)</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTROS Y BÚSQUEDA -->
+      <div class="card card-juego p-3 mb-4">
+        <div class="row g-2 align-items-center">
+          <div class="col-md-5">
+            <input type="text" class="form-control form-control-sm bg-dark border-secondary text-light" id="buscadorGestion" placeholder="Buscar por código (PV-...), cliente o email...">
+          </div>
+          <div class="col-md-4">
+            <select class="form-select form-select-sm bg-dark border-secondary text-light" id="filtroEstadoGestion">
+              <option value="todos">Todos los Estados</option>
+              <option value="En preparación">En preparación</option>
+              <option value="Asignado a repartidor">Asignado a Repartidor</option>
+              <option value="En camino">En camino</option>
+              <option value="Lista para retiro">Lista para retiro</option>
+              <option value="Entregada">Entregada (Finalizadas)</option>
+            </select>
+          </div>
+          <div class="col-md-3 text-md-end">
+            <button class="btn btn-outline-secondary btn-sm w-100" id="btnRestablecerFiltros">Limpiar Filtros</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LISTADO DE PEDIDOS PARA GESTIÓN -->
+      <div id="contenedorPedidosGestion" class="d-flex flex-column gap-3">
+        <!-- Renderizado por JS -->
+      </div>
+    </div>
+
+    <!-- VISTA CLIENTE ("MIS COMPRAS" - HU-20) -->
+    <div id="vistaMisComprasCliente" class="d-none">
+      <div id="contenedorMisCompras" class="d-flex flex-column gap-4">
+        <!-- Renderizado por JS -->
+      </div>
+    </div>
+
+    <!-- VISTA INVITADO / CONSULTA RÁPIDA DE ORDEN -->
+    <div id="vistaInvitadoConsulta" class="d-none">
+      <div class="card card-juego p-4 max-w-600 mx-auto text-center mb-4" style="max-width: 620px;">
+        <h3 class="h4 text-info mb-2">Consulta el Estado de tu Compra</h3>
+        <p class="text-secondary small mb-3">
+          Ingresa el código de orden que recibiste al finalizar tu compra (ej: <code>PV-123456</code>) para rastrear el avance en tiempo real.
+        </p>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control bg-dark border-secondary text-light text-center font-monospace" id="inputCodigoRastreo" placeholder="PV-123456">
+          <button class="btn btn-primary fw-bold" id="btnRastrearCodigo">Rastrear Pedido</button>
+        </div>
+        <div class="small text-secondary">
+          ¿Tienes una cuenta registrada? <a href="login.html" class="text-info text-decoration-none">Inicia sesión</a> para ver todas tus compras en un solo lugar.
+        </div>
+      </div>
+
+      <div id="resultadoRastreoInvitado" class="d-none">
+        <!-- Inyectado por JS -->
+      </div>
+    </div>
+
+    <!-- MODAL ASIGNAR REPARTIDOR (HU-23) -->
+    <div class="modal fade" id="modalAsignarRepartidor" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-juego border-info text-light shadow-lg">
+          <div class="modal-header border-secondary">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4 text-info">🚚</span>
+              <h3 class="modal-title h5 mb-0 text-info font-arcade">Asignar Repartidor Oficial</h3>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p class="small text-secondary mb-3">
+              El paquete físico está listo en bodega. Selecciona al repartidor encargado de transportar y entregar este pedido a domicilio.
+            </p>
+            <div class="bg-dark p-2 rounded border border-secondary mb-3 small">
+              <div><strong>Orden:</strong> <span id="asigModalCodigo" class="text-info font-monospace fs-6"></span></div>
+              <div><strong>Cliente:</strong> <span id="asigModalCliente" class="text-light"></span></div>
+              <div><strong>Modalidad:</strong> <span class="badge text-bg-info">Despacho a Domicilio</span></div>
+            </div>
+            <div class="mb-3">
+              <label for="selectRepartidor" class="form-label small text-light fw-bold">Repartidor Oficial Asignado *</label>
+              <select class="form-select bg-dark border-info text-light" id="selectRepartidor">
+                <!-- Cargado dinámicamente con usuarios de rol 'repartidor' -->
+              </select>
+            </div>
+            <div class="mb-2">
+              <label for="inputNotaDespacho" class="form-label small text-secondary">Instrucciones o nota de ruta (Opcional):</label>
+              <input type="text" class="form-control form-control-sm bg-dark border-secondary text-light" id="inputNotaDespacho" placeholder="Ej: Entregar en conserjería / Llamar al llegar">
+            </div>
+          </div>
+          <div class="modal-footer border-secondary justify-content-between">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-info btn-sm fw-bold font-arcade" id="btnConfirmarAsignacion">
+              🚚 Despachar "En camino"
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL ENTREGA CON COMPROBANTE FOTOGRÁFICO (HU-23) -->
+    <div class="modal fade" id="modalEntregaFoto" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-juego border-success text-light shadow-lg">
+          <div class="modal-header border-secondary">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4 text-success">📸</span>
+              <h3 class="modal-title h5 mb-0 text-success font-arcade">Registrar Entrega con Fotografía</h3>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p class="small text-secondary mb-3">
+              Para dar por entregada una orden de despacho a domicilio en PixelVault, es <strong>obligatorio</strong> adjuntar la fotografía del producto entregado como respaldo de recepción.
+            </p>
+            <div class="bg-dark p-2 rounded border border-secondary mb-3 small">
+              <div><strong>Orden a Entregar:</strong> <span id="entregaModalCodigo" class="text-success font-monospace fw-bold fs-6"></span></div>
+              <div><strong>Cliente:</strong> <span id="entregaModalCliente" class="text-light"></span></div>
+            </div>
+            <div class="mb-3">
+              <label for="inputFileFotoEntrega" class="form-label small text-light fw-bold">
+                📷 Seleccionar Foto de Entrega (JPG / PNG) *
+              </label>
+              <input type="file" class="form-control bg-dark border-secondary text-light" id="inputFileFotoEntrega" accept="image/*">
+              <div class="form-text text-secondary">Sube una fotografía nítida del paquete entregado en destino.</div>
+            </div>
+            <div id="previewContainerEntrega" class="text-center mb-3 d-none">
+              <img id="imgPreviewEntrega" src="" alt="Vista Previa Comprobante" class="foto-comprobante-preview">
+            </div>
+            <div class="mb-2">
+              <label for="inputReceptorEntrega" class="form-label small text-secondary">Persona o lugar de recepción:</label>
+              <input type="text" class="form-control form-control-sm bg-dark border-secondary text-light" id="inputReceptorEntrega" placeholder="Ej: Recibido personalmente por cliente / Conserjería">
+            </div>
+            <div id="alertaEntregaFoto" class="alert alert-danger d-none py-1 small mb-0"></div>
+          </div>
+          <div class="modal-footer border-secondary justify-content-between">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success btn-sm fw-bold font-arcade" id="btnConfirmarEntregaConFoto">
+              ✓ Finalizar Entrega Oficial
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL VISUALIZAR COMPROBANTE -->
+    <div class="modal fade" id="modalVerFotoComprobante" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content card-juego border-info text-light shadow-lg">
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title text-info font-arcade" id="modalVerFotoTitulo">📸 Comprobante de Entrega</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center p-3">
+            <img id="modalImgComprobanteGrande" src="" class="img-fluid rounded border border-secondary shadow" style="max-height: 70vh;" alt="Comprobante de Entrega">
+            <div id="modalImgComprobanteTexto" class="small text-secondary mt-2"></div>
+          </div>
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-steam py-4 mt-auto">
+    <div class="container text-center small">
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
+        <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
+        <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="blog.html" class="text-secondary text-decoration-none">Blog</a>
+        <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+        <a href="contacto.html" class="text-secondary text-decoration-none">Contacto</a>
+      </div>
+      <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
+      <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const KEY_SESION    = "pixelvault_sesion";
+    const KEY_PEDIDOS   = "pixelvault_pedidos";
+    const KEY_HISTORIAL = "pixelvault_historial_movimientos";
+    const KEY_CARRITO   = "pixelvault_carrito";
+
+    // Semilla limpia inicial (sin compras previas ficticias)
+    const SEED_PEDIDOS = [];
+
+    let pedidosGlobal = [];
+    let sesionActual = null;
+    let pedidoSeleccionadoId = null;
+    let base64FotoEntregaTemp = null;
+    let modalAsignarRepartidorBs = null;
+    let modalEntregaFotoBs = null;
+    let modalVerFotoBs = null;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      sesionActual = leerSesion();
+      actualizarNavbar(sesionActual);
+      pedidosGlobal = cargarPedidos();
+
+      modalAsignarRepartidorBs = new bootstrap.Modal(document.getElementById("modalAsignarRepartidor"));
+      modalEntregaFotoBs = new bootstrap.Modal(document.getElementById("modalEntregaFoto"));
+      modalVerFotoBs = new bootstrap.Modal(document.getElementById("modalVerFotoComprobante"));
+
+      document.getElementById("btnConfirmarAsignacion").addEventListener("click", confirmarAsignacionRepartidor);
+      document.getElementById("btnConfirmarEntregaConFoto").addEventListener("click", confirmarEntregaConFoto);
+
+      document.getElementById("inputFileFotoEntrega").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        const alerta = document.getElementById("alertaEntregaFoto");
+        alerta.classList.add("d-none");
+        if (!file) {
+          base64FotoEntregaTemp = null;
+          document.getElementById("previewContainerEntrega").classList.add("d-none");
+          return;
+        }
+        if (!file.type.startsWith("image/")) {
+          alerta.textContent = "El archivo debe ser una imagen válida (JPG, PNG, WEBP).";
+          alerta.classList.remove("d-none");
+          e.target.value = "";
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (evt) {
+          base64FotoEntregaTemp = evt.target.result;
+          document.getElementById("imgPreviewEntrega").src = base64FotoEntregaTemp;
+          document.getElementById("previewContainerEntrega").classList.remove("d-none");
+        };
+        reader.readAsDataURL(file);
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const codigoParam = urlParams.get("codigo");
+
+      // Ruteo por rol
+      if (sesionActual && sesionActual.rol === "editor") {
+        document.getElementById("tituloModulo").textContent = "Módulo Restringido";
+        document.getElementById("vistaEditorBloqueado").classList.remove("d-none");
+      } else if (sesionActual && sesionActual.rol === "repartidor") {
+        // Vista Repartidor Logístico (HU-23)
+        document.getElementById("vistaGestionAdmin").classList.remove("d-none");
+        document.getElementById("tituloModulo").textContent = `🛵 Mis Entregas en Ruta (Repartidor: ${sesionActual.nombre})`;
+        document.getElementById("subtituloModulo").textContent = "Órdenes de despacho a domicilio asignadas a tu entrega. Debes subir fotografía como comprobante de recepción.";
+        iniciarEventosGestion();
+        renderizarGestion();
+      } else if (sesionActual && (sesionActual.rol === "admin" || sesionActual.rol === "operador" || sesionActual.rol === "almacenista")) {
+        // Vista de Gestión Logística (Admin & Operador)
+        document.getElementById("vistaGestionAdmin").classList.remove("d-none");
+        const rolTexto = sesionActual.rol === "admin" ? "Administrador" : "Operador de Bodega";
+        document.getElementById("tituloModulo").textContent = `📦 Gestión Logística de Pedidos (${rolTexto})`;
+        document.getElementById("subtituloModulo").textContent = "Control de empaque, asignación de repartidores y despachos físicos.";
+        iniciarEventosGestion();
+        renderizarGestion();
+      } else if (sesionActual && sesionActual.rol === "user") {
+        // Vista de Mis Compras
+        document.getElementById("vistaMisComprasCliente").classList.remove("d-none");
+        document.getElementById("tituloModulo").textContent = "🛍️ Mis Compras y Seguimiento";
+        document.getElementById("subtituloModulo").textContent = "Revisa el estado de preparación, tránsito y entrega de tus videojuegos físicos.";
+        renderizarMisCompras();
+      } else {
+        // Usuario no autenticado / Consulta
+        document.getElementById("vistaInvitadoConsulta").classList.remove("d-none");
+        document.getElementById("tituloModulo").textContent = "🔍 Rastreo de Compras";
+        document.getElementById("subtituloModulo").textContent = "Consulta el estado en vivo de tu compra con tu código correlativo PixelVault.";
+
+        document.getElementById("btnRastrearCodigo").addEventListener("click", buscarCodigoInvitado);
+        if (codigoParam) {
+          document.getElementById("inputCodigoRastreo").value = codigoParam;
+          buscarCodigoInvitado();
+        }
+      }
+    });
+
+    /* ==========================================================
+       GESTIÓN DE PEDIDOS (ADMIN & ALMACENISTA)
+       ========================================================== */
+
+    function iniciarEventosGestion() {
+      document.getElementById("buscadorGestion").addEventListener("input", renderizarGestion);
+      document.getElementById("filtroEstadoGestion").addEventListener("change", renderizarGestion);
+      document.getElementById("btnRestablecerFiltros").addEventListener("click", function () {
+        document.getElementById("buscadorGestion").value = "";
+        document.getElementById("filtroEstadoGestion").value = "todos";
+        renderizarGestion();
+      });
+    }
+
+    function renderizarGestion() {
+      const q = document.getElementById("buscadorGestion").value.trim().toLowerCase();
+      const estadoFiltro = document.getElementById("filtroEstadoGestion").value;
+
+      // Si es repartidor, solo visualiza pedidos de despacho asignados a él (HU-23)
+      const esRepartidor = sesionActual && sesionActual.rol === "repartidor";
+      const pedidosBase = esRepartidor
+        ? pedidosGlobal.filter(p => p.tipoEntrega === "despacho" && p.repartidorUsuario === sesionActual.usuario)
+        : pedidosGlobal;
+
+      // Calcular estadísticas
+      const total = pedidosBase.length;
+      const prep = pedidosBase.filter(p => p.estado === "En preparación").length;
+      const trans = pedidosBase.filter(p => p.estado === "Asignado a repartidor" || p.estado === "En camino" || p.estado === "Lista para retiro").length;
+      const entregadas = pedidosBase.filter(p => p.estado === "Entregada").length;
+
+      document.getElementById("statTotal").textContent = total;
+      document.getElementById("statPrep").textContent = prep;
+      document.getElementById("statTransito").textContent = trans;
+      document.getElementById("statEntregadas").textContent = entregadas;
+
+      // Filtrar
+      const filtrados = pedidosBase.filter(function (p) {
+        const matchEstado = (estadoFiltro === "todos") || (p.estado === estadoFiltro);
+        const matchQ = !q ||
+          p.codigo.toLowerCase().includes(q) ||
+          p.clienteNombre.toLowerCase().includes(q) ||
+          p.clienteEmail.toLowerCase().includes(q) ||
+          p.clienteUsuario.toLowerCase().includes(q);
+        return matchEstado && matchQ;
+      });
+
+      const contenedor = document.getElementById("contenedorPedidosGestion");
+      contenedor.replaceChildren();
+
+      if (filtrados.length === 0) {
+        contenedor.innerHTML = `
+          <div class="card card-juego p-4 text-center text-secondary">
+            <p class="mb-0">${esRepartidor ? 'No tienes órdenes de despacho asignadas actualmente.' : 'No se encontraron pedidos que coincidan con los filtros aplicados.'}</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtrados.forEach(function (pedido) {
+        const card = document.createElement("div");
+        card.className = "card card-juego p-3 shadow-sm " + obtenerClaseBorde(pedido.estado);
+
+        let badgeEstado = "";
+        if (pedido.estado === "En preparación") {
+          badgeEstado = '<span class="badge bg-warning text-dark fw-bold">📦 En preparación</span>';
+        } else if (pedido.estado === "Asignado a repartidor") {
+          badgeEstado = '<span class="badge badge-repartidor fw-bold">🛵 Asignado a Repartidor</span>';
+        } else if (pedido.estado === "En camino") {
+          badgeEstado = '<span class="badge bg-info text-dark fw-bold">🚚 En camino</span>';
+        } else if (pedido.estado === "Lista para retiro") {
+          badgeEstado = '<span class="badge bg-primary text-light fw-bold">🏪 Lista para retiro</span>';
+        } else if (pedido.estado === "Entregada") {
+          badgeEstado = '<span class="badge bg-success text-light fw-bold">🔒 Entregada</span>';
+        }
+
+        let botonesAccion = "";
+        if (pedido.estado === "En preparación") {
+          if (pedido.tipoEntrega === "despacho") {
+            if (sesionActual.rol === "admin" || sesionActual.rol === "operador" || sesionActual.rol === "almacenista") {
+              botonesAccion = `
+                <button class="btn btn-info btn-sm fw-bold" onclick="abrirModalAsignarRepartidor('${pedido.id}')">
+                  🛵 Asignar Repartidor
+                </button>
+              `;
+            } else {
+              botonesAccion = `<span class="badge text-bg-warning">En preparación en bodega</span>`;
+            }
+          } else {
+            botonesAccion = `
+              <button class="btn btn-primary btn-sm fw-bold" onclick="cambiarEstadoPedido('${pedido.id}', 'Lista para retiro')">
+                🏪 Marcar "Lista para retiro"
+              </button>
+            `;
+          }
+        } else if (pedido.estado === "Asignado a repartidor") {
+          if (pedido.tipoEntrega === "despacho") {
+            const esRepartidorAsignado = sesionActual.rol === "repartidor" && pedido.repartidorUsuario === sesionActual.usuario;
+            const esAdmin = sesionActual.rol === "admin";
+            if (esRepartidorAsignado || esAdmin) {
+              botonesAccion = `
+                <button class="btn btn-primary btn-sm fw-bold" onclick="iniciarRutaRepartidor('${pedido.id}')">
+                  🚚 Iniciar Ruta (Marcar "En camino")
+                </button>
+              `;
+            } else {
+              botonesAccion = `
+                <span class="text-secondary small">
+                  🛵 Asignado a: <strong class="text-light">${pedido.repartidorNombre || pedido.repartidorUsuario}</strong> (Pendiente inicio de ruta)
+                </span>
+              `;
+            }
+          }
+        } else if (pedido.estado === "En camino") {
+          if (pedido.tipoEntrega === "despacho") {
+            const esRepartidorAsignado = sesionActual.rol === "repartidor" && pedido.repartidorUsuario === sesionActual.usuario;
+            const esAdmin = sesionActual.rol === "admin";
+            if (esRepartidorAsignado || esAdmin) {
+              botonesAccion = `
+                <button class="btn btn-success btn-sm fw-bold" onclick="abrirModalEntregaFoto('${pedido.id}')">
+                  📸 Entregar Pedido (Adjuntar Foto)
+                </button>
+              `;
+            } else {
+              botonesAccion = `
+                <span class="text-info small fw-bold">
+                  🚚 En reparto con: <strong>${pedido.repartidorNombre || pedido.repartidorUsuario || 'Repartidor'}</strong>
+                </span>
+              `;
+            }
+          }
+        } else if (pedido.estado === "Lista para retiro") {
+          botonesAccion = `
+            <button class="btn btn-success btn-sm fw-bold" onclick="cambiarEstadoPedido('${pedido.id}', 'Entregada')">
+              ✓ Confirmar Entrega en Mesón
+            </button>
+          `;
+        } else if (pedido.estado === "Entregada") {
+          if (pedido.fotoEntrega) {
+            botonesAccion = `
+              <div class="d-flex align-items-center gap-2">
+                <span class="text-success small fw-bold">✓ Entregada con Foto</span>
+                <img src="${pedido.fotoEntrega}" class="foto-entrega-thumbnail" title="Ver foto comprobante" onclick="verFotoComprobante('${pedido.fotoEntrega}', '${pedido.codigo}')" alt="Comprobante">
+              </div>
+            `;
+          } else {
+            botonesAccion = `
+              <span class="text-success small fw-bold">
+                ✓ Pedido entregado y cerrado definitivamente
+              </span>
+            `;
+          }
+        }
+
+        let itemsHtml = "";
+        pedido.items.forEach(it => {
+          itemsHtml += `
+            <div class="d-flex justify-content-between align-items-center py-1 border-bottom border-secondary border-opacity-25 small">
+              <div>
+                <span class="text-light fw-bold">${it.nombre}</span>
+                <span class="badge text-bg-secondary ms-1">${it.plataforma}</span>
+                <span class="text-secondary ms-1">(${it.cantidad} un.)</span>
+              </div>
+              <span class="text-info">${formatoCLP(it.subtotal)}</span>
+            </div>
+          `;
+        });
+
+        let infoRepartidor = "";
+        if (pedido.tipoEntrega === "despacho") {
+          if (pedido.repartidorNombre) {
+            infoRepartidor = `<div class="small mt-1"><span class="text-secondary">Repartidor Oficial:</span> <span class="badge badge-repartidor ms-1">🛵 ${pedido.repartidorNombre} (@${pedido.repartidorUsuario})</span></div>`;
+          } else {
+            infoRepartidor = `<div class="small mt-1 text-secondary">Repartidor: <span class="text-warning">Pendiente de asignación</span></div>`;
+          }
+        }
+
+        let infoComprobante = "";
+        if (pedido.fotoEntrega) {
+          infoComprobante = `
+            <div class="mt-2 p-2 bg-dark rounded border border-success d-flex align-items-center justify-content-between">
+              <div class="small">
+                <div class="text-success fw-bold">📸 Respaldo fotográfico oficial registrado</div>
+                <div class="text-secondary" style="font-size:0.75rem;">Entregado por: ${pedido.entregadoPorNombre || pedido.entregadoPor || 'Repartidor'} | Receptor: ${pedido.receptor || 'Conforme'}</div>
+              </div>
+              <img src="${pedido.fotoEntrega}" class="foto-entrega-thumbnail" title="Clic para ampliar foto" onclick="verFotoComprobante('${pedido.fotoEntrega}', '${pedido.codigo}')" alt="Foto">
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary">
+            <div>
+              <span class="text-secondary small">Orden:</span>
+              <strong class="text-light font-monospace fs-5 ms-1">${pedido.codigo}</strong>
+              <span class="text-secondary small ms-3">Fecha: ${pedido.fechaLegible || new Date(pedido.fecha).toLocaleString('es-CL')}</span>
+            </div>
+            <div>
+              ${badgeEstado}
+            </div>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <div class="small text-secondary">Datos del Cliente:</div>
+              <div class="text-light fw-bold">${pedido.clienteNombre} <small class="text-info">(@${pedido.clienteUsuario})</small></div>
+              <div class="text-secondary small">${pedido.clienteEmail}</div>
+              ${infoRepartidor}
+            </div>
+            <div class="col-md-6 text-md-end">
+              <div class="small text-secondary">Modalidad de Entrega:</div>
+              <div class="text-light fw-bold">${pedido.modoEntregaTexto || (pedido.tipoEntrega === 'despacho' ? 'Despacho a Domicilio' : 'Retiro en Tienda')}</div>
+              <div class="text-success fw-bold fs-6">Total: ${formatoCLP(pedido.total)} ${pedido.costoDespacho ? '<small class="text-secondary fw-normal">(' + formatoCLP(pedido.costoDespacho) + ' despacho RM)</small>' : ''}</div>
+              ${pedido.instruccionesDespacho ? '<div class="small text-secondary mt-1">Nota: <em>' + pedido.instruccionesDespacho + '</em></div>' : ''}
+            </div>
+          </div>
+
+          <div class="bg-dark p-2 rounded mb-3 border border-secondary border-opacity-50">
+            <div class="small text-secondary mb-1 fw-bold">Artículos en la Orden:</div>
+            ${itemsHtml}
+          </div>
+
+          ${infoComprobante}
+
+          <div class="d-flex flex-wrap justify-content-between align-items-center pt-2">
+            <small class="text-secondary">Acciones de estado:</small>
+            <div class="d-flex gap-2 align-items-center">
+              ${botonesAccion}
+            </div>
+          </div>
+        `;
+
+        contenedor.appendChild(card);
+      });
+    }
+
+    function abrirModalAsignarRepartidor(idPedido) {
+      const p = pedidosGlobal.find(x => x.id === idPedido);
+      if (!p) return;
+      pedidoSeleccionadoId = idPedido;
+
+      document.getElementById("asigModalCodigo").textContent = p.codigo;
+      document.getElementById("asigModalCliente").textContent = `${p.clienteNombre} (@${p.clienteUsuario})`;
+      document.getElementById("inputNotaDespacho").value = p.instruccionesDespacho || "";
+
+      // Cargar lista de repartidores registrados
+      const sel = document.getElementById("selectRepartidor");
+      sel.innerHTML = "";
+      try {
+        const usuarios = JSON.parse(localStorage.getItem("pixelvault_usuarios_v2") || "[]");
+        const repartidores = usuarios.filter(u => u.rol === "repartidor" && u.activo);
+        if (repartidores.length === 0) {
+          sel.innerHTML = '<option value="">No hay repartidores activos registrados</option>';
+        } else {
+          repartidores.forEach(r => {
+            const opt = document.createElement("option");
+            opt.value = r.usuario;
+            opt.textContent = `${r.nombre} (@${r.usuario})`;
+            sel.appendChild(opt);
+          });
+        }
+      } catch (e) {
+        sel.innerHTML = '<option value="ilie">Ilie Flores (@ilie)</option>';
+      }
+
+      modalAsignarRepartidorBs.show();
+    }
+
+    function confirmarAsignacionRepartidor() {
+      const p = pedidosGlobal.find(x => x.id === pedidoSeleccionadoId);
+      if (!p) return;
+
+      const sel = document.getElementById("selectRepartidor");
+      const repUsuario = sel.value;
+      if (!repUsuario) {
+        alert("Debes seleccionar un repartidor registrado para continuar.");
+        return;
+      }
+      const repNombre = sel.options[sel.selectedIndex].text.split(" (")[0];
+      const nota = document.getElementById("inputNotaDespacho").value.trim();
+
+      p.estado = "Asignado a repartidor";
+      p.repartidorUsuario = repUsuario;
+      p.repartidorNombre = repNombre;
+      p.instruccionesDespacho = nota;
+      p.fechaAsignacion = new Date().toLocaleString("es-CL");
+
+      guardarPedidos(pedidosGlobal);
+      registrarHistorial(
+        "Logística",
+        sesionActual.usuario,
+        "Asignación de Repartidor",
+        `Orden ${p.codigo} asignada al repartidor ${repNombre} (@${repUsuario}) en espera de inicio de ruta.`
+      );
+
+      modalAsignarRepartidorBs.hide();
+      mostrarAlerta(`Orden ${p.codigo} asignada exitosamente al repartidor ${repNombre}. Estado: Asignado a Repartidor.`, "success");
+      renderizarGestion();
+      actualizarNavbar(sesionActual);
+    }
+
+    function iniciarRutaRepartidor(idPedido) {
+      const p = pedidosGlobal.find(x => x.id === idPedido);
+      if (!p) return;
+
+      const esAdmin = sesionActual && sesionActual.rol === "admin";
+      const esRepartidorAsignado = sesionActual && sesionActual.rol === "repartidor" && p.repartidorUsuario === sesionActual.usuario;
+
+      if (!esAdmin && !esRepartidorAsignado) {
+        alert("Acceso Restringido: Solo el repartidor asignado a esta orden o un Administrador pueden iniciar la ruta.");
+        return;
+      }
+
+      p.estado = "En camino";
+      p.fechaDespacho = new Date().toLocaleString("es-CL");
+      guardarPedidos(pedidosGlobal);
+
+      registrarHistorial(
+        "Logística",
+        sesionActual.usuario,
+        "Inicio de Ruta",
+        `El pedido ${p.codigo} pasó de 'Asignado a repartidor' a 'En camino' conducido por ${p.repartidorNombre} (@${p.repartidorUsuario}).`
+      );
+
+      mostrarAlerta(`¡Ruta iniciada! El pedido ${p.codigo} se encuentra ahora "En camino" hacia el domicilio del cliente.`, "info");
+      renderizarGestion();
+      actualizarNavbar(sesionActual);
+    }
+
+    function abrirModalEntregaFoto(idPedido) {
+      const p = pedidosGlobal.find(x => x.id === idPedido);
+      if (!p) return;
+      pedidoSeleccionadoId = idPedido;
+      base64FotoEntregaTemp = null;
+
+      document.getElementById("entregaModalCodigo").textContent = p.codigo;
+      document.getElementById("entregaModalCliente").textContent = `${p.clienteNombre} (${p.clienteEmail})`;
+      document.getElementById("inputFileFotoEntrega").value = "";
+      document.getElementById("inputReceptorEntrega").value = "";
+      document.getElementById("previewContainerEntrega").classList.add("d-none");
+      document.getElementById("imgPreviewEntrega").src = "";
+      document.getElementById("alertaEntregaFoto").classList.add("d-none");
+
+      modalEntregaFotoBs.show();
+    }
+
+    function confirmarEntregaConFoto() {
+      const p = pedidosGlobal.find(x => x.id === pedidoSeleccionadoId);
+      if (!p) return;
+
+      const alerta = document.getElementById("alertaEntregaFoto");
+      if (!base64FotoEntregaTemp) {
+        alerta.textContent = "Debes adjuntar obligatoriamente la fotografía del producto entregado como comprobante.";
+        alerta.classList.remove("d-none");
+        return;
+      }
+
+      const receptor = document.getElementById("inputReceptorEntrega").value.trim() || "Cliente titular";
+
+      p.estado = "Entregada";
+      p.fotoEntrega = base64FotoEntregaTemp;
+      p.receptor = receptor;
+      p.fechaEntrega = new Date().toLocaleString("es-CL");
+      p.entregadoPor = sesionActual.usuario;
+      p.entregadoPorNombre = sesionActual.nombre;
+      p.bloqueado = true;
+
+      guardarPedidos(pedidosGlobal);
+      registrarHistorial(
+        "Logística",
+        sesionActual.usuario,
+        "Entrega de Pedido con Foto",
+        `Orden ${p.codigo} entregada por ${sesionActual.nombre}. Respaldo fotográfico adjunto. Receptor: ${receptor}.`
+      );
+
+      modalEntregaFotoBs.hide();
+      mostrarAlerta(`✓ ¡Pedido ${p.codigo} finalizado y entregado con éxito! Comprobante fotográfico archivado.`, "success");
+      renderizarGestion();
+    }
+
+    function verFotoComprobante(fotoBase64, codigo) {
+      document.getElementById("modalVerFotoTitulo").textContent = `📸 Comprobante de Entrega [${codigo}]`;
+      document.getElementById("modalImgComprobanteGrande").src = fotoBase64;
+      document.getElementById("modalImgComprobanteTexto").textContent = `Fotografía oficial de respaldo de entrega física en comanda ${codigo}.`;
+      modalVerFotoBs.show();
+    }
+
+    function cambiarEstadoPedido(idPedido, nuevoEstado) {
+      const pedido = pedidosGlobal.find(p => p.id === idPedido);
+      if (!pedido) return;
+
+      if (pedido.estado === "Entregada") {
+        mostrarAlerta("Una compra entregada se da por finalizada permanentemente y no puede ser modificada.", "danger");
+        return;
+      }
+
+      if (nuevoEstado === "Entregada") {
+        if (!confirm(`¿Confirmas que el pedido ${pedido.codigo} fue entregado físicamente en tienda al cliente? Una vez finalizado no podrá modificarse.`)) {
+          return;
+        }
+      }
+
+      const estadoPrevio = pedido.estado;
+      pedido.estado = nuevoEstado;
+      pedido.fechaEntrega = new Date().toLocaleString("es-CL");
+      pedido.entregadoPor = sesionActual.usuario;
+      pedido.entregadoPorNombre = sesionActual.nombre;
+      guardarPedidos(pedidosGlobal);
+
+      // Registrar en historial de movimientos (HU-19)
+      registrarHistorial(
+        "Compras",
+        "Actualización de Estado de Pedido",
+        `El pedido ${pedido.codigo} cambió de "${estadoPrevio}" a "${nuevoEstado}". Cliente: ${pedido.clienteNombre}.`
+      );
+
+      mostrarAlerta(`Pedido ${pedido.codigo} actualizado a: ${nuevoEstado}`, "success");
+      renderizarGestion();
+    }
+
+    /* ==========================================================
+       VISTA "MIS COMPRAS" (CLIENTE)
+       ========================================================== */
+
+    function renderizarMisCompras() {
+      const misCompras = pedidosGlobal.filter(function (p) {
+        return (p.clienteUsuario && p.clienteUsuario === sesionActual.usuario) ||
+               (sesionActual.email && p.clienteEmail === sesionActual.email);
+      });
+
+      const contenedor = document.getElementById("contenedorMisCompras");
+      contenedor.replaceChildren();
+
+      if (misCompras.length === 0) {
+        contenedor.innerHTML = `
+          <div class="card card-juego p-5 text-center my-4">
+            <div class="display-5 text-secondary mb-3">🛍️</div>
+            <h3 class="h4 text-light mb-2">Aún no tienes compras realizadas</h3>
+            <p class="text-secondary small mb-4">
+              Explora nuestro catálogo de videojuegos físicos retro y modernos. Cada juego comprado aparecerá aquí para que sigas su estado de preparación y entrega.
+            </p>
+            <div>
+              <a href="catalogo.html" class="btn btn-primary">Ver Catálogo de Juegos</a>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      misCompras.forEach(function (pedido) {
+        const card = document.createElement("div");
+        card.className = "card card-juego p-4 shadow-sm " + obtenerClaseBorde(pedido.estado);
+
+        // Progreso Stepper
+        const step1Completed = true;
+        const step2Completed = (pedido.estado === "Asignado a repartidor" || pedido.estado === "En camino" || pedido.estado === "Lista para retiro" || pedido.estado === "Entregada");
+        const step3Completed = (pedido.estado === "Entregada");
+
+        let paso2Nombre = "Listo para retiro en tienda";
+        let paso2Sub = "Disponible en sucursal";
+        if (pedido.tipoEntrega === "despacho") {
+          if (pedido.estado === "Asignado a repartidor") {
+            paso2Nombre = "Asignado a Repartidor";
+            paso2Sub = `Conductor asignado: ${pedido.repartidorNombre || pedido.repartidorUsuario}`;
+          } else {
+            paso2Nombre = "En camino a tu domicilio";
+            paso2Sub = "Despachado en ruta vehicular";
+          }
+        }
+
+        let itemsHtml = "";
+        pedido.items.forEach(it => {
+          itemsHtml += `
+            <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-50">
+              <div class="d-flex align-items-center gap-2">
+                <span class="badge text-bg-primary">${it.plataforma}</span>
+                <span class="text-light fw-bold">${it.nombre}</span>
+                <span class="text-secondary small">x${it.cantidad}</span>
+              </div>
+              <span class="text-info fw-bold">${formatoCLP(it.subtotal)}</span>
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+            <div>
+              <span class="text-secondary small">Código de Orden:</span>
+              <strong class="text-info font-monospace fs-5 ms-1">${pedido.codigo}</strong>
+            </div>
+            <div class="text-secondary small">
+              Fecha: <strong class="text-light">${pedido.fechaLegible || new Date(pedido.fecha).toLocaleString('es-CL')}</strong>
+            </div>
+          </div>
+
+          <!-- LÍNEA DE TIEMPO / STEPPER -->
+          <div class="row g-2 mb-4 p-3 bg-dark rounded border border-secondary border-opacity-50">
+            <div class="col-md-4 d-flex align-items-center gap-2">
+              <div class="step-icon ${step1Completed ? 'bg-success text-light' : 'bg-secondary text-dark'}">1</div>
+              <div>
+                <div class="fw-bold small ${step1Completed ? 'text-success' : 'text-secondary'}">Pago y Preparación</div>
+                <small class="text-secondary" style="font-size:0.75rem;">Bodega física preparando copia</small>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center gap-2">
+              <div class="step-icon ${step2Completed ? 'bg-info text-dark' : 'bg-secondary text-dark'}">2</div>
+              <div>
+                <div class="fw-bold small ${step2Completed ? 'text-info' : 'text-secondary'}">${paso2Nombre}</div>
+                <small class="text-secondary" style="font-size:0.75rem;">${paso2Sub}</small>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center gap-2">
+              <div class="step-icon ${step3Completed ? 'bg-success text-light' : 'bg-secondary text-dark'}">3</div>
+              <div>
+                <div class="fw-bold small ${step3Completed ? 'text-success' : 'text-secondary'}">Entregada</div>
+                <small class="text-secondary" style="font-size:0.75rem;">${step3Completed ? 'Recibida conforme' : 'Pendiente de recepción'}</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- DETALLES DE JUEGOS -->
+          <div class="mb-3">
+            <h6 class="text-warning small text-uppercase fw-bold mb-2">Videojuegos Comprados:</h6>
+            ${itemsHtml}
+          </div>
+
+          ${pedido.fotoEntrega ? `
+            <div class="mt-3 p-3 bg-dark rounded border border-success d-flex align-items-center gap-3">
+              <img src="${pedido.fotoEntrega}" class="foto-entrega-thumbnail" onclick="verFotoComprobante('${pedido.fotoEntrega}', '${pedido.codigo}')" alt="Foto">
+              <div class="small">
+                <div class="text-success fw-bold">📸 Respaldo fotográfico oficial de entrega adjunto</div>
+                <div class="text-secondary">Receptor: ${pedido.receptor || 'Conforme'} | Fecha: ${pedido.fechaEntrega || 'Registrada'}</div>
+                <div class="text-info fw-bold" style="cursor:pointer;" onclick="verFotoComprobante('${pedido.fotoEntrega}', '${pedido.codigo}')">🔍 Clic para ver foto completa</div>
+              </div>
+            </div>
+          ` : ''}
+
+          <div class="d-flex flex-wrap justify-content-between align-items-center pt-2 mt-2">
+            <div class="small text-secondary">
+              Modalidad: <span class="badge text-bg-secondary">${pedido.modoEntregaTexto || (pedido.tipoEntrega === 'despacho' ? 'Despacho' : 'Retiro')}</span>
+            </div>
+            <div class="h5 text-light fw-bold mb-0">
+              Total: <span class="text-success">${formatoCLP(pedido.total)}</span>
+            </div>
+          </div>
+        `;
+
+        contenedor.appendChild(card);
+      });
+    }
+
+    /* ==========================================================
+       VISTA INVITADO (CONSULTA POR CÓDIGO)
+       ========================================================== */
+
+    function buscarCodigoInvitado() {
+      const codigoInput = document.getElementById("inputCodigoRastreo").value.trim().toUpperCase();
+      const contenedorRes = document.getElementById("resultadoRastreoInvitado");
+      contenedorRes.replaceChildren();
+
+      if (!codigoInput) {
+        mostrarAlerta("Ingresa un código de orden para rastrear.", "warning");
+        return;
+      }
+
+      const pedido = pedidosGlobal.find(p => p.codigo.toUpperCase() === codigoInput);
+      if (!pedido) {
+        contenedorRes.classList.remove("d-none");
+        contenedorRes.innerHTML = `
+          <div class="card card-juego border-danger p-4 text-center max-w-600 mx-auto" style="max-width: 620px;">
+            <h5 class="text-danger mb-2">No se encontró ningún pedido con el código "${codigoInput}"</h5>
+            <p class="text-secondary small mb-0">Verifica que el código coincida con el emitido en tu comprobante de compra (formato PV-XXXXXX).</p>
+          </div>
+        `;
+        return;
+      }
+
+      contenedorRes.classList.remove("d-none");
+      const card = document.createElement("div");
+      card.className = "card card-juego p-4 max-w-600 mx-auto shadow-sm " + obtenerClaseBorde(pedido.estado);
+      card.style.maxWidth = "620px";
+
+      let itemsHtml = "";
+      pedido.items.forEach(it => {
+        itemsHtml += `
+          <div class="d-flex justify-content-between align-items-center py-1 small border-bottom border-secondary border-opacity-25">
+            <span class="text-light">${it.nombre} (${it.plataforma}) x${it.cantidad}</span>
+            <span class="text-info">${formatoCLP(it.subtotal)}</span>
+          </div>
+        `;
+      });
+
+      card.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+          <h4 class="h5 text-info mb-0 font-monospace">${pedido.codigo}</h4>
+          <span class="badge ${pedido.estado === 'Entregada' ? 'bg-success' : pedido.estado === 'En camino' ? 'bg-info text-dark' : 'bg-warning text-dark'} fs-6">
+            ${pedido.estado}
+          </span>
+        </div>
+        <p class="small text-secondary mb-1">Cliente: <strong class="text-light">${pedido.clienteNombre}</strong></p>
+        <p class="small text-secondary mb-3">Modalidad: <span class="badge text-bg-secondary">${pedido.modoEntregaTexto}</span></p>
+
+        <div class="bg-dark p-2 rounded mb-3 border border-secondary border-opacity-50">
+          <div class="small text-secondary fw-bold mb-1">Videojuegos:</div>
+          ${itemsHtml}
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="small text-secondary">Total Pagado:</span>
+          <span class="h5 text-success fw-bold mb-0">${formatoCLP(pedido.total)}</span>
+        </div>
+      `;
+      contenedorRes.appendChild(card);
+    }
+
+    function obtenerClaseBorde(estado) {
+      if (estado === "En preparación") return "order-card-preparacion";
+      if (estado === "Asignado a repartidor") return "border border-purple";
+      if (estado === "En camino") return "order-card-camino";
+      if (estado === "Lista para retiro") return "order-card-retiro";
+      if (estado === "Entregada") return "order-card-entregada";
+      return "";
+    }
+
+    function mostrarAlerta(msg, tipo) {
+      const box = document.getElementById("alertaPedidos");
+      box.className = "alert alert-" + (tipo || "info") + " py-2 mb-4";
+      box.textContent = msg;
+      box.classList.remove("d-none");
+      setTimeout(() => box.classList.add("d-none"), 5000);
+    }
+
+    function cargarPedidos() {
+      try {
+        const p = JSON.parse(localStorage.getItem(KEY_PEDIDOS));
+        if (Array.isArray(p)) return p;
+      } catch (e) {}
+      localStorage.setItem(KEY_PEDIDOS, JSON.stringify(SEED_PEDIDOS));
+      return SEED_PEDIDOS.slice();
+    }
+
+    function guardarPedidos(p) {
+      localStorage.setItem(KEY_PEDIDOS, JSON.stringify(p));
+    }
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario || !s.rol) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function actualizarNavbar(sesion) {
+      const navUsuario        = document.getElementById("navUsuario");
+      const btnSalir          = document.getElementById("btnSalir");
+      const navAuthLinks      = document.getElementById("navAuthLinks");
+      const navUserSection    = document.getElementById("navUserSection");
+      const navItemUsuarios   = document.getElementById("navItemUsuarios");
+      const navItemHistorial  = document.getElementById("navItemHistorial");
+      const navItemPedidos    = document.getElementById("navItemPedidos");
+      const navItemMisCompras = document.getElementById("navItemMisCompras");
+
+      if (navItemUsuarios) {
+        navItemUsuarios.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemHistorial) {
+        navItemHistorial.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemPedidos) {
+        navItemPedidos.classList.toggle("d-none", !(sesion && (sesion.rol === "admin" || sesion.rol === "operador" || sesion.rol === "repartidor" || sesion.rol === "almacenista")));
+      }
+      if (navItemMisCompras) {
+        let tieneCompras = false;
+        if (sesion && sesion.rol === "user") {
+          try {
+            const pedidos = JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+            tieneCompras = pedidos.some(p => p.clienteUsuario === sesion.usuario || (sesion.email && p.clienteEmail === sesion.email));
+          } catch (e) {}
+        }
+        navItemMisCompras.classList.toggle("d-none", !tieneCompras);
+      }
+
+      if (sesion) {
+        if (navUserSection) navUserSection.classList.remove("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.add("d-none");
+        if (navUsuario) {
+          let badgeRol = "Cliente";
+          if (sesion.rol === "admin") badgeRol = "Admin";
+          else if (sesion.rol === "operador" || sesion.rol === "almacenista") badgeRol = "Operador";
+          else if (sesion.rol === "repartidor") badgeRol = "Repartidor";
+          else if (sesion.rol === "editor") badgeRol = "Editor";
+          navUsuario.textContent = sesion.nombre + " (" + badgeRol + ")";
+        }
+        if (btnSalir) {
+          btnSalir.onclick = function () {
+            sessionStorage.removeItem(KEY_SESION);
+            window.location.replace("login.html");
+          };
+        }
+      } else {
+        if (navUserSection) navUserSection.classList.add("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.remove("d-none");
+      }
+
+      // Contador de carrito
+      const badge = document.getElementById("cartCountBadge");
+      if (badge) {
+        try {
+          const cart = JSON.parse(localStorage.getItem(KEY_CARRITO) || "[]");
+          const count = cart.reduce((acc, it) => acc + it.cantidad, 0);
+          badge.textContent = count;
+          if (count > 0) badge.classList.remove("d-none");
+          else badge.classList.add("d-none");
+        } catch (e) {}
+      }
+
+      // Notificación reactiva de Pedidos (HU-27)
+      const badgePedidos = document.getElementById("pedidosBadgeNotif");
+      if (badgePedidos && sesion) {
+        try {
+          const pedidos = JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+          let count = 0;
+          if (sesion.rol === "admin" || sesion.rol === "operador" || sesion.rol === "almacenista") {
+            count = pedidos.filter(p => p.estado === "En preparación").length;
+          } else if (sesion.rol === "repartidor") {
+            count = pedidos.filter(p => p.repartidorUsuario === sesion.usuario && (p.estado === "Asignado a repartidor" || p.estado === "Asignado")).length;
+          }
+          if (count > 0) {
+            badgePedidos.textContent = count;
+            badgePedidos.classList.remove("d-none");
+          } else {
+            badgePedidos.classList.add("d-none");
+          }
+        } catch (e) {}
+      }
+    }
+
+    function registrarHistorial(categoria, accion, detalle) {
+      try {
+        const sesion = leerSesion();
+        const autor = sesion ? `${sesion.nombre} (@${sesion.usuario} - ${sesion.rol})` : "Invitado / Anónimo";
+        const registros = JSON.parse(localStorage.getItem(KEY_HISTORIAL) || "[]");
+        const nuevo = {
+          id: "HIST-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+          fecha: new Date().toISOString(),
+          fechaLegible: new Date().toLocaleString("es-CL"),
+          categoria: categoria,
+          usuario: autor,
+          accion: accion,
+          detalle: detalle
+        };
+        registros.unshift(nuevo);
+        if (registros.length > 200) registros.pop();
+        localStorage.setItem(KEY_HISTORIAL, JSON.stringify(registros));
+      } catch (e) {
+        console.warn("No se pudo registrar historial:", e);
+      }
+    }
+
+    function formatoCLP(valor) {
+      return new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(valor);
+    }
+  </script>
+</body>
+</html>

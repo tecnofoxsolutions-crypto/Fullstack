@@ -1,8 +1,8 @@
 # Documento de Especificación de Requisitos de Software (ERS)
 **Estándar IEEE 830 (Adaptación Anexo 4 - DSY1104)**  
 **Proyecto:** PixelVault - Tienda de Videojuegos Físicos (Estilo Steam + 16-Bit Arcade)  
-**Versión:** 1.1 (Entrega Parcial 1 - Frontend)  
-**Institución:** Escuela de Administración y Negocios - Informática  
+**Versión:** 2.0 (Entrega Parcial 1 Ampliada - Frontend Completo)  
+**Institución:** Escuela de Informática y Telecomunicaciones - DUOC UC  
 **Equipo de Desarrollo Frontend:** Jim Charles, Emanuel Reyes y Maximiliano Peral  
 **Fecha:** Septiembre 2026  
 
@@ -12,124 +12,126 @@
 
 | Fecha | Revisión | Autor / Rol | Modificación |
 | :--- | :--- | :--- | :--- |
-| 15/09/2026 | 1.1 | Jim Charles, Emanuel Reyes, Maximiliano Peral | Ajuste de arquitectura a 5 vistas HTML sin JS externo (estándar `proyecto_front`), cuentas oficiales de evaluación y restricciones de visualización para clientes. |
+| 15/09/2026 | 1.0 | Jim Charles, Emanuel Reyes, Maximiliano Peral | Versión inicial del documento base según Anexo 4 DSY1104. |
+| 18/09/2026 | 1.5 | Jim Charles, Emanuel Reyes, Maximiliano Peral | Integración de roles Operador, Repartidor y Editor, módulo de crónicas y trazabilidad de pedidos. |
+| 21/09/2026 | 2.0 | Jim Charles, Emanuel Reyes, Maximiliano Peral | Actualización completa: Tarifa de despacho RM a $4.000, autogeneración de códigos por consola, tickets PVT-000001, logística en 3 etapas, panel de Staff unificado, badges reactivos y perfiles técnicos de desarrollo. |
 
 ---
 
 ## 1. Introducción
 
 ### 1.1. Propósito
-El propósito del presente documento es definir de forma formal los requisitos funcionales y no funcionales de **PixelVault**, una plataforma web de comercio electrónico orientada a la venta y administración de videojuegos en formato físico con estética inspirada en Steam y toques retro 16-bit arcade. Este documento está dirigido al equipo de desarrollo y a los docentes evaluadores de la asignatura DSY1104.
+El propósito del presente documento es definir de forma exhaustiva y formal los requisitos funcionales y no funcionales de **PixelVault**, plataforma web de comercio electrónico y gestión integral para la venta, catalogación, distribución logística y administración de videojuegos en formato físico. Su diseño combina la inmersión del tema oscuro de **Steam** con acentos visuales vibrantes de la época **16-bit arcade**.
 
 ### 1.2. Ámbito del Sistema
 - **Nombre del Sistema:** PixelVault.
-- **Lo que el sistema hace:** Permite a los clientes explorar un catálogo de 15 videojuegos físicos para diversas plataformas (PC, PS5, Xbox Series X, Nintendo Switch), filtrar títulos en tiempo real, examinar la ficha técnica de cada juego en un modal interactivo con enfoque comercial limpio, gestionar un carrito de compras con control estricto de unidades en bodega, simular la compra descontando stock en almacenamiento local y permitir a los administradores gestionar el catálogo (CRUD), ajustar stock desde el modal y visualizar métricas globales en la página principal.
-- **Lo que el sistema NO hace en esta etapa:** No se conecta a un backend remoto ni bases de datos SQL externas. Toda la persistencia opera de forma autónoma en el cliente mediante la Web Storage API (`localStorage` y `sessionStorage`). No requiere formularios de registro público de momento, operando con las cuentas oficiales designadas para la evaluación.
+- **Alcance Funcional:** 
+  1. Comercialización y catalogación de videojuegos físicos sellados para consolas (PS5, Nintendo Switch, Xbox Series X) y PC.
+  2. Búsqueda y filtrado reactivo en tiempo real con vistas duales de cuadrícula y tabla.
+  3. Ficha técnica interactiva en modal con control estricto de unidades en bodega.
+  4. Carro de compras con validación de inventario, registro obligatorio de cliente, cálculo de IVA y tarifa fija de despacho a la Región Metropolitana ($4.000 CLP).
+  5. Logística de pedidos en tres etapas: `En preparación` (bodega) &rarr; `Asignado a repartidor` (vehículo designado) &rarr; `En camino` (ruta activa iniciada por el repartidor) &rarr; `Entregada` (con foto de recepción obligatoria).
+  6. Generación correlativa automática de códigos de inventario por consola (`PS5-015`, `NSW-014`, etc.).
+  7. Gestión de usuarios con identificadores correlativos enteros, métrica de Staff global y cambio de roles mediante modal con menú desplegable `<select>`.
+  8. Gestión editorial de crónicas y noticias en el Blog con carga híbrida de carátulas (URL externa o archivo local desde el dispositivo con recomendación de 1200x675 px).
+  9. Soporte al cliente con tickets correlativos (`PVT-000001`) y preguntas frecuentes delimitadas a la RM.
+  10. Bitácora centralizada de auditoría reactiva de movimientos del sistema.
+- **Restricción de Arquitectura:** El sistema opera con 100% de autonomía en el navegador cliente mediante la Web Storage API (`localStorage` y `sessionStorage`), sin dependencias de backend ni compiladores externos.
 
-### 1.3. Definiciones, Acrónimos y Abreviaturas
+### 1.3. Definiciones y Acrónimos
 - **ERS:** Especificación de Requisitos de Software (IEEE 830).
-- **CRUD:** Create, Read, Update, Delete (Crear, Leer, Actualizar y Eliminar).
+- **CRUD:** Create, Read, Update, Delete (Crear, Leer, Actualizar, Eliminar).
+- **RBAC:** Role-Based Access Control (Control de Acceso Basado en Roles).
 - **DOM:** Document Object Model.
-- **LocalStorage:** Almacenamiento local persistente en el navegador web del cliente.
-- **SessionStorage:** Almacenamiento web temporal asociado a la sesión activa.
-- **Stock Crítico:** Cantidad mínima de copias en bodega que genera alerta preventiva para administradores.
+- **LocalStorage:** Almacenamiento web persistente en el navegador cliente.
+- **SessionStorage:** Almacenamiento web temporal para control de sesión activa.
 - **CLP:** Peso Chileno (moneda oficial del sistema).
-
-### 1.4. Referencias
-- *DSY1104 Evaluación Parcial 1 - Anexo 1 Instrucciones.pdf*.
-- *DSY1104 Evaluación Parcial 1 - Anexos 2, 3 y 4*.
-- Repositorio base de clase: `proyecto_front`.
-- Documentación oficial de Bootstrap v5.3.3: [https://getbootstrap.com/](https://getbootstrap.com/).
+- **RM:** Región Metropolitana de Santiago de Chile (área geográfica exclusiva de despacho a domicilio en la versión actual).
 
 ---
 
 ## 2. Descripción General
 
 ### 2.1. Perspectiva del Producto
-PixelVault es una aplicación web frontend pura y autónoma estructurada en 5 vistas HTML con estilos CSS centralizados y lógica JavaScript integrada en cada página, respetando estrictamente el patrón modular de `proyecto_front`.
+PixelVault está estructurado en 11 vistas HTML vinculadas por una barra de navegación común y una hoja de estilos centralizada (`css/estilos.css`), incorporando **Bootstrap 5.3.3** en modo oscuro nativo (`data-bs-theme="dark"`).
 
-### 2.2. Funciones del Producto
-1. **Módulo Público y Clientes:**
-   - Inicio con banner gamer, accesos directos y títulos destacados.
-   - Catálogo con 15 videojuegos físicos con filtros en tiempo real por texto, plataforma y género.
-   - Ficha técnica en modal interactivo (sin códigos internos de bodega ni etiquetas numéricas de stock para clientes).
-   - Carrito de compras con validación lógica de cantidades (prohíbe solicitar más unidades de las existentes).
-   - Proceso simulado de checkout con cálculo de IVA y comprobante/comanda de orden confirmada.
-   - Vista institucional "Nosotros" con reseña del equipo desarrollador.
-2. **Módulo de Gestión (Administradores):**
-   - Autenticación con cuentas oficiales (`Jim`, `Emanuel`, `Maximiliano` / clave `admin`) y cuenta cliente (`geek` / clave `user`).
-   - Bloqueo de 60 segundos ante 5 intentos fallidos consecutivos en el login.
-   - Panel de métricas globales en la página de inicio exclusivo para administradores.
-   - Mantenedor (CRUD) de videojuegos y control de estados (Activo, Pausado, Agotado, Stock Crítico).
-   - Ajuste rápido de inventario directamente dentro del modal de producto.
+```text
+Estructura de Vistas:
+1.  index.html       - Portada principal (Carrusel de destacados, banner, ticker de noticias, métricas).
+2.  catalogo.html    - Catálogo interactivo (Filtros, Grid/Tabla, modal de detalle, CRUD admin y códigos automáticos).
+3.  carrito.html     - Carro de compras (Validación de stock, selección de entrega, despacho RM $4.000, comanda).
+4.  login.html       - Inicio de sesión con panel simétrico de cuentas oficiales de demostración.
+5.  registro.html    - Registro de clientes con ID correlativo entero y modal interactivo de términos.
+6.  nosotros.html    - Presentación institucional, misión, visión y perfiles técnicos de los desarrolladores.
+7.  contacto.html    - Formulario de consultas con tickets correlativos PVT-000001 y FAQ de despacho RM.
+8.  blog.html        - Crónicas y noticias gamer con editor de carga de imágenes (URL/archivo 1200x675).
+9.  usuarios.html    - Gestión de usuarios, métrica unificada de Staff y cambio de roles modal.
+10. pedidos.html     - Módulo de logística de pedidos (3 etapas, panel repartidor, foto de entrega y Mis Compras).
+11. historial.html   - Bitácora completa de auditoría de movimientos del sistema.
+```
 
-### 2.3. Características de los Usuarios
+### 2.2. Roles y Actores del Sistema
 
-| Perfil de Usuario | Cuentas Preconfiguradas | Permisos en el Sistema |
+| Rol | Cuentas Oficiales de Evaluación | Atribuciones y Permisos |
 | :--- | :--- | :--- |
-| **Administrador** | `Jim / admin`<br>`Emanuel / admin`<br>`Maximiliano / admin` | Acceso total: creación de videojuegos, edición, ajuste de stock en modal, eliminación y visualización de métricas de bodega en la página de inicio. |
-| **Cliente** | `geek / user` | Navegación comercial, consulta de catálogo con tarjetas limpias, visualización de modal y compra en carrito con control estricto de stock. |
-| **Visitante Anónimo** | Sin cuenta | Exploración de la tienda, catálogo y página de nosotros. |
-
-### 2.4. Restricciones
-- Uso exclusivo de HTML5, CSS3 y JavaScript Vanilla con **Bootstrap v5.3.3** vía CDN oficial.
-- Persistencia local en el cliente mediante `localStorage` y `sessionStorage`.
-- Estructura libre de archivos JS externos independientes, manteniendo el código integrado en cada vista HTML como en `proyecto_front`.
+| **Administrador** | `Jim` (admin)<br>`Emanuel` (admin)<br>`Maximiliano` (admin) | Control total del sistema: catálogo, inventario, métricas, gestión de roles de usuario, forzado logístico, gestión editorial y bitácora de auditoría. |
+| **Operador** | `fernando` (operador) | Gestión de productos en catálogo, actualización de stock en bodega y preparación de pedidos para despacho o retiro. |
+| **Editor** | `adriana` (editor) | Redacción, edición, borrado y publicación de crónicas y noticias en el Blog de preservación. |
+| **Repartidor** | `ilie` (repartidor) | Visualización exclusiva de pedidos asignados, activación de ruta (`Iniciar Ruta`) y carga obligatoria de fotografía como comprobante de entrega. |
+| **Cliente** | `francisco` (cliente) | Navegación comercial, carrito de compras, seguimiento en "Mis Compras", tickets de contacto y consultas. |
+| **Visitante Anónimo** | Sin cuenta | Exploración libre del catálogo, lectura de blog, página de nosotros y registro de cuenta nueva. |
 
 ---
 
 ## 3. Requisitos Específicos
 
-### 3.1. Requisitos Comunes de las Interfaces
-- **Estética:** Tema oscuro (*Dark Gaming*) inspirado en Steam combinado con estética 16-bit arcade (fuentes pixeladas `Silkscreen`, acentos neón y sombras retro), implementado nativamente mediante `data-bs-theme="dark"` de Bootstrap 5.3.3.
-- **Responsividad:** Adaptable a dispositivos móviles, tablets y monitores de escritorio mediante el sistema de grillas (`container`, `row`, `col-12 col-md-6 col-lg-4 col-xl-3`).
+### 3.1. Requisitos Funcionales (RF)
 
-### 3.2. Requisitos Funcionales Detallados
+#### RF-01: Semilla Inicial de 15 Videojuegos Físicos
+El sistema inicializa automáticamente en `localStorage` (`pixelvault_productos_v3`) una semilla de 15 videojuegos físicos con carátula, plataforma, género, precio en CLP, stock, stock crítico y sinopsis.
 
-#### 3.2.1. RF-01: Semilla Inicial de 15 Videojuegos Físicos
-- **Actores:** Sistema.
-- **Descripción:** Carga automática de un catálogo inicial de exactamente 15 videojuegos físicos en `localStorage` con atributos completos: `id`, `codigo`, `nombre`, `categoria`, `plataforma`, `precio`, `stock`, `stockCritico`, `descripcion`, `imagen` y `activo`.
+#### RF-02: Autenticación RBAC y Cuentas de Evaluación Rápida
+Valida credenciales en `sessionStorage` con expiración de 30 minutos y bloqueo de 60 segundos tras 5 intentos fallidos consecutivos. `login.html` provee tarjetas simétricas clickeables para autorrelleno instantáneo de credenciales demo.
 
-#### 3.2.2. RF-02: Autenticación con Cuentas Oficiales
-- **Actores:** Todos los usuarios.
-- **Descripción:** Inicio de sesión que valida credenciales contra las cuentas de evaluación (`Jim`, `Emanuel`, `Maximiliano` y `geek`). Bloqueo de 60 segundos tras 5 intentos fallidos y persistencia de sesión por 30 minutos en `sessionStorage`.
+#### RF-03: Catálogo Interactivo y Vistas Alternables (Grid / Tabla)
+Permite buscar por texto libre, filtrar por plataforma y género simultáneamente. Los clientes ven tarjetas limpias sin datos de bodega; administradores y operadores ven controles de stock, estado y edición.
 
-#### 3.2.3. RF-03: Catálogo y Búsqueda Reactiva
-- **Actores:** Todos los usuarios.
-- **Descripción:** Visualización de videojuegos en tarjetas interactivas. Filtro reactivo simultáneo por texto, plataforma y género. Para clientes, la tarjeta no exhibe etiquetas de estado interno de inventario.
+#### RF-04: Autogeneración Correlativa de Código Individual por Consola
+Al crear un nuevo videojuego en `catalogo.html`, la selección de consola autocalcula el siguiente código correlativo disponible con su propia serie numérica independiente de 4 dígitos (`PlayStation 5` &rarr; `PS5-0001`, `PS5-0002`...; `PC` &rarr; `PC-0001`, `PC-0002`...; `Nintendo Switch` &rarr; `NSW-0001`...; `Xbox Series X` &rarr; `XSX-0001`...). Cada plataforma gestiona su propio contador correlativo ascendente a partir de sus existencias.
 
-#### 3.2.4. RF-04: Ficha Técnica en Modal Interactivo
-- **Actores:** Todos los usuarios.
-- **Descripción:** Modal emergente con carátula ampliada, sinopsis, género, plataforma y precio. Para clientes omite códigos internos de bodega y etiquetas numéricas de stock, mostrando selector de unidades y botón de compra. Para administradores incluye controles de ajuste de inventario y edición.
+#### RF-05: Carrito con Control Estricto de Inventario
+El cliente no puede solicitar más unidades físicas de las disponibles en bodega. La cantidad máxima en los selectores se ajusta dinámicamente al stock real de `localStorage`.
 
-#### 3.2.5. RF-05: Control Estricto de Stock en Carrito
-- **Actores:** Cliente.
-- **Descripción:** El cliente puede agregar videojuegos al carrito. El sistema valida que la suma de unidades no supere el stock disponible en bodega. Si el stock es 0, el botón queda inhabilitado.
+#### RF-06: Checkout con Tarifa Fija de Despacho en Región Metropolitana ($4.000 CLP)
+El cliente debe estar autenticado obligatoriamente para finalizar la compra. La selección de "Despacho a Domicilio (Solo Región Metropolitana)" suma $4.000 CLP al total, mientras que "Retiro en Tienda Física" se mantiene en $0 (Gratis). Se descuenta el stock en bodega y se emite comanda con código correlativo `PV-000001` ascendente.
 
-#### 3.2.6. RF-06: Simulación de Compra y Descuento de Stock
-- **Actores:** Cliente.
-- **Descripción:** En la vista de carrito, el cliente revisa el desglose con subtotal neto, 19% de IVA y total a pagar. Al presionar "Finalizar Compra", se descuentan las unidades compradas del inventario en `localStorage`, se vacía el carrito y se despliega la comanda/orden confirmada en un modal.
+#### RF-07: Logística de Despacho en Tres Fases y Comprobante Fotográfico
+1. Bodega recepciona comanda en estado `En preparación`.
+2. Operador/Admin asigna repartidor y la orden avanza a `Asignado a repartidor`.
+3. Repartidor responsable visualiza el pedido y pulsa `Iniciar Ruta`, pasando a `En camino`.
+4. Repartidor entrega en domicilio y carga obligatoriamente una foto real del paquete para pasar el pedido a `Entregada`.
 
-#### 3.2.7. RF-07: Mantenedor Administrativo (CRUD) de Videojuegos
-- **Actores:** Administrador.
-- **Descripción:** Panel protegido que permite dar de alta nuevos títulos físicos, modificar atributos existentes y eliminar títulos con confirmación explícita.
+#### RF-08: Notificaciones Numéricas Reactivas en Barra de Navegación
+Insignia circular dinámica con pulso arcade sobre el enlace `📦 Pedidos` que alerta a operadores/admins de pedidos en preparación y a repartidores de despachos pendientes de inicio de ruta.
 
-#### 3.2.8. RF-08: Gestión de Inventario Directamente desde el Modal
-- **Actores:** Administrador.
-- **Descripción:** El administrador puede modificar el número de unidades en stock de un juego directamente desde la ventana modal de detalles.
+#### RF-09: Gestión de Roles Modal con Auditoría Limpia
+En `usuarios.html`, el administrador modifica roles mediante una ventana modal con menú desplegable `<select>`, generando exactamente un registro en la bitácora de auditoría tras su confirmación.
 
-#### 3.2.9. RF-09: Panel de Métricas de Inventario en Home
-- **Actores:** Administrador.
-- **Descripción:** En la página de inicio (`index.html`), se despliega un panel cuantitativo con el total de títulos físicos, copias disponibles y plataformas activas. Esta sección es visible únicamente para administradores.
+#### RF-10: Soporte con Tickets Correlativos (`PVT-000001`) y Cobertura RM
+El formulario en `contacto.html` emite tickets secuenciales continuos y la sección FAQ especifica que la cobertura de despacho físico aplica exclusivamente a la Región Metropolitana.
 
-#### 3.2.10. RF-10: Sección Nosotros y Equipo Desarrollador
-- **Actores:** Todos los usuarios.
-- **Descripción:** Vista institucional con la historia de PixelVault y la presentación oficial de los 3 desarrolladores Frontend: Jim Charles, Emanuel Reyes y Maximiliano Peral.
+#### RF-11: Gestión Editorial de Crónicas con Carga Híbrida de Medios
+Módulo de blog con mantenedor para roles Admin y Editor, permitiendo asociar imágenes vía URL externa o mediante carga de archivos desde el dispositivo cliente (convertidos a Base64 vía `FileReader`), recomendando resolución óptima de 1200x675 px (16:9).
+
+#### RF-12: Bitácora Centralizada de Auditoría
+Registro inmutable en `historial.html` que documenta fecha, autor, categoría, acción y detalle de cada movimiento en productos, compras, usuarios, crónicas y despachos.
 
 ---
 
-### 3.3. Requisitos No Funcionales
-- **Rendimiento:** Operaciones de filtrado y cálculo de carrito en menos de **50 milisegundos**.
-- **Seguridad en el DOM:** Manipulación de datos dinámicos mediante `textContent` y creación segura de nodos con `document.createElement`, previniendo inyecciones de código XSS.
-- **Fiabilidad:** Sincronización continua de inventario y compras mediante la Web Storage API.
-- **Mantenibilidad:** Código estructurado en 5 vistas HTML limpias sin dependencias externas complejas, siguiendo fielmente la pauta de `proyecto_front`.
+### 3.2. Requisitos No Funcionales (RNF)
+
+- **RNF-01 (Estética y Experiencia Retro):** Interfaz inmersiva Steam + 16-Bit Arcade con fuentes pixeladas, acentos cian/dorados y micro-animaciones CRT (scanlines y haz de tubo catódico) al transicionar entre vistas.
+- **RNF-02 (Rendimiento):** Búsqueda reactiva, recálculo de carrito y filtrado de pedidos en menos de 50 milisegundos en el cliente.
+- **RNF-03 (Seguridad del DOM y Prevención XSS):** Manipulación de contenido dinámico mediante `textContent` y creación segura de nodos con `document.createElement`.
+- **RNF-04 (Autonomía y Persistencia):** Funcionamiento 100% autónomo y desacoplado mediante la Web Storage API.
+- **RNF-05 (Responsividad Bootstrap):** Maquetación fluida y adaptable en resoluciones desde 320px hasta monitores ultra-wide 4K.

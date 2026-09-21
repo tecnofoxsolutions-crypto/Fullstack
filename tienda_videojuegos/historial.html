@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Historial de Movimientos de la Plataforma | PixelVault</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .badge-cat-Usuarios { background-color: #6f42c1; color: #fff; }
+    .badge-cat-Compras { background-color: #198754; color: #fff; }
+    .badge-cat-Productos { background-color: #0d6efd; color: #fff; }
+    .badge-cat-Destacados { background-color: #ffc107; color: #000; }
+    .badge-cat-Crónicas { background-color: #fd7e14; color: #fff; }
+    .badge-cat-Carrito { background-color: #0dcaf0; color: #000; }
+    .badge-cat-Suscripciones { background-color: #20c997; color: #000; }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg navbar-steam sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 font-arcade" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+          <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414"/>
+        </svg>
+        <span>Pixel</span>Vault <small class="text-warning ms-1" style="font-size:0.6rem;">[16-BIT]</small>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item d-none" id="navItemMisCompras"><a class="nav-link text-success fw-bold" href="pedidos.html">🛍️ Mis Compras</a></li>
+          <li class="nav-item d-none" id="navItemPedidos"><a class="nav-link text-info fw-bold position-relative" href="pedidos.html">📦 Pedidos <span id="pedidosBadgeNotif" class="badge-notif-pedidos d-none ms-1">0</span></a></li>
+          <li class="nav-item d-none" id="navItemUsuarios"><a class="nav-link text-warning fw-bold" href="usuarios.html">👥 Usuarios</a></li>
+          <li class="nav-item d-none" id="navItemHistorial"><a class="nav-link text-warning fw-bold active" href="historial.html">📜 Historial</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="carrito.html" class="btn btn-outline-info btn-sm position-relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Carrito
+            <span id="cartCountBadge" class="badge rounded-pill bg-danger d-none">0</span>
+          </a>
+
+          <div id="navAuthLinks" class="d-flex gap-2">
+            <a href="login.html" class="btn btn-primary btn-sm">Ingresar</a>
+            <a href="registro.html" class="btn btn-outline-info btn-sm">Registrarse</a>
+          </div>
+
+          <div id="navUserSection" class="d-flex align-items-center gap-2 d-none">
+            <span class="small text-light" id="navUsuario"></span>
+            <button class="btn btn-outline-danger btn-sm" id="btnSalir">Salir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <main class="container py-4">
+
+    <!-- CABECERA -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <h1 class="h3 text-light mb-1">📜 Historial de Movimientos de la Plataforma</h1>
+        <p class="text-secondary small mb-0">
+          Auditoría en tiempo real de operaciones: registros de usuarios, compras, modificaciones de catálogo, crónicas, carrito y suscripciones.
+        </p>
+      </div>
+      <div class="d-flex gap-2" id="btnAccionesHistorial">
+        <button class="btn btn-outline-info btn-sm" id="btnExportarJson">📥 Exportar JSON</button>
+        <button class="btn btn-outline-danger btn-sm" id="btnLimpiarHistorial">🗑️ Purgar Registro</button>
+      </div>
+    </div>
+
+    <!-- BLOQUEO SI NO ES ADMIN -->
+    <div id="vistaHistorialBloqueada" class="card card-juego border-danger p-5 text-center d-none my-4">
+      <div class="display-4 text-danger mb-3">🛡️</div>
+      <h3 class="h4 text-danger mb-2">Acceso Exclusivo para Administradores</h3>
+      <p class="text-secondary small mb-4">
+        Este módulo de auditoría interna de la plataforma PixelVault contiene registros confidenciales de usuarios, compras y transacciones y está reservado exclusivamente para el perfil <strong>Administrador</strong>.
+      </p>
+      <div>
+        <a href="index.html" class="btn btn-primary btn-sm">Regresar al Inicio</a>
+      </div>
+    </div>
+
+    <!-- CONTENIDO AUDITORÍA (SOLO ADMIN) -->
+    <div id="vistaHistorialAdmin" class="d-none">
+
+      <!-- TARJETAS DE MÉTRICAS -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-secondary">
+            <small class="text-secondary text-uppercase fw-bold">Total Movimientos</small>
+            <div class="display-6 fw-bold text-light my-1" id="metricTotal">0</div>
+            <small class="text-info">Eventos auditados</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-success">
+            <small class="text-success text-uppercase fw-bold">Compras & Pedidos</small>
+            <div class="display-6 fw-bold text-success my-1" id="metricCompras">0</div>
+            <small class="text-secondary">Órdenes y estados</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-primary">
+            <small class="text-primary text-uppercase fw-bold">Catálogo & Stock</small>
+            <div class="display-6 fw-bold text-primary my-1" id="metricProductos">0</div>
+            <small class="text-secondary">Juegos y destacados</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-juego p-3 text-center border-warning">
+            <small class="text-warning text-uppercase fw-bold">Usuarios & Blog</small>
+            <div class="display-6 fw-bold text-warning my-1" id="metricUsuarios">0</div>
+            <small class="text-secondary">Cuentas y crónicas</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTROS Y BÚSQUEDA -->
+      <div class="card card-juego p-3 mb-4 shadow-sm">
+        <div class="row g-2 align-items-center">
+          <div class="col-md-5">
+            <input type="text" class="form-control form-control-sm bg-dark border-secondary text-light" id="buscadorHistorial" placeholder="Buscar por usuario, acción o detalle...">
+          </div>
+          <div class="col-md-4">
+            <select class="form-select form-select-sm bg-dark border-secondary text-light" id="filtroCategoriaHistorial">
+              <option value="todas">Todas las Categorías</option>
+              <option value="Usuarios">Usuarios (Login, Registro, Roles)</option>
+              <option value="Compras">Compras (Nuevas órdenes, Estados)</option>
+              <option value="Productos">Productos (Crear, Editar, Stock)</option>
+              <option value="Destacados">Destacados (Efecto Estrella)</option>
+              <option value="Crónicas">Crónicas (Blog Editorial)</option>
+              <option value="Carrito">Carrito (Añadido, Retirado)</option>
+              <option value="Suscripciones">Suscripciones (Boletín / Radar)</option>
+            </select>
+          </div>
+          <div class="col-md-3 text-md-end">
+            <button class="btn btn-outline-secondary btn-sm w-100" id="btnRestablecerHistorial">Restablecer Filtros</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLA DE MOVIMIENTOS -->
+      <div class="card card-juego shadow-sm">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover table-dark align-middle mb-0">
+              <thead class="table-secondary text-dark small">
+                <tr>
+                  <th style="width: 140px;">Fecha y Hora</th>
+                  <th style="width: 130px;">Categoría</th>
+                  <th style="width: 220px;">Usuario Responsable</th>
+                  <th style="width: 180px;">Acción</th>
+                  <th>Detalle de la Operación</th>
+                </tr>
+              </thead>
+              <tbody id="tablaHistorialBody">
+                <!-- Renderizado dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3 text-secondary small text-end" id="contadorResultados">
+        <!-- Mostrando X de Y registros -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-steam py-4 mt-auto">
+    <div class="container text-center small">
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
+        <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
+        <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="blog.html" class="text-secondary text-decoration-none">Blog</a>
+        <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+        <a href="contacto.html" class="text-secondary text-decoration-none">Contacto</a>
+      </div>
+      <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
+      <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const KEY_SESION    = "pixelvault_sesion";
+    const KEY_HISTORIAL = "pixelvault_historial_movimientos";
+    const KEY_PEDIDOS   = "pixelvault_pedidos";
+    const KEY_CARRITO   = "pixelvault_carrito";
+
+    const SEED_HISTORIAL = [
+      {
+        id: "HIST-1710000001-101",
+        fecha: new Date(Date.now() - 3600000 * 24 * 3).toISOString(),
+        fechaLegible: "17/09/2026, 10:15:00",
+        categoria: "Usuarios",
+        usuario: "Jim Charles (@Jim - admin)",
+        accion: "Inicialización del Sistema",
+        detalle: "Se cargó la base de datos de usuarios iniciales (Jim Charles, Emanuel Reyes, Maximiliano Peral)."
+      },
+      {
+        id: "HIST-1710000002-102",
+        fecha: new Date(Date.now() - 3600000 * 24 * 2).toISOString(),
+        fechaLegible: "18/09/2026, 12:40:00",
+        categoria: "Productos",
+        usuario: "Fernando Sierra (@fernando - operador)",
+        accion: "Actualización de Stock",
+        detalle: "Stock de 'Super Mario Bros. Wonder - Edición Física' (NSW-001) verificado en bodega."
+      },
+      {
+        id: "HIST-1710000004-104",
+        fecha: new Date(Date.now() - 3600000 * 24 * 1).toISOString(),
+        fechaLegible: "19/09/2026, 14:20:00",
+        categoria: "Crónicas",
+        usuario: "Adriana Quispe (@adriana - editor)",
+        accion: "Nueva Crónica Publicada",
+        detalle: "Se publicó la crónica 'El Renacer del Cartucho Físico en la Era Digital' (Coleccionismo Físico)."
+      },
+      {
+        id: "HIST-1710000005-105",
+        fecha: new Date(Date.now() - 3600000 * 10).toISOString(),
+        fechaLegible: "20/09/2026, 11:00:00",
+        categoria: "Destacados",
+        usuario: "Jim Charles (@Jim - admin)",
+        accion: "Cambio en Destacado",
+        detalle: "El juego 'The Legend of Zelda: Tears of the Kingdom' (NSW-002) ahora está DESTACADO ⭐."
+      },
+      {
+        id: "HIST-1710000007-107",
+        fecha: new Date(Date.now() - 3600000 * 2).toISOString(),
+        fechaLegible: "20/09/2026, 20:10:00",
+        categoria: "Suscripciones",
+        usuario: "Visitante anónimo (retrofan@gmail.com)",
+        accion: "Suscripción Boletín (Web)",
+        detalle: "Visitante anónimo (retrofan@gmail.com) se suscribió al Boletín 16-Bit."
+      }
+    ];
+
+    let historialGlobal = [];
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const sesion = leerSesion();
+      actualizarNavbar(sesion);
+
+      if (!sesion || sesion.rol !== "admin") {
+        document.getElementById("vistaHistorialBloqueada").classList.remove("d-none");
+        document.getElementById("btnAccionesHistorial").classList.add("d-none");
+        return;
+      }
+
+      document.getElementById("vistaHistorialAdmin").classList.remove("d-none");
+      historialGlobal = cargarHistorial();
+
+      iniciarEventos();
+      renderizarTabla();
+    });
+
+    function iniciarEventos() {
+      document.getElementById("buscadorHistorial").addEventListener("input", renderizarTabla);
+      document.getElementById("filtroCategoriaHistorial").addEventListener("change", renderizarTabla);
+      document.getElementById("btnRestablecerHistorial").addEventListener("click", function () {
+        document.getElementById("buscadorHistorial").value = "";
+        document.getElementById("filtroCategoriaHistorial").value = "todas";
+        renderizarTabla();
+      });
+
+      document.getElementById("btnExportarJson").addEventListener("click", exportarJson);
+      document.getElementById("btnLimpiarHistorial").addEventListener("click", limpiarHistorial);
+    }
+
+    function renderizarTabla() {
+      const q = document.getElementById("buscadorHistorial").value.trim().toLowerCase();
+      const cat = document.getElementById("filtroCategoriaHistorial").value;
+
+      // Métricas rápidas
+      const total = historialGlobal.length;
+      const compras = historialGlobal.filter(h => h.categoria === "Compras").length;
+      const prods = historialGlobal.filter(h => h.categoria === "Productos" || h.categoria === "Destacados").length;
+      const users = historialGlobal.filter(h => h.categoria === "Usuarios" || h.categoria === "Crónicas").length;
+
+      document.getElementById("metricTotal").textContent = total;
+      document.getElementById("metricCompras").textContent = compras;
+      document.getElementById("metricProductos").textContent = prods;
+      document.getElementById("metricUsuarios").textContent = users;
+
+      const filtrados = historialGlobal.filter(function (item) {
+        const matchCat = (cat === "todas") || (item.categoria === cat);
+        const matchQ = !q ||
+          item.accion.toLowerCase().includes(q) ||
+          item.detalle.toLowerCase().includes(q) ||
+          item.usuario.toLowerCase().includes(q) ||
+          (item.fechaLegible && item.fechaLegible.toLowerCase().includes(q));
+        return matchCat && matchQ;
+      });
+
+      const tbody = document.getElementById("tablaHistorialBody");
+      tbody.replaceChildren();
+
+      if (filtrados.length === 0) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td colspan="5" class="text-center text-secondary py-4">No se encontraron movimientos registrados con los filtros seleccionados.</td>`;
+        tbody.appendChild(tr);
+        document.getElementById("contadorResultados").textContent = "0 resultados encontrados";
+        return;
+      }
+
+      filtrados.forEach(function (h) {
+        const tr = document.createElement("tr");
+
+        const tdFecha = document.createElement("td");
+        tdFecha.className = "small text-secondary font-monospace";
+        tdFecha.textContent = h.fechaLegible || new Date(h.fecha).toLocaleString("es-CL");
+
+        const tdCat = document.createElement("td");
+        const badgeCat = document.createElement("span");
+        badgeCat.className = `badge badge-cat-${h.categoria} fw-bold`;
+        badgeCat.textContent = h.categoria;
+        tdCat.appendChild(badgeCat);
+
+        const tdUser = document.createElement("td");
+        tdUser.className = "small fw-bold text-light";
+        tdUser.textContent = h.usuario;
+
+        const tdAccion = document.createElement("td");
+        tdAccion.className = "small fw-bold text-info";
+        tdAccion.textContent = h.accion;
+
+        const tdDetalle = document.createElement("td");
+        tdDetalle.className = "small text-light";
+        tdDetalle.textContent = h.detalle;
+
+        tr.appendChild(tdFecha);
+        tr.appendChild(tdCat);
+        tr.appendChild(tdUser);
+        tr.appendChild(tdAccion);
+        tr.appendChild(tdDetalle);
+
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("contadorResultados").textContent = `Mostrando ${filtrados.length} de ${historialGlobal.length} movimientos`;
+    }
+
+    function exportarJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(historialGlobal, null, 2));
+      const downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `pixelvault_historial_${Date.now()}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function limpiarHistorial() {
+      if (!confirm("¿Deseas purgar todo el registro histórico de movimientos? Esta acción dejará el registro en blanco.")) return;
+      historialGlobal = [];
+      localStorage.setItem(KEY_HISTORIAL, JSON.stringify([]));
+      renderizarTabla();
+    }
+
+    function cargarHistorial() {
+      try {
+        const h = JSON.parse(localStorage.getItem(KEY_HISTORIAL));
+        if (Array.isArray(h) && h.length > 0) return h;
+      } catch (e) {}
+      localStorage.setItem(KEY_HISTORIAL, JSON.stringify(SEED_HISTORIAL));
+      return SEED_HISTORIAL.slice();
+    }
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario || !s.rol) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function actualizarNavbar(sesion) {
+      const navUsuario        = document.getElementById("navUsuario");
+      const btnSalir          = document.getElementById("btnSalir");
+      const navAuthLinks      = document.getElementById("navAuthLinks");
+      const navUserSection    = document.getElementById("navUserSection");
+      const navItemUsuarios   = document.getElementById("navItemUsuarios");
+      const navItemHistorial  = document.getElementById("navItemHistorial");
+      const navItemPedidos    = document.getElementById("navItemPedidos");
+      const navItemMisCompras = document.getElementById("navItemMisCompras");
+
+      if (navItemUsuarios) {
+        navItemUsuarios.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemHistorial) {
+        navItemHistorial.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemPedidos) {
+        navItemPedidos.classList.toggle("d-none", !(sesion && (sesion.rol === "admin" || sesion.rol === "operador" || sesion.rol === "repartidor")));
+      }
+      if (navItemMisCompras) {
+        let tieneCompras = false;
+        if (sesion && sesion.rol === "user") {
+          try {
+            const pedidos = JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+            tieneCompras = pedidos.some(p => p.clienteUsuario === sesion.usuario || (sesion.email && p.clienteEmail === sesion.email));
+          } catch (e) {}
+        }
+        navItemMisCompras.classList.toggle("d-none", !tieneCompras);
+      }
+
+      if (sesion) {
+        if (navUserSection) navUserSection.classList.remove("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.add("d-none");
+        if (navUsuario) {
+          let badgeRol = "Cliente";
+          if (sesion.rol === "admin") badgeRol = "Admin";
+          else if (sesion.rol === "operador") badgeRol = "Operador";
+          else if (sesion.rol === "repartidor") badgeRol = "Repartidor";
+          else if (sesion.rol === "editor") badgeRol = "Editor";
+          navUsuario.textContent = sesion.nombre + " (" + badgeRol + ")";
+        }
+        if (btnSalir) {
+          btnSalir.onclick = function () {
+            sessionStorage.removeItem(KEY_SESION);
+            window.location.replace("login.html");
+          };
+        }
+      } else {
+        if (navUserSection) navUserSection.classList.add("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.remove("d-none");
+      }
+
+      // Contador de carrito
+      const badge = document.getElementById("cartCountBadge");
+      if (badge) {
+        try {
+          const cart = JSON.parse(localStorage.getItem(KEY_CARRITO) || "[]");
+          const total = cart.reduce((acc, it) => acc + it.cantidad, 0);
+          badge.textContent = total;
+          if (total > 0) badge.classList.remove("d-none");
+          else badge.classList.add("d-none");
+        } catch (e) {}
+      }
+
+      // Notificación reactiva de Pedidos (HU-27)
+      const badgePedidos = document.getElementById("pedidosBadgeNotif");
+      if (badgePedidos && sesion) {
+        try {
+          const pedidos = JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+          let count = 0;
+          if (sesion.rol === "admin" || sesion.rol === "operador") {
+            count = pedidos.filter(p => p.estado === "En preparación").length;
+          } else if (sesion.rol === "repartidor") {
+            count = pedidos.filter(p => p.repartidorUsuario === sesion.usuario && (p.estado === "Asignado a repartidor" || p.estado === "Asignado")).length;
+          }
+          if (count > 0) {
+            badgePedidos.textContent = count;
+            badgePedidos.classList.remove("d-none");
+          } else {
+            badgePedidos.classList.add("d-none");
+          }
+        } catch (e) {}
+      }
+    }
+  </script>
+</body>
+</html>

@@ -29,7 +29,13 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link active" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item d-none" id="navItemMisCompras"><a class="nav-link text-success fw-bold" href="pedidos.html">🛍️ Mis Compras</a></li>
+          <li class="nav-item d-none" id="navItemPedidos"><a class="nav-link text-info fw-bold position-relative" href="pedidos.html">📦 Pedidos <span id="pedidosBadgeNotif" class="badge-notif-pedidos d-none ms-1">0</span></a></li>
+          <li class="nav-item d-none" id="navItemUsuarios"><a class="nav-link text-warning fw-bold" href="usuarios.html">👥 Usuarios</a></li>
+          <li class="nav-item d-none" id="navItemHistorial"><a class="nav-link text-warning fw-bold" href="historial.html">📜 Historial</a></li>
         </ul>
 
         <div class="d-flex align-items-center gap-3">
@@ -43,6 +49,7 @@
 
           <div id="navAuthLinks" class="d-flex gap-2">
             <a href="login.html" class="btn btn-primary btn-sm">Ingresar</a>
+            <a href="registro.html" class="btn btn-outline-info btn-sm">Registrarse</a>
           </div>
 
           <div id="navUserSection" class="d-flex align-items-center gap-2 d-none">
@@ -109,51 +116,51 @@
 
         <!-- DESARROLLADOR 1: JIM CHARLES -->
         <div class="col-md-4">
-          <div class="card card-juego text-center p-3 h-100">
+          <div class="card card-juego text-center p-3 h-100 shadow-sm">
             <div class="card-body">
-              <div class="rounded-circle bg-dark border border-info d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                <span class="h2 text-info mb-0">🦊</span>
-              </div>
+              <img src="img/jim_charles.jpg" alt="Jim Charles" 
+                   class="rounded-circle border border-2 border-info mb-3 shadow" 
+                   style="width: 110px; height: 110px; object-fit: cover;">
               <h3 class="h5 text-light mb-1">Jim Charles</h3>
-              <p class="text-info small mb-2 fw-bold">Desarrollador Frontend</p>
+              <p class="text-info small mb-2 fw-bold font-arcade">Líder Técnico & Arquitecto Frontend</p>
               <p class="card-text small text-secondary">
-                Arquitectura de componentes, diseño en Bootstrap 5, lógica de estado en Web Storage y validaciones lógicas de stock.
+                Arquitectura modular SPA en JavaScript nativo, ingeniería de diseño con Bootstrap 5.3.3 customizado, autenticación RBAC con control de sesiones y motor de auditoría reactiva.
               </p>
-              <span class="badge text-bg-primary">Administrador</span>
+              <span class="badge text-bg-primary font-arcade">Administrador</span>
             </div>
           </div>
         </div>
 
         <!-- DESARROLLADOR 2: EMANUEL REYES -->
         <div class="col-md-4">
-          <div class="card card-juego text-center p-3 h-100">
+          <div class="card card-juego text-center p-3 h-100 shadow-sm">
             <div class="card-body">
-              <div class="rounded-circle bg-dark border border-success d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                <span class="h2 text-success mb-0">🎮</span>
-              </div>
+              <img src="img/emanuel_reyes.jpg" alt="Emanuel Reyes" 
+                   class="rounded-circle border border-2 border-info mb-3 shadow" 
+                   style="width: 110px; height: 110px; object-fit: cover;">
               <h3 class="h5 text-light mb-1">Emanuel Reyes</h3>
-              <p class="text-success small mb-2 fw-bold">Desarrollador Frontend</p>
+              <p class="text-info small mb-2 fw-bold font-arcade">Ingeniero Frontend & Lógica Transaccional</p>
               <p class="card-text small text-secondary">
-                Implementación de la experiencia de usuario, diseño de modales interactivos y catalogación de videojuegos físicos.
+                Desarrollo del motor de sincronización de stock en LocalStorage, máquina de estados para despacho logístico (repartidores y comprobantes) y flujo de checkout con tarifas por región.
               </p>
-              <span class="badge text-bg-primary">Administrador</span>
+              <span class="badge text-bg-primary font-arcade">Administrador</span>
             </div>
           </div>
         </div>
 
         <!-- DESARROLLADOR 3: MAXIMILIANO PERAL -->
         <div class="col-md-4">
-          <div class="card card-juego text-center p-3 h-100">
+          <div class="card card-juego text-center p-3 h-100 shadow-sm">
             <div class="card-body">
-              <div class="rounded-circle bg-dark border border-warning d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                <span class="h2 text-warning mb-0">🕹️</span>
-              </div>
+              <img src="img/maximiliano_peral.jpg" alt="Maximiliano Peral" 
+                   class="rounded-circle border border-2 border-info mb-3 shadow" 
+                   style="width: 110px; height: 110px; object-fit: cover;">
               <h3 class="h5 text-light mb-1">Maximiliano Peral</h3>
-              <p class="text-warning small mb-2 fw-bold">Desarrollador Frontend</p>
+              <p class="text-info small mb-2 fw-bold font-arcade">Desarrollador Frontend & UI/UX</p>
               <p class="card-text small text-secondary">
-                Maquetación responsiva en Bootstrap 5, filtros reactivos de catálogo y simulación de compra en carrito.
+                Implementación de microinteracciones gamificadas retro (efectos CRT), CRUD editorial con carga de medios Base64 vía FileReader y algoritmia de códigos correlativos por plataforma.
               </p>
-              <span class="badge text-bg-primary">Administrador</span>
+              <span class="badge text-bg-primary font-arcade">Administrador</span>
             </div>
           </div>
         </div>
@@ -169,7 +176,9 @@
       <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
         <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
         <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="blog.html" class="text-secondary text-decoration-none">Blog</a>
         <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+        <a href="contacto.html" class="text-secondary text-decoration-none">Contacto</a>
       </div>
       <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
       <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
@@ -202,16 +211,45 @@
     }
 
     function actualizarNavbar(sesion) {
-      const navUsuario     = document.getElementById("navUsuario");
-      const btnSalir       = document.getElementById("btnSalir");
-      const navAuthLinks   = document.getElementById("navAuthLinks");
-      const navUserSection = document.getElementById("navUserSection");
+      const navUsuario        = document.getElementById("navUsuario");
+      const btnSalir          = document.getElementById("btnSalir");
+      const navAuthLinks      = document.getElementById("navAuthLinks");
+      const navUserSection    = document.getElementById("navUserSection");
+      const navItemUsuarios   = document.getElementById("navItemUsuarios");
+      const navItemHistorial  = document.getElementById("navItemHistorial");
+      const navItemPedidos    = document.getElementById("navItemPedidos");
+      const navItemMisCompras = document.getElementById("navItemMisCompras");
+
+      if (navItemUsuarios) {
+        navItemUsuarios.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemHistorial) {
+        navItemHistorial.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemPedidos) {
+        navItemPedidos.classList.toggle("d-none", !(sesion && (sesion.rol === "admin" || sesion.rol === "operador" || sesion.rol === "repartidor")));
+      }
+      if (navItemMisCompras) {
+        let tieneCompras = false;
+        if (sesion && sesion.rol === "user") {
+          try {
+            const pedidos = JSON.parse(localStorage.getItem("pixelvault_pedidos") || "[]");
+            tieneCompras = pedidos.some(p => p.clienteUsuario === sesion.usuario || (sesion.email && p.clienteEmail === sesion.email));
+          } catch (e) {}
+        }
+        navItemMisCompras.classList.toggle("d-none", !tieneCompras);
+      }
 
       if (sesion) {
         if (navUserSection) navUserSection.classList.remove("d-none");
         if (navAuthLinks)   navAuthLinks.classList.add("d-none");
         if (navUsuario) {
-          navUsuario.textContent = sesion.nombre + " (" + (sesion.rol === "admin" ? "Admin" : "Cliente") + ")";
+          let badgeRol = "Cliente";
+          if (sesion.rol === "admin") badgeRol = "Admin";
+          else if (sesion.rol === "operador") badgeRol = "Operador";
+          else if (sesion.rol === "repartidor") badgeRol = "Repartidor";
+          else if (sesion.rol === "editor") badgeRol = "Editor";
+          navUsuario.textContent = sesion.nombre + " (" + badgeRol + ")";
         }
         if (btnSalir) {
           btnSalir.onclick = function () {
@@ -233,6 +271,26 @@
         if (count > 0) badge.classList.remove("d-none");
         else badge.classList.add("d-none");
       } catch (e) {}
+
+      // Notificación reactiva de Pedidos (HU-27)
+      const badgePedidos = document.getElementById("pedidosBadgeNotif");
+      if (badgePedidos && sesion) {
+        try {
+          const pedidos = JSON.parse(localStorage.getItem("pixelvault_pedidos") || "[]");
+          let count = 0;
+          if (sesion.rol === "admin" || sesion.rol === "operador") {
+            count = pedidos.filter(p => p.estado === "En preparación").length;
+          } else if (sesion.rol === "repartidor") {
+            count = pedidos.filter(p => p.repartidorUsuario === sesion.usuario && (p.estado === "Asignado a repartidor" || p.estado === "Asignado")).length;
+          }
+          if (count > 0) {
+            badgePedidos.textContent = count;
+            badgePedidos.classList.remove("d-none");
+          } else {
+            badgePedidos.classList.add("d-none");
+          }
+        } catch (e) {}
+      }
     }
   </script>
 </body>

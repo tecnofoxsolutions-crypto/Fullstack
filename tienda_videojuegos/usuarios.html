@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestión de Usuarios | PixelVault</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg navbar-steam sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 font-arcade" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+          class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path
+            d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z" />
+          <path
+            d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414" />
+        </svg>
+        <span>Pixel</span>Vault <small class="text-warning ms-1" style="font-size:0.6rem;">[16-BIT]</small>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link text-info fw-bold position-relative" href="pedidos.html">📦 Pedidos
+              <span id="pedidosBadgeNotif" class="badge-notif-pedidos d-none ms-1">0</span></a></li>
+          <li class="nav-item" id="navItemUsuarios"><a class="nav-link active text-warning fw-bold"
+              href="usuarios.html">👥 Usuarios</a></li>
+          <li class="nav-item"><a class="nav-link text-warning fw-bold" href="historial.html">📜 Historial</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="carrito.html" class="btn btn-outline-info btn-sm position-relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+            </svg>
+            Carrito
+            <span id="cartCountBadge" class="badge rounded-pill bg-danger d-none">0</span>
+          </a>
+
+          <div id="navUserSection" class="d-flex align-items-center gap-2">
+            <span class="small text-light" id="navUsuario"></span>
+            <button class="btn btn-outline-danger btn-sm" id="btnSalir">Salir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <main class="container my-4">
+
+    <!-- ENCABEZADO DE MÓDULO -->
+    <header
+      class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4 pb-2 border-bottom border-secondary">
+      <div>
+        <h1 class="h3 font-arcade text-warning mb-1">
+          👥 Control y Gestión de Usuarios
+        </h1>
+        <p class="text-secondary small mb-0">
+          Supervisión de accesos, asignación granular de roles (Admin, Operador, Repartidor, Editor, Cliente) y
+          auditoría.
+        </p>
+      </div>
+      <div>
+        <span class="badge text-bg-dark border border-warning text-warning font-arcade px-3 py-2">
+          RBAC Security Module
+        </span>
+      </div>
+    </header>
+
+    <!-- MÉTRICAS DE USUARIOS -->
+    <section class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="card card-juego p-3 text-center border-secondary">
+          <span class="small text-secondary text-uppercase font-arcade">Total Cuentas</span>
+          <h2 class="h3 text-light font-arcade fw-bold mb-0 mt-1" id="metricaTotal">0</h2>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card card-juego p-3 text-center border-primary">
+          <span class="small text-info text-uppercase font-arcade">Staff</span>
+          <h2 class="h3 text-info font-arcade fw-bold mb-0 mt-1" id="metricaStaff">0</h2>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card card-juego p-3 text-center border-success">
+          <span class="small text-success text-uppercase font-arcade">Clientes</span>
+          <h2 class="h3 text-success font-arcade fw-bold mb-0 mt-1" id="metricaClientes">0</h2>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card card-juego p-3 text-center border-warning">
+          <span class="small text-warning text-uppercase font-arcade">Inactivos</span>
+          <h2 class="h3 text-warning font-arcade fw-bold mb-0 mt-1" id="metricaInactivos">0</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTA DE MENSAJES DE ACCIÓN -->
+    <div id="alertaAccion" class="alert d-none mb-3"></div>
+
+    <!-- BARRA DE ACCIÓN Y BÚSQUEDA -->
+    <section class="card card-juego p-3 mb-4">
+      <div class="row g-2 align-items-center justify-content-between">
+        <div class="col-12 col-md-4">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text bg-dark border-secondary text-secondary">🔍</span>
+            <input type="text" class="form-control bg-dark border-secondary text-light" id="filtroTexto"
+              placeholder="Buscar por usuario, nombre o correo...">
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <select class="form-select form-select-sm bg-dark border-secondary text-light" id="filtroRol">
+            <option value="todos">Todos los Roles</option>
+            <option value="admin">Solo Administradores</option>
+            <option value="operador">Solo Operadores</option>
+            <option value="repartidor">Solo Repartidores</option>
+            <option value="editor">Solo Editores</option>
+            <option value="user">Solo Clientes</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <select class="form-select form-select-sm bg-dark border-secondary text-light" id="filtroEstado">
+            <option value="todos">Todos los Estados</option>
+            <option value="activos">Solo Activos</option>
+            <option value="inactivos">Solo Inactivos</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-3 text-md-end">
+          <button type="button" class="btn btn-warning btn-sm font-arcade fw-bold w-100 w-md-auto"
+            id="btnAbrirModalNuevo">
+            ✨ + Nuevo Usuario
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLA DE USUARIOS -->
+    <section class="card card-juego overflow-hidden shadow-sm mb-5">
+      <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" id="tablaUsuarios">
+          <thead>
+            <tr class="border-secondary text-secondary small font-mono">
+              <th scope="col" style="width: 60px;">ID</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Correo Electrónico</th>
+              <th scope="col" class="text-center">Rol</th>
+              <th scope="col" class="text-center">Estado</th>
+              <th scope="col" class="text-end" style="min-width: 240px;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyUsuarios">
+            <!-- Renderizado dinámicamente con JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="p-3 border-top border-secondary text-secondary small d-flex justify-content-between align-items-center">
+        <span id="contadorUsuarios">Mostrando 0 usuarios</span>
+        <span class="font-arcade text-info small">PixelVault Security System [RBAC]</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODAL CAMBIAR ROL DE USUARIO (HU-28) ================= -->
+  <div class="modal fade" id="modalCambiarRol" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border-info shadow-lg">
+        <div class="modal-header border-secondary">
+          <h3 class="modal-title h5 text-info font-arcade fw-bold">
+            🛡️ Asignar Rol de Usuario
+          </h3>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="cambioRolUsrId" value="">
+          <p class="small text-light mb-2">
+            Modificando permisos y rol del sistema para: <strong id="cambioRolUsrNombre"
+              class="text-warning font-mono"></strong>
+          </p>
+          <div class="mb-3">
+            <label for="selectNuevoRol" class="form-label small text-secondary fw-bold">Selecciona el nuevo rol:</label>
+            <select class="form-select bg-dark border-secondary text-light" id="selectNuevoRol">
+              <option value="admin">👑 Administrador General (admin)</option>
+              <option value="operador">⚙️ Operador de Bodega (operador)</option>
+              <option value="repartidor">🛵 Repartidor Logístico (repartidor)</option>
+              <option value="editor">📰 Editor de Blog (editor)</option>
+              <option value="user">🎮 Cliente (user)</option>
+            </select>
+          </div>
+          <div class="alert alert-dark border-secondary small text-secondary py-2 mb-0">
+            ℹ️ Al confirmar se registrará un único evento en el historial de auditoría del sistema.
+          </div>
+        </div>
+        <div class="modal-footer border-secondary justify-content-between">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-info btn-sm font-arcade fw-bold" id="btnConfirmarCambioRol">
+            💾 Guardar Nuevo Rol
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL NUEVO / EDITAR USUARIO ================= -->
+  <div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border-warning shadow-lg">
+        <div class="modal-header border-secondary">
+          <h3 class="modal-title h5 text-warning font-arcade fw-bold" id="modalUsuarioTitulo">
+            ✨ Registrar Nuevo Usuario
+          </h3>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <form id="formUsuario" novalidate>
+          <div class="modal-body">
+            <div id="alertaModalUsuario" class="alert alert-danger d-none mb-3"></div>
+            <input type="hidden" id="usrId" value="">
+
+            <div class="mb-3">
+              <label for="usrUsuario" class="form-label small text-light fw-bold">Nombre de Usuario *</label>
+              <input type="text" class="form-control bg-dark border-secondary font-mono" id="usrUsuario" required
+                placeholder="Ej: cloud_strife">
+              <div class="form-text text-secondary">Identificador único con el que iniciará sesión.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="usrNombre" class="form-label small text-light fw-bold">Nombre Completo *</label>
+              <input type="text" class="form-control bg-dark border-secondary" id="usrNombre" required
+                placeholder="Ej: Cloud Strife">
+            </div>
+
+            <div class="mb-3">
+              <label for="usrEmail" class="form-label small text-light fw-bold">Correo Electrónico *</label>
+              <input type="email" class="form-control bg-dark border-secondary" id="usrEmail" required
+                placeholder="cloud@avalanche.org">
+            </div>
+
+            <div class="mb-3">
+              <label for="usrClave" class="form-label small text-light fw-bold">Contraseña *</label>
+              <input type="password" class="form-control bg-dark border-secondary font-mono" id="usrClave" required
+                placeholder="Mínimo 4 caracteres">
+            </div>
+
+            <div class="row g-2">
+              <div class="col-6">
+                <label for="usrRol" class="form-label small text-light fw-bold">Rol del Sistema *</label>
+                <select class="form-select bg-dark border-secondary" id="usrRol" required>
+                  <option value="user">Cliente (user)</option>
+                  <option value="operador">Operador Bodega (operador)</option>
+                  <option value="repartidor">Repartidor Logístico (repartidor)</option>
+                  <option value="editor">Editor de Crónicas (editor)</option>
+                  <option value="admin">Administrador General (admin)</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label for="usrActivo" class="form-label small text-light fw-bold">Estado Inicial *</label>
+                <select class="form-select bg-dark border-secondary" id="usrActivo" required>
+                  <option value="true">Activo</option>
+                  <option value="false">Inactivo</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer border-secondary justify-content-between">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-warning btn-sm font-arcade fw-bold" id="btnGuardarUsuario">
+              💾 Guardar Usuario
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-steam py-4 mt-auto">
+    <div class="container text-center small">
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
+        <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
+        <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="blog.html" class="text-secondary text-decoration-none">Blog</a>
+        <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+        <a href="contacto.html" class="text-secondary text-decoration-none">Contacto</a>
+      </div>
+      <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
+      <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ============ SEMILLA DE USUARIOS DEFAULT ============ */
+    const SEED_USUARIOS = [
+      { id: 1, usuario: "Jim", nombre: "Jim Charles", email: "j.charles@duoc.cl", clave: "admin", rol: "admin", activo: true },
+      { id: 2, usuario: "Emanuel", nombre: "Emanuel Reyes", email: "e.reyes@duoc.cl", clave: "admin", rol: "admin", activo: true },
+      { id: 3, usuario: "Maximiliano", nombre: "Maximiliano Peral", email: "m.peral@duoc.cl", clave: "admin", rol: "admin", activo: true },
+      { id: 4, usuario: "fernando", nombre: "Fernando Sierra", email: "f.sierra@pixelvault.cl", clave: "operador", rol: "operador", activo: true },
+      { id: 5, usuario: "adriana", nombre: "Adriana Quispe", email: "a.quispe@pixelvault.cl", clave: "editor", rol: "editor", activo: true },
+      { id: 6, usuario: "ilie", nombre: "Ilie Flores", email: "i.flores@pixelvault.cl", clave: "repartidor", rol: "repartidor", activo: true },
+      { id: 7, usuario: "francisco", nombre: "Francisco Calabran", email: "f.calabran@gmail.com", clave: "cliente", rol: "user", activo: true }
+    ];
+
+    const KEY_SESION = "pixelvault_sesion";
+    const KEY_USUARIOS = "pixelvault_usuarios_v2";
+    const KEY_CARRITO = "pixelvault_carrito";
+    const KEY_HISTORIAL = "pixelvault_historial_movimientos";
+
+    let sesionActiva = null;
+    let modalUsuarioInstancia = null;
+
+    // Control de acceso estricto: Solo Administradores
+    sesionActiva = leerSesion();
+    if (!sesionActiva || sesionActiva.rol !== "admin") {
+      alert("Acceso Restringido: El panel de gestión de usuarios requiere privilegios de Administrador.");
+      window.location.replace("login.html");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      actualizarNavbar(sesionActiva);
+      modalUsuarioInstancia = new bootstrap.Modal(document.getElementById("modalUsuario"));
+
+      document.getElementById("btnAbrirModalNuevo").addEventListener("click", abrirModalCrear);
+      document.getElementById("formUsuario").addEventListener("submit", guardarUsuarioFormulario);
+      const btnConfirmarCambio = document.getElementById("btnConfirmarCambioRol");
+      if (btnConfirmarCambio) btnConfirmarCambio.addEventListener("click", confirmarCambioRol);
+
+      document.getElementById("filtroTexto").addEventListener("input", filtrarYRenderizar);
+      document.getElementById("filtroRol").addEventListener("change", filtrarYRenderizar);
+      document.getElementById("filtroEstado").addEventListener("change", filtrarYRenderizar);
+
+      filtrarYRenderizar();
+    });
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario || !s.rol) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function registrarHistorial(categoria, usuario, accion, detalle) {
+      try {
+        const historial = JSON.parse(localStorage.getItem(KEY_HISTORIAL) || "[]");
+        historial.unshift({
+          id: Date.now() + Math.floor(Math.random() * 100),
+          fecha: new Date().toISOString(),
+          categoria,
+          usuario,
+          accion,
+          detalle
+        });
+        localStorage.setItem(KEY_HISTORIAL, JSON.stringify(historial.slice(0, 500)));
+      } catch (e) { }
+    }
+
+    function actualizarNavbar(sesion) {
+      const navUsuario = document.getElementById("navUsuario");
+      const btnSalir = document.getElementById("btnSalir");
+
+      if (sesion && navUsuario) {
+        navUsuario.textContent = sesion.nombre + " (Admin)";
+      }
+      if (btnSalir) {
+        btnSalir.onclick = function () {
+          registrarHistorial("Autenticación", sesion ? sesion.usuario : "Admin", "Cierre de Sesión", "Salida del panel administrativo");
+          sessionStorage.removeItem(KEY_SESION);
+          window.location.replace("login.html");
+        };
+      }
+
+      const badge = document.getElementById("cartCountBadge");
+      try {
+        const cart = JSON.parse(localStorage.getItem(KEY_CARRITO) || "[]");
+        const count = cart.reduce((acc, it) => acc + it.cantidad, 0);
+        badge.textContent = count;
+        if (count > 0) badge.classList.remove("d-none");
+        else badge.classList.add("d-none");
+      } catch (e) { }
+
+      // Notificación reactiva de Pedidos (HU-27)
+      const badgePedidos = document.getElementById("pedidosBadgeNotif");
+      if (badgePedidos && sesion) {
+        try {
+          const pedidos = JSON.parse(localStorage.getItem("pixelvault_pedidos") || "[]");
+          const count = pedidos.filter(p => p.estado === "En preparación").length;
+          if (count > 0) {
+            badgePedidos.textContent = count;
+            badgePedidos.classList.remove("d-none");
+          } else {
+            badgePedidos.classList.add("d-none");
+          }
+        } catch (e) { }
+      }
+    }
+
+    function cargarUsuarios() {
+      const guardados = localStorage.getItem(KEY_USUARIOS);
+      if (guardados) {
+        try {
+          const parsed = JSON.parse(guardados);
+          if (Array.isArray(parsed) && parsed.length >= 7) {
+            let modificado = false;
+            parsed.forEach(u => {
+              const us = u.usuario.toLowerCase();
+              if ((us === "jim" || us === "emanuel" || us === "maximiliano") && u.rol !== "admin") {
+                u.rol = "admin";
+                modificado = true;
+              }
+            });
+            if (modificado) localStorage.setItem(KEY_USUARIOS, JSON.stringify(parsed));
+            return parsed;
+          }
+        } catch (e) { }
+      }
+      localStorage.setItem(KEY_USUARIOS, JSON.stringify(SEED_USUARIOS));
+      return SEED_USUARIOS.slice();
+    }
+
+    function guardarUsuarios(lista) {
+      localStorage.setItem(KEY_USUARIOS, JSON.stringify(lista));
+    }
+
+    function actualizarMetricas(usuarios) {
+      const total = usuarios.length;
+      const staff = usuarios.filter(u => ["admin", "operador", "almacenista", "editor", "repartidor"].includes(u.rol)).length;
+      const clientes = usuarios.filter(u => u.rol === "user").length;
+      const inactivos = usuarios.filter(u => !u.activo).length;
+
+      document.getElementById("metricaTotal").textContent = total;
+      document.getElementById("metricaStaff").textContent = staff;
+      document.getElementById("metricaClientes").textContent = clientes;
+      document.getElementById("metricaInactivos").textContent = inactivos;
+    }
+
+    function obtenerBadgeRol(rol) {
+      switch (rol) {
+        case "admin":
+          return '<span class="badge text-bg-primary font-arcade">👑 Admin</span>';
+        case "operador":
+          return '<span class="badge badge-operador font-arcade">⚙️ Operador</span>';
+        case "repartidor":
+          return '<span class="badge badge-repartidor font-arcade">🛵 Repartidor</span>';
+        case "editor":
+          return '<span class="badge text-bg-info font-arcade">📰 Editor</span>';
+        default:
+          return '<span class="badge text-bg-success font-arcade">🎮 Cliente</span>';
+      }
+    }
+
+    function obtenerIconoRol(rol) {
+      switch (rol) {
+        case "admin": return "👑";
+        case "operador": return "⚙️";
+        case "repartidor": return "🛵";
+        case "editor": return "📰";
+        default: return "🎮";
+      }
+    }
+
+    function filtrarYRenderizar() {
+      const usuarios = cargarUsuarios();
+      actualizarMetricas(usuarios);
+
+      const texto = document.getElementById("filtroTexto").value.trim().toLowerCase();
+      const rol = document.getElementById("filtroRol").value;
+      const estado = document.getElementById("filtroEstado").value;
+
+      const filtrados = usuarios.filter(u => {
+        const matchTexto = !texto ||
+          u.usuario.toLowerCase().includes(texto) ||
+          u.nombre.toLowerCase().includes(texto) ||
+          u.email.toLowerCase().includes(texto);
+
+        const matchRol = rol === "todos" || u.rol === rol;
+
+        const matchEstado = estado === "todos" ||
+          (estado === "activos" && u.activo) ||
+          (estado === "inactivos" && !u.activo);
+
+        return matchTexto && matchRol && matchEstado;
+      });
+
+      renderizarTabla(filtrados, usuarios.length);
+    }
+
+    function renderizarTabla(lista, totalGlobal) {
+      const tbody = document.getElementById("tbodyUsuarios");
+      const contador = document.getElementById("contadorUsuarios");
+      contador.textContent = `Mostrando ${lista.length} de ${totalGlobal} usuarios`;
+
+      if (lista.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="text-center py-4 text-secondary font-arcade">
+              No se encontraron usuarios que coincidan con los filtros aplicados.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = lista.map(u => {
+        const esMiSesion = sesionActiva && (
+          sesionActiva.id === u.id ||
+          sesionActiva.usuario.toLowerCase() === u.usuario.toLowerCase()
+        );
+
+        return `
+          <tr class="${esMiSesion ? 'table-active' : ''}">
+            <td class="font-mono text-secondary small">${u.id}</td>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <span class="badge rounded-circle ${u.rol === 'admin' ? 'bg-primary' : (u.rol === 'operador' ? 'badge-operador' : (u.rol === 'repartidor' ? 'badge-repartidor' : (u.rol === 'editor' ? 'bg-info' : 'bg-success')))} p-2" style="font-size:0.65rem;">
+                  ${obtenerIconoRol(u.rol)}
+                </span>
+                <div>
+                  <strong class="text-light">${u.usuario}</strong>
+                  ${esMiSesion ? '<span class="badge text-bg-warning ms-1" style="font-size:0.6rem;">Tú</span>' : ''}
+                </div>
+              </div>
+            </td>
+            <td>${u.nombre}</td>
+            <td class="font-mono small text-secondary">${u.email}</td>
+            <td class="text-center">
+              ${obtenerBadgeRol(u.rol)}
+            </td>
+            <td class="text-center">
+              <span class="badge ${u.activo ? 'text-bg-success' : 'text-bg-secondary'}">
+                ${u.activo ? 'Activo' : 'Inactivo'}
+              </span>
+            </td>
+            <td class="text-end text-nowrap">
+              <!-- Alternar Estado Activo/Inactivo -->
+              <button type="button" 
+                      class="btn btn-sm ${u.activo ? 'btn-outline-warning' : 'btn-outline-success'} btn-toggle-activo me-1" 
+                      data-id="${u.id}"
+                      ${esMiSesion ? 'disabled title="No puedes desactivar tu propia cuenta activa"' : `title="${u.activo ? 'Desactivar cuenta' : 'Activar cuenta'}"`}>
+                ${u.activo ? '🚫 Desactivar' : '✅ Activar'}
+              </button>
+
+              <!-- Asignar Rol Modal (HU-28) -->
+              <button type="button" 
+                      class="btn btn-sm btn-outline-info btn-modal-rol me-1" 
+                      data-id="${u.id}"
+                      ${esMiSesion ? 'disabled title="No puedes cambiar el rol de tu propia cuenta activa"' : 'title="Asignar rol desde lista desplegable"'}>
+                🛠️ Rol
+              </button>
+
+              <!-- Eliminar Usuario -->
+              <button type="button" 
+                      class="btn btn-sm btn-outline-danger btn-eliminar" 
+                      data-id="${u.id}"
+                      ${esMiSesion ? 'disabled title="No puedes eliminar tu propia cuenta activa"' : 'title="Eliminar usuario del sistema"'}>
+                🗑️
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      // Vincular eventos de botones
+      tbody.querySelectorAll(".btn-toggle-activo").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const id = parseInt(this.getAttribute("data-id"), 10);
+          alternarEstadoUsuario(id);
+        });
+      });
+
+      tbody.querySelectorAll(".btn-modal-rol").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const id = parseInt(this.getAttribute("data-id"), 10);
+          abrirModalCambioRol(id);
+        });
+      });
+
+      tbody.querySelectorAll(".btn-eliminar").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const id = parseInt(this.getAttribute("data-id"), 10);
+          eliminarUsuario(id);
+        });
+      });
+    }
+
+    function mostrarMensajeAccion(tipo, texto) {
+      const alerta = document.getElementById("alertaAccion");
+      alerta.className = `alert alert-${tipo} alert-dismissible fade show mb-3`;
+      alerta.innerHTML = `
+        ${texto}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+      `;
+      alerta.classList.remove("d-none");
+      setTimeout(() => {
+        alerta.classList.add("d-none");
+      }, 4000);
+    }
+
+    function alternarEstadoUsuario(id) {
+      let usuarios = cargarUsuarios();
+      const u = usuarios.find(x => x.id === id);
+      if (!u) return;
+
+      if (sesionActiva && (sesionActiva.id === u.id || sesionActiva.usuario.toLowerCase() === u.usuario.toLowerCase())) {
+        alert("Protección de Seguridad: No puedes desactivar tu propia sesión activa de Administrador.");
+        return;
+      }
+
+      u.activo = !u.activo;
+      guardarUsuarios(usuarios);
+      registrarHistorial("Usuarios", sesionActiva.usuario, "Cambio de Estado", `Usuario [${u.usuario}] marcado como [${u.activo ? 'Activo' : 'Inactivo'}]`);
+      filtrarYRenderizar();
+      mostrarMensajeAccion(u.activo ? "success" : "warning", `La cuenta de <strong>${u.usuario}</strong> ha sido marcada como <strong>${u.activo ? 'Activa' : 'Inactiva'}</strong>.`);
+    }
+
+    let modalCambiarRolInstancia = null;
+
+    function abrirModalCambioRol(id) {
+      const usuarios = cargarUsuarios();
+      const u = usuarios.find(x => x.id === id);
+      if (!u) return;
+
+      if (sesionActiva && (sesionActiva.id === u.id || sesionActiva.usuario.toLowerCase() === u.usuario.toLowerCase())) {
+        alert("Protección de Seguridad: No puedes alterar el rol de tu propia cuenta activa de Administrador.");
+        return;
+      }
+
+      document.getElementById("cambioRolUsrId").value = u.id;
+      document.getElementById("cambioRolUsrNombre").textContent = `${u.nombre} (@${u.usuario})`;
+      document.getElementById("selectNuevoRol").value = u.rol;
+
+      if (!modalCambiarRolInstancia) {
+        modalCambiarRolInstancia = new bootstrap.Modal(document.getElementById("modalCambiarRol"));
+      }
+      modalCambiarRolInstancia.show();
+    }
+
+    function confirmarCambioRol() {
+      const id = parseInt(document.getElementById("cambioRolUsrId").value, 10);
+      const nuevoRol = document.getElementById("selectNuevoRol").value;
+      let usuarios = cargarUsuarios();
+      const u = usuarios.find(x => x.id === id);
+      if (!u) return;
+
+      const rolAnterior = u.rol;
+      if (rolAnterior === nuevoRol) {
+        if (modalCambiarRolInstancia) modalCambiarRolInstancia.hide();
+        return;
+      }
+
+      u.rol = nuevoRol;
+      guardarUsuarios(usuarios);
+
+      // Registrar una ÚNICA entrada en historial (HU-28)
+      registrarHistorial("Usuarios", sesionActiva ? sesionActiva.usuario : "admin", "Cambio de Rol", `Rol de [${u.usuario}] modificado de ${rolAnterior.toUpperCase()} a ${nuevoRol.toUpperCase()}`);
+
+      if (modalCambiarRolInstancia) modalCambiarRolInstancia.hide();
+      filtrarYRenderizar();
+      mostrarMensajeAccion("success", `El rol de <strong>${u.usuario}</strong> se actualizó a <strong>${nuevoRol.toUpperCase()}</strong>.`);
+    }
+
+    function eliminarUsuario(id) {
+      let usuarios = cargarUsuarios();
+      const u = usuarios.find(x => x.id === id);
+      if (!u) return;
+
+      if (sesionActiva && (sesionActiva.id === u.id || sesionActiva.usuario.toLowerCase() === u.usuario.toLowerCase())) {
+        alert("Protección de Seguridad: No puedes eliminar tu propia cuenta activa de Administrador.");
+        return;
+      }
+
+      if (!confirm(`¿Estás seguro de que deseas eliminar permanentemente al usuario "${u.usuario}" (${u.nombre})? Esta acción no se puede deshacer.`)) {
+        return;
+      }
+
+      usuarios = usuarios.filter(x => x.id !== id);
+      guardarUsuarios(usuarios);
+      registrarHistorial("Usuarios", sesionActiva.usuario, "Eliminación de Usuario", `Usuario [${u.usuario}] (${u.nombre}) eliminado permanentemente`);
+      filtrarYRenderizar();
+      mostrarMensajeAccion("danger", `El usuario <strong>${u.usuario}</strong> fue eliminado permanentemente del sistema.`);
+    }
+
+    function abrirModalCrear() {
+      document.getElementById("modalUsuarioTitulo").textContent = "✨ Registrar Nuevo Usuario";
+      document.getElementById("usrId").value = "";
+      document.getElementById("usrUsuario").value = "";
+      document.getElementById("usrUsuario").disabled = false;
+      document.getElementById("usrNombre").value = "";
+      document.getElementById("usrEmail").value = "";
+      document.getElementById("usrClave").value = "";
+      document.getElementById("usrRol").value = "user";
+      document.getElementById("usrActivo").value = "true";
+
+      const alerta = document.getElementById("alertaModalUsuario");
+      alerta.classList.add("d-none");
+      alerta.textContent = "";
+
+      modalUsuarioInstancia.show();
+    }
+
+    function guardarUsuarioFormulario(e) {
+      e.preventDefault();
+
+      const usuarioVal = document.getElementById("usrUsuario").value.trim();
+      const nombreVal = document.getElementById("usrNombre").value.trim();
+      const emailVal = document.getElementById("usrEmail").value.trim().toLowerCase();
+      const claveVal = document.getElementById("usrClave").value;
+      const rolVal = document.getElementById("usrRol").value;
+      const activoVal = document.getElementById("usrActivo").value === "true";
+      const alerta = document.getElementById("alertaModalUsuario");
+
+      if (!usuarioVal || !nombreVal || !emailVal || !claveVal) {
+        alerta.textContent = "Por favor, completa todos los campos requeridos (*).";
+        alerta.classList.remove("d-none");
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailVal)) {
+        alerta.textContent = "El formato del correo electrónico no es válido.";
+        alerta.classList.remove("d-none");
+        return;
+      }
+
+      if (claveVal.length < 4) {
+        alerta.textContent = "La contraseña debe tener al menos 4 caracteres.";
+        alerta.classList.remove("d-none");
+        return;
+      }
+
+      let usuarios = cargarUsuarios();
+
+      // Verificar unicidad de nombre de usuario y correo
+      const usuarioExiste = usuarios.some(u => u.usuario.toLowerCase() === usuarioVal.toLowerCase());
+      if (usuarioExiste) {
+        alerta.textContent = `El nombre de usuario "${usuarioVal}" ya se encuentra registrado. Elige otro.`;
+        alerta.classList.remove("d-none");
+        return;
+      }
+
+      const emailExiste = usuarios.some(u => u.email.toLowerCase() === emailVal);
+      if (emailExiste) {
+        alerta.textContent = `El correo "${emailVal}" ya está asociado a otra cuenta registrada.`;
+        alerta.classList.remove("d-none");
+        return;
+      }
+
+      const nuevoId = usuarios.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
+      const nuevoUsuario = {
+        id: nuevoId,
+        usuario: usuarioVal,
+        nombre: nombreVal,
+        email: emailVal,
+        clave: claveVal,
+        rol: rolVal,
+        activo: activoVal
+      };
+
+      usuarios.push(nuevoUsuario);
+      guardarUsuarios(usuarios);
+
+      registrarHistorial("Usuarios", sesionActiva.usuario, "Alta de Usuario", `Nuevo usuario [${usuarioVal}] registrado con rol [${rolVal.toUpperCase()}]`);
+
+      modalUsuarioInstancia.hide();
+      filtrarYRenderizar();
+      mostrarMensajeAccion("success", `¡Usuario <strong>${usuarioVal}</strong> registrado exitosamente en PixelVault!`);
+    }
+  </script>
+</body>
+
+</html>

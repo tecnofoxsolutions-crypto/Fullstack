@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog & Crónicas Físicas | PixelVault</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg navbar-steam sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 font-arcade" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-controller text-info" viewBox="0 0 16 16">
+          <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+          <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.376.308q.608.656.92 1.518 1.48 4.108 1.48 6.84-1.025 1.162-2.316 1.705a3.5 3.5 0 0 1-1.396.347c-.902 0-1.78-.362-2.483-1.02a.5.5 0 0 1-.09-.594c.32-.594.498-1.25.534-1.912q.01-.197-.008-.396a2 2 0 0 0-.256-.838 2.2 2.2 0 0 0-.663-.649A3 3 0 0 0 8.5 7.5a3 3 0 0 0-1.282.28 2.2 2.2 0 0 0-.663.649 2 2 0 0 0-.256.838q-.019.2-.008.396c.036.662.214 1.318.534 1.912a.5.5 0 0 1-.09.594c-.703.658-1.58 1.02-2.483 1.02-.471 0-.943-.122-1.396-.347C1.525 12.37.5 11.208.5 10.046q0-2.732 1.48-6.84a5 5 0 0 1 .92-1.518c.11-.118.236-.218.376-.308zM14.04 10.046c0-2.584-1.38-6.495-1.38-6.495-.084-.23-.298-.387-.542-.395l-1.637-.438c-.524-.07-1.077-.107-1.646-.11a18 18 0 0 0-1.666.082L5.532 3.128c-.244.008-.458.165-.542.395 0 0-1.38 3.91-1.38 6.495 0 1.026.83 1.97 1.884 2.414.73.308 1.487.354 2.19.141a4.5 4.5 0 0 0-.395-1.564 3.2 3.2 0 0 1 .374-1.218 3.2 3.2 0 0 1 .964-.944A4 4 0 0 1 8.5 8.5a4 4 0 0 1 1.88.452 3.2 3.2 0 0 1 .964.944 3.2 3.2 0 0 1 .374 1.218c-.085.545-.22 1.07-.395 1.564.703.213 1.46.167 2.19-.141 1.054-.444 1.884-1.388 1.884-2.414"/>
+        </svg>
+        <span>Pixel</span>Vault <small class="text-warning ms-1" style="font-size:0.6rem;">[16-BIT]</small>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item d-none" id="navItemMisCompras"><a class="nav-link text-success fw-bold" href="pedidos.html">🛍️ Mis Compras</a></li>
+          <li class="nav-item d-none" id="navItemPedidos"><a class="nav-link text-info fw-bold position-relative" href="pedidos.html">📦 Pedidos <span id="pedidosBadgeNotif" class="badge-notif-pedidos d-none ms-1">0</span></a></li>
+          <li class="nav-item d-none" id="navItemUsuarios"><a class="nav-link text-warning fw-bold" href="usuarios.html">👥 Usuarios</a></li>
+          <li class="nav-item d-none" id="navItemHistorial"><a class="nav-link text-warning fw-bold" href="historial.html">📜 Historial</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="carrito.html" class="btn btn-outline-info btn-sm position-relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 me-1" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Carrito
+            <span id="cartCountBadge" class="badge rounded-pill bg-danger d-none">0</span>
+          </a>
+
+          <div id="navAuthLinks" class="d-flex gap-2">
+            <a href="login.html" class="btn btn-primary btn-sm">Ingresar</a>
+            <a href="registro.html" class="btn btn-outline-info btn-sm">Registrarse</a>
+          </div>
+
+          <div id="navUserSection" class="d-flex align-items-center gap-2 d-none">
+            <span class="small text-light" id="navUsuario"></span>
+            <button class="btn btn-outline-danger btn-sm" id="btnSalir">Salir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="container py-4">
+
+    <!-- HERO HEADER DEL BLOG -->
+    <section class="hero-steam p-4 p-md-5 mb-4 text-white">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <span class="badge text-bg-warning mb-2 text-uppercase fw-bold font-arcade">PixelVault Chronicles</span>
+          <h1 class="display-6 fw-bold text-light font-arcade mb-2">Crónicas del Videojuego Físico</h1>
+          <p class="lead text-secondary my-3" style="font-size: 1.05rem;">
+            Artículos, reflexiones de preservación, guías de conservación de cajas y análisis del mercado coleccionista en consolas de última generación y sistemas retro.
+          </p>
+        </div>
+        <div class="col-lg-4 text-center d-none d-lg-block">
+          <span class="display-2 text-warning font-arcade">📰 [16-BIT]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BARRA ADMIN GESTIÓN DE CRÓNICAS (SOLO ADMIN) -->
+    <section class="d-none mb-4" id="panelAdminBlog">
+      <div class="card bg-dark border-warning p-3 d-flex flex-row flex-wrap align-items-center justify-content-between gap-3 shadow">
+        <div class="d-flex align-items-center gap-2">
+          <span class="fs-4">🛠️</span>
+          <div>
+            <h2 class="h6 text-warning font-arcade fw-bold mb-0">Gestión Editorial de Crónicas</h2>
+            <span class="text-secondary small">Publica nuevos artículos, edita el contenido existente o elimina publicaciones del blog.</span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-warning btn-sm font-arcade fw-bold px-3 py-2 shadow-sm" id="btnNuevaCronica">
+          ✨ + Redactar Crónica
+        </button>
+      </div>
+    </section>
+
+    <!-- BARRA DE FILTROS POR CATEGORÍA -->
+    <section class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 p-3 card card-juego">
+      <div class="d-flex flex-wrap align-items-center gap-2" id="contenedorFiltrosBlog">
+        <button class="btn btn-sm btn-primary btn-filtro-blog active" data-categoria="todos">Todos los Artículos</button>
+        <button class="btn btn-sm btn-outline-info btn-filtro-blog" data-categoria="preservacion">Preservación Retro</button>
+        <button class="btn btn-sm btn-outline-info btn-filtro-blog" data-categoria="coleccionismo">Guías de Colección</button>
+        <button class="btn btn-sm btn-outline-info btn-filtro-blog" data-categoria="analisis">Análisis de Ediciones</button>
+        <button class="btn btn-sm btn-outline-info btn-filtro-blog" data-categoria="mercado">Noticias & Mercado</button>
+      </div>
+      <div class="small text-secondary font-mono" id="contadorArticulos">Mostrando 6 artículos</div>
+    </section>
+
+    <!-- GRID DE ARTÍCULOS -->
+    <section class="row g-4 mb-5" id="gridArticulos">
+      <!-- Se inyecta dinámicamente desde JavaScript -->
+    </section>
+
+    <!-- SECCIÓN BOLETÍN RETRO / NEWSLETTER (HU-17) -->
+    <section class="card card-juego p-4 p-md-5 mb-4 text-center border-info" id="seccionBoletin">
+      <div class="mx-auto" style="max-width: 650px;">
+        <span class="badge text-bg-info mb-2 text-uppercase fw-bold font-arcade">Radar de Reposición</span>
+        <h2 class="h3 text-light font-arcade mb-3">Suscríbete al Boletín 16-Bit</h2>
+        <p class="text-secondary small mb-4">
+          Recibe alertas directas cuando lleguen nuevas copias físicas a bodega, reediciones limitadas y cartuchos sellados antes de que se agoten en el catálogo.
+        </p>
+
+        <div id="alertaBoletin" class="alert d-none mb-3"></div>
+
+        <!-- Modo Anónimo / Visitante -->
+        <div id="bloqueBoletinAnonimo">
+          <form id="formBoletin" class="row g-2 justify-content-center" novalidate>
+            <div class="col-sm-8">
+              <input type="email" class="form-control bg-dark border-secondary py-2" id="emailBoletin" 
+                     required placeholder="tu.correo@gamer.cl">
+            </div>
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-primary w-100 py-2 fw-bold font-arcade">¡Suscribirme!</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Modo Cliente Logueado (1 Clic) -->
+        <div id="bloqueBoletinCliente" class="d-none">
+          <div class="p-3 bg-dark rounded border border-info mb-2">
+            <p class="text-light mb-1">
+              ¡Hola, <strong class="text-info" id="clienteNombreBoletin">Gamer</strong>! Tu cuenta cliente está activa.
+            </p>
+            <p class="small text-secondary mb-3">
+              Activa tus alertas automáticas en 1 solo clic vinculadas a tu correo: <strong class="text-warning font-mono" id="clienteEmailBoletin">correo@ejemplo.cl</strong>
+            </p>
+            <button type="button" class="btn btn-primary btn-lg fw-bold font-arcade px-4 py-2" id="btnSuscripcion1Clic">
+              ⚡ ¡Activar Alertas con 1 Clic!
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODAL DE LECTURA COMPLETA ================= -->
+  <div class="modal fade" id="modalLectura" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark border-info shadow-lg">
+        <div class="modal-header border-secondary">
+          <div>
+            <span class="badge text-bg-info mb-1" id="modalArticuloCategoria">Categoría</span>
+            <h3 class="modal-title h5 text-light fw-bold" id="modalArticuloTitulo">Título del Artículo</h3>
+            <div class="small text-secondary" id="modalArticuloMeta">Por Autor • Fecha</div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalArticuloImg" src="" alt="Portada del artículo" 
+               class="img-fluid rounded mb-3 border border-secondary w-100" style="max-height: 320px; object-fit: cover;">
+          <div class="text-secondary leading-relaxed" id="modalArticuloCuerpo" style="line-height: 1.8; font-size: 1rem;">
+            <!-- Contenido dinámico del post -->
+          </div>
+        </div>
+        <div class="modal-footer border-secondary justify-content-between">
+          <div class="small text-info font-arcade">PixelVault Chronicles [16-BIT]</div>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar Lectura</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL EDITOR DE CRÓNICAS (ADMIN / EDITOR) ================= -->
+  <div class="modal fade" id="modalEditorArticulo" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <form id="formEditorArticulo" class="modal-content bg-dark border-warning shadow-lg" novalidate>
+        <div class="modal-header border-secondary">
+          <h3 class="modal-title h5 text-warning font-arcade fw-bold" id="modalEditorTitulo">
+            ✨ Redactar Nueva Crónica
+          </h3>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" style="max-height: calc(100vh - 200px); overflow-y: auto;">
+          <div id="alertaEditorArticulo" class="alert alert-danger d-none mb-3"></div>
+          <input type="hidden" id="editArtId" value="">
+          <div class="row g-3">
+            <div class="col-md-8">
+              <label for="editArtTitulo" class="form-label small text-light fw-bold">Título de la Crónica *</label>
+              <input type="text" class="form-control bg-dark border-secondary" id="editArtTitulo" required placeholder="Ej: Las 10 joyas ocultas de Super Nintendo">
+            </div>
+            <div class="col-md-4">
+              <label for="editArtCategoria" class="form-label small text-light fw-bold">Categoría *</label>
+              <select class="form-select bg-dark border-secondary" id="editArtCategoria" required>
+                <option value="preservacion">Preservación Retro</option>
+                <option value="coleccionismo">Guías de Colección</option>
+                <option value="analisis">Análisis de Ediciones</option>
+                <option value="mercado">Noticias & Mercado</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="editArtAutor" class="form-label small text-light fw-bold">Autor / Redactor *</label>
+              <input type="text" class="form-control bg-dark border-secondary" id="editArtAutor" required placeholder="Ej: Jim Charles">
+            </div>
+            <div class="col-md-6">
+              <label for="editArtTiempo" class="form-label small text-light fw-bold">Tiempo de Lectura *</label>
+              <input type="text" class="form-control bg-dark border-secondary" id="editArtTiempo" required placeholder="Ej: 5 min de lectura">
+            </div>
+            <div class="col-12">
+              <label class="form-label small text-light fw-bold d-flex justify-content-between align-items-center flex-wrap gap-1">
+                <span>Imagen de Portada de la Crónica *</span>
+                <span class="badge text-bg-info font-mono" style="font-size:0.68rem;">📐 Tamaño ideal: 1200 x 675 px (16:9)</span>
+              </label>
+              <div class="row g-2 align-items-center">
+                <div class="col-md-7">
+                  <input type="text" class="form-control form-control-sm bg-dark border-secondary text-light font-mono" id="editArtImagen" required placeholder="URL: https://images.unsplash.com/... o DataURL">
+                </div>
+                <div class="col-md-5">
+                  <input type="file" class="form-control form-control-sm bg-dark border-secondary text-light" id="editArtImagenArchivo" accept="image/*" title="O subir archivo desde tu dispositivo">
+                </div>
+              </div>
+              <div class="form-text text-secondary small mt-1">
+                Puedes ingresar una URL directa de internet o seleccionar un archivo local de tu computador (JPG, PNG o WebP). <em>Resolución ideal recomendada: 1200 x 675 px (o ratio 16:9, mínimo 800 x 450 px).</em>
+              </div>
+              <div class="mt-2 text-center d-none" id="contPreviewArtImagen">
+                <img id="previewArtImagen" src="" alt="Vista previa de portada" class="img-thumbnail bg-dark border-info" style="max-height: 160px; width: 100%; object-fit: cover;">
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="editArtResumen" class="form-label small text-light fw-bold">Resumen para la Tarjeta *</label>
+              <textarea class="form-control bg-dark border-secondary" id="editArtResumen" rows="2" required placeholder="Breve sinopsis que atrapará al lector..."></textarea>
+            </div>
+            <div class="col-12">
+              <label for="editArtCuerpo" class="form-label small text-light fw-bold">Cuerpo Completo del Artículo (Soporta HTML/Párrafos) *</label>
+              <textarea class="form-control bg-dark border-secondary font-mono small" id="editArtCuerpo" rows="6" required placeholder="<p class='lead text-light'>Párrafo inicial...</p><p>Detalles...</p>"></textarea>
+              <div class="form-text text-secondary">Puedes usar etiquetas HTML simples como &lt;p&gt;, &lt;h4&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;.</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-secondary justify-content-between">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-warning btn-sm font-arcade fw-bold" id="btnGuardarArticulo">
+            💾 Guardar Crónica
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-steam py-4 mt-auto">
+    <div class="container text-center small">
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
+        <a href="index.html" class="text-secondary text-decoration-none">Inicio</a>
+        <a href="catalogo.html" class="text-secondary text-decoration-none">Catálogo</a>
+        <a href="blog.html" class="text-info text-decoration-none">Blog</a>
+        <a href="nosotros.html" class="text-secondary text-decoration-none">Nosotros</a>
+        <a href="contacto.html" class="text-secondary text-decoration-none">Contacto</a>
+      </div>
+      <p class="mb-1">© 2026 PixelVault - Tienda de Videojuegos Físicos. Proyecto Académico DSY1104.</p>
+      <p class="text-secondary mb-0">Desarrollado por Jim Charles, Emanuel Reyes y Maximiliano Peral</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ============ ARTÍCULOS EDITORIALES INICIALES (SEED) ============ */
+    const ARTICULOS_DEFAULT = [
+      {
+        id: 1,
+        slug: "resistencia-disco-cartucho",
+        categoria: "preservacion",
+        nombreCategoria: "Preservación Retro",
+        badgeColor: "text-bg-success",
+        titulo: "La Resistencia del Disco y el Cartucho: Por qué el formato físico jamás morirá",
+        autor: "Jim Charles",
+        fecha: "18 de Septiembre, 2026",
+        tiempoLectura: "5 min de lectura",
+        imagen: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80",
+        resumen: "Frente a las licencias digitales efímeras y los cierres de tiendas virtuales, el medio físico garantiza que el jugador sea el auténtico dueño de su software.",
+        cuerpo: `
+          <p class="lead text-light">En una era donde las tiendas digitales cierran servidores sin previo aviso y las compras virtuales son meras licencias revocables, el cartucho y el disco óptico cobran una trascendencia histórica ineludible.</p>
+          <p>Tener la caja en tus manos, apreciar el arte de la carátula, examinar el mapa plegado o el manual impreso es una experiencia multisensorial irreemplazable. Los coleccionistas no compran simplemente datos binarios; adquieren un testimonio palpable de la cultura digital.</p>
+          <h4 class="h5 text-info mt-4">La seguridad del juego sin conexión</h4>
+          <p>Un cartucho de Nintendo Switch o un disco de PlayStation 5 sellado conserva la versión original del juego lista para ejecutarse en el hardware nativo, inmune a caídas de servidores, expiraciones de contratos de derechos de autor de bandas sonoras o cancelaciones de cuentas en plataformas comerciales.</p>
+          <p>En PixelVault reivindicamos este principio: preservar el formato físico es defender la memoria artística del videojuego.</p>
+        `
+      },
+      {
+        id: 2,
+        slug: "guia-conservacion-cajas-steelbooks",
+        categoria: "coleccionismo",
+        nombreCategoria: "Guías de Colección",
+        badgeColor: "text-bg-warning text-dark",
+        titulo: "Guía Definitiva para Conservar Cajas y Steelbooks sin Pérdida de Valor",
+        autor: "Emanuel Reyes",
+        fecha: "14 de Septiembre, 2026",
+        tiempoLectura: "4 min de lectura",
+        imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=700&q=80",
+        resumen: "Aprende a proteger tus cajas plásticas, fundas de cartón y steelbooks metálicos contra el sol, la humedad y el desgaste con fundas PET especiales.",
+        cuerpo: `
+          <p class="lead text-light">Cualquier coleccionista experimentado sabe que el estado cosmético de una edición física determina hasta el 80% de su valor comercial en el tiempo.</p>
+          <p>Los tres peores enemigos del coleccionista físico son:</p>
+          <ul class="text-secondary">
+            <li><strong class="text-light">Rayos UV directos:</strong> Decoloran rápidamente los lomos de las cajas plásticas (especialmente tonos rojos y azules de Nintendo y PlayStation).</li>
+            <li><strong class="text-light">Humedad relativa superior al 60%:</strong> Oxida los bordes de los steelbooks metálicos y genera ondulaciones en las carátulas de papel.</li>
+            <li><strong class="text-light">Micro-rayones por fricción:</strong> Ocurren al apilar cajas una sobre otra sin separadores protectores.</li>
+          </ul>
+          <h4 class="h5 text-warning mt-4">Recomendación de bodega PixelVault</h4>
+          <p>Utiliza protectores de plástico PET libre de ácido (grosor de 0.35mm o 0.50mm) para tus cajas de mayor valor y mantén tu colección en estanterías ventiladas lejos del calor directo.</p>
+        `
+      },
+      {
+        id: 3,
+        slug: "top-juegos-fisicos-switch-chile",
+        categoria: "analisis",
+        nombreCategoria: "Análisis de Ediciones",
+        badgeColor: "text-bg-info",
+        titulo: "Los 5 Títulos Físicos más Buscados de Nintendo Switch en Chile este 2026",
+        autor: "Maximiliano Peral",
+        fecha: "10 de Septiembre, 2026",
+        tiempoLectura: "6 min de lectura",
+        imagen: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=700&q=80",
+        resumen: "Analizamos las cifras de ventas y demanda de bodega en territorio nacional: Zelda, Metroid, Pokémon y las joyas indie con tiraje físico limitado.",
+        cuerpo: `
+          <p class="lead text-light">Nintendo Switch se ha consolidado como el paraíso del coleccionista moderno gracias al encanto universal de sus cartuchos pequeños y carátulas uniformes.</p>
+          <p>En el mercado chileno, ciertos títulos han alcanzado estatus de piezas de culto debido a su baja disponibilidad en tiendas de retail masivo:</p>
+          <ol class="text-secondary">
+            <li><strong class="text-light">The Legend of Zelda: Tears of the Kingdom:</strong> Obra cumbre de la consola, con altísima rotación en formato físico.</li>
+            <li><strong class="text-light">Metroid Dread:</strong> Edición física emblemática con portada holográfica que no pierde vigencia.</li>
+            <li><strong class="text-light">Super Mario RPG (Remake):</strong> La reinterpretación física de un clásico de 16-bit que agotó su primer lote en horas.</li>
+            <li><strong class="text-light">Hollow Knight (Fangamer Edition):</strong> Incluye manual a todo color y mapa de Hallownest.</li>
+            <li><strong class="text-light">Celeste (Edición Coleccionista):</strong> Joya de plataformas con tirada física reducida.</li>
+          </ol>
+        `
+      },
+      {
+        id: 4,
+        slug: "playstation-5-lector-extraible",
+        categoria: "mercado",
+        nombreCategoria: "Noticias & Mercado",
+        badgeColor: "text-bg-primary",
+        titulo: "PlayStation 5 y el Dilema del Lector Extraíble: Impacto en el Coleccionismo",
+        autor: "Jim Charles",
+        fecha: "05 de Septiembre, 2026",
+        tiempoLectura: "5 min de lectura",
+        imagen: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=700&q=80",
+        resumen: "Examinamos las implicancias de hardware para los compradores de discos Blu-Ray Ultra HD y cómo la comunidad garantiza la preservación física.",
+        cuerpo: `
+          <p class="lead text-light">El rediseño de PlayStation 5 con unidad de disco desacoplable abrió un debate fundamental sobre la longevidad y el emparejamiento digital de periféricos.</p>
+          <p>A pesar de las tendencias de la industria hacia suscripciones y modelos de arriendo en la nube, el jugador tradicional continúa exigiendo discos con el instalador completo incluido. Estudios recientes demuestran que más del 65% de los jugadores en Latinoamérica prefieren adquirir sus aventuras principales en formato físico para reventa, intercambio o preservación en vitrina.</p>
+        `
+      },
+      {
+        id: 5,
+        slug: "secretos-manuales-impresos-16bit",
+        categoria: "preservacion",
+        nombreCategoria: "Preservación Retro",
+        badgeColor: "text-bg-success",
+        titulo: "Secretos Ocultos en los Manuales Impresos de la Era 16-Bit (SNES y Genesis)",
+        autor: "Emanuel Reyes",
+        fecha: "28 de Agosto, 2026",
+        tiempoLectura: "7 min de lectura",
+        imagen: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80",
+        resumen: "Un homenaje a aquellos libretos a todo color con ilustraciones exclusivas, notas de los desarrolladores e historias de trasfondo que se perdieron en la era digital.",
+        cuerpo: `
+          <p class="lead text-light">Hubo un tiempo donde el viaje de regreso a casa tras comprar un videojuego era tan emocionante como encender la consola: era el momento de leer el manual.</p>
+          <p>Durante los años dorados de Super Nintendo y Sega Genesis, los manuales no eran meros panfletos legales. Contenían biografías profundas de personajes, consejos estratégicos firmados por los diseñadores, arte conceptual no visto en pantalla y páginas dedicadas para anotar contraseñas (*passwords*).</p>
+          <p>En PixelVault mantenemos encendida esa llama retro ofreciendo ediciones contemporáneas que rinden tributo a esa magia tangible.</p>
+        `
+      },
+      {
+        id: 6,
+        slug: "guia-autenticacion-cartuchos-sellos",
+        categoria: "coleccionismo",
+        nombreCategoria: "Guías de Colección",
+        badgeColor: "text-bg-warning text-dark",
+        titulo: "Guía de Autenticación de Cartuchos y Sellos Holográficos Originales",
+        autor: "Maximiliano Peral",
+        fecha: "20 de Agosto, 2026",
+        tiempoLectura: "6 min de lectura",
+        imagen: "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=700&q=80",
+        resumen: "Aprende a identificar copias repro y reproducciones no oficiales frente a cartuchos originales inspeccionando la placa madre, tornillos gamebit y serigrafía.",
+        cuerpo: `
+          <p class="lead text-light">Con el aumento del coleccionismo, el mercado se ha inundado de reproducciones no autorizadas. Te enseñamos los puntos de control clave antes de invertir en una pieza histórica.</p>
+          <p>Puntos de chequeo obligatorios:</p>
+          <ul class="text-secondary">
+            <li><strong class="text-light">Tornillos de seguridad:</strong> Los cartuchos genuinos utilizan tornillos Gamebit propietarios, no tornillos de cruz ni remaches plásticos.</li>
+            <li><strong class="text-light">Sello dorado de calidad:</strong> El sello de Nintendo posee un brillo metalizado nítido; las repro suelen tener sellos pixelados o con tipografía desalineada.</li>
+            <li><strong class="text-light">Estampado en bajorrelieve:</strong> En la etiqueta posterior, los cartuchos auténticos tienen un código de dos dígitos troquelado en la pegatina.</li>
+          </ul>
+        `
+      }
+    ];
+
+    const KEY_SESION     = "pixelvault_sesion";
+    const KEY_CARRITO    = "pixelvault_carrito";
+    const KEY_ARTICULOS  = "pixelvault_articulos_blog";
+
+    const CATEGORIA_CONFIG = {
+      preservacion: { nombre: "Preservación Retro", badge: "text-bg-success" },
+      coleccionismo: { nombre: "Guías de Colección", badge: "text-bg-warning text-dark" },
+      analisis:      { nombre: "Análisis de Ediciones", badge: "text-bg-info" },
+      mercado:       { nombre: "Noticias & Mercado", badge: "text-bg-primary" }
+    };
+
+    let modalLecturaInstancia = null;
+    let modalEditorInstancia = null;
+    let categoriaActiva = "todos";
+    let esAdmin = false;
+    let sesionActiva = null;
+
+    const KEY_HISTORIAL = "pixelvault_historial_movimientos";
+    const KEY_PEDIDOS   = "pixelvault_pedidos";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      sesionActiva = leerSesion();
+      // Solo admin y editor tienen acceso a la gestión de crónicas (HU-18)
+      esAdmin = Boolean(sesionActiva && (sesionActiva.rol === "admin" || sesionActiva.rol === "editor"));
+
+      actualizarNavbar(sesionActiva);
+
+      modalLecturaInstancia = new bootstrap.Modal(document.getElementById("modalLectura"));
+      modalEditorInstancia  = new bootstrap.Modal(document.getElementById("modalEditorArticulo"));
+
+      // Configurar panel de redacción/editorial si aplica (HU-15 / HU-18)
+      if (esAdmin) {
+        const panelAdmin = document.getElementById("panelAdminBlog");
+        if (panelAdmin) {
+          panelAdmin.classList.remove("d-none");
+          const rolBadge = sesionActiva.rol === "editor" ? "Panel Editorial (Editor)" : "Panel de Gestión Editorial (Admin)";
+          const panelHeader = panelAdmin.querySelector(".card-header strong");
+          if (panelHeader) panelHeader.textContent = `📝 ${rolBadge}`;
+        }
+
+        const btnNuevaCronica = document.getElementById("btnNuevaCronica");
+        if (btnNuevaCronica) {
+          btnNuevaCronica.addEventListener("click", abrirEditorCrear);
+        }
+
+        const formEditor = document.getElementById("formEditorArticulo");
+        if (formEditor) {
+          formEditor.addEventListener("submit", guardarArticuloFormulario);
+        }
+
+        // Listener para subida local de carátula de crónica y previsualización (HU-21 / HU-29)
+        const inputArchivo = document.getElementById("editArtImagenArchivo");
+        const inputUrl     = document.getElementById("editArtImagen");
+        const contPreview  = document.getElementById("contPreviewArtImagen");
+        const imgPreview   = document.getElementById("previewArtImagen");
+
+        if (inputArchivo) {
+          inputArchivo.addEventListener("change", function () {
+            if (this.files && this.files[0]) {
+              const file = this.files[0];
+              const reader = new FileReader();
+              reader.onload = function (ev) {
+                if (inputUrl) inputUrl.value = ev.target.result;
+                if (imgPreview) imgPreview.src = ev.target.result;
+                if (contPreview) contPreview.classList.remove("d-none");
+              };
+              reader.readAsDataURL(file);
+            }
+          });
+        }
+
+        if (inputUrl) {
+          inputUrl.addEventListener("input", function () {
+            const val = this.value.trim();
+            if (val && imgPreview && contPreview) {
+              imgPreview.src = val;
+              contPreview.classList.remove("d-none");
+            } else if (contPreview) {
+              contPreview.classList.add("d-none");
+            }
+          });
+        }
+      }
+
+      renderizarArticulos(categoriaActiva);
+      iniciarFiltros();
+      iniciarBoletin(sesionActiva);
+    });
+
+    function leerSesion() {
+      try {
+        const s = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (!s || !s.usuario || !s.rol) return null;
+        if (s.expira && Date.now() > s.expira) {
+          sessionStorage.removeItem(KEY_SESION);
+          return null;
+        }
+        return s;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function registrarHistorial(categoria, accion, detalle) {
+      try {
+        const historial = JSON.parse(localStorage.getItem(KEY_HISTORIAL) || "[]");
+        historial.unshift({
+          id: "HIST-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+          fecha: new Date().toISOString(),
+          categoria: categoria,
+          usuario: sesionActiva ? `${sesionActiva.nombre} (${sesionActiva.rol})` : "Anónimo",
+          accion: accion,
+          detalle: detalle
+        });
+        localStorage.setItem(KEY_HISTORIAL, JSON.stringify(historial.slice(0, 500)));
+      } catch (e) {}
+    }
+
+    function actualizarNavbar(sesion) {
+      const navUsuario        = document.getElementById("navUsuario");
+      const btnSalir          = document.getElementById("btnSalir");
+      const navAuthLinks      = document.getElementById("navAuthLinks");
+      const navUserSection    = document.getElementById("navUserSection");
+      const navItemUsuarios   = document.getElementById("navItemUsuarios");
+      const navItemHistorial  = document.getElementById("navItemHistorial");
+      const navItemPedidos    = document.getElementById("navItemPedidos");
+      const navItemMisCompras = document.getElementById("navItemMisCompras");
+
+      if (navItemUsuarios) {
+        navItemUsuarios.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemHistorial) {
+        navItemHistorial.classList.toggle("d-none", !(sesion && sesion.rol === "admin"));
+      }
+      if (navItemPedidos) {
+        navItemPedidos.classList.toggle("d-none", !(sesion && (sesion.rol === "admin" || sesion.rol === "operador" || sesion.rol === "repartidor" || sesion.rol === "almacenista")));
+      }
+      if (navItemMisCompras) {
+        let tieneCompras = false;
+        if (sesion && sesion.rol === "user") {
+          try {
+            const pedidos = JSON.parse(localStorage.getItem(KEY_PEDIDOS) || "[]");
+            tieneCompras = pedidos.some(p => p.clienteUsuario === sesion.usuario || (sesion.email && p.clienteEmail === sesion.email));
+          } catch (e) {}
+        }
+        navItemMisCompras.classList.toggle("d-none", !tieneCompras);
+      }
+
+      if (sesion) {
+        if (navUserSection) navUserSection.classList.remove("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.add("d-none");
+        if (navUsuario) {
+          let badgeRol = "Cliente";
+          if (sesion.rol === "admin") badgeRol = "Admin";
+          else if (sesion.rol === "operador" || sesion.rol === "almacenista") badgeRol = "Operador";
+          else if (sesion.rol === "repartidor") badgeRol = "Repartidor";
+          else if (sesion.rol === "editor") badgeRol = "Editor";
+          navUsuario.textContent = sesion.nombre + " (" + badgeRol + ")";
+        }
+        if (btnSalir) {
+          btnSalir.onclick = function () {
+            sessionStorage.removeItem(KEY_SESION);
+            window.location.replace("login.html");
+          };
+        }
+      } else {
+        if (navUserSection) navUserSection.classList.add("d-none");
+        if (navAuthLinks)   navAuthLinks.classList.remove("d-none");
+      }
+
+      const badge = document.getElementById("cartCountBadge");
+      try {
+        const cart = JSON.parse(localStorage.getItem(KEY_CARRITO) || "[]");
+        const count = cart.reduce((acc, it) => acc + it.cantidad, 0);
+        badge.textContent = count;
+        if (count > 0) badge.classList.remove("d-none");
+        else badge.classList.add("d-none");
+      } catch (e) {}
+    }
+
+    /* ============ CRUD DE ARTÍCULOS (LOCALSTORAGE) ============ */
+    function obtenerArticulos() {
+      try {
+        const guardados = localStorage.getItem(KEY_ARTICULOS);
+        if (guardados) {
+          const parsed = JSON.parse(guardados);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+      localStorage.setItem(KEY_ARTICULOS, JSON.stringify(ARTICULOS_DEFAULT));
+      return ARTICULOS_DEFAULT;
+    }
+
+    function guardarArticulos(lista) {
+      localStorage.setItem(KEY_ARTICULOS, JSON.stringify(lista));
+    }
+
+    function renderizarArticulos(filtro) {
+      const contenedor = document.getElementById("gridArticulos");
+      const contador   = document.getElementById("contadorArticulos");
+
+      const todos = obtenerArticulos();
+      const lista = filtro === "todos" 
+        ? todos 
+        : todos.filter(a => a.categoria === filtro);
+
+      contador.textContent = `Mostrando ${lista.length} de ${todos.length} artículos`;
+
+      if (lista.length === 0) {
+        contenedor.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <p class="text-secondary lead font-arcade">No se encontraron crónicas en esta categoría.</p>
+          </div>
+        `;
+        return;
+      }
+
+      contenedor.innerHTML = lista.map(art => `
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card card-juego h-100 d-flex flex-column shadow-sm">
+            <img src="${art.imagen}" class="card-img-top card-juego-img" alt="${art.titulo}" loading="lazy">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge ${art.badgeColor}">${art.nombreCategoria}</span>
+                <small class="text-secondary font-mono">${art.tiempoLectura}</small>
+              </div>
+              <h2 class="h5 card-title text-light fw-bold mb-2">${art.titulo}</h2>
+              <p class="card-text text-secondary small flex-grow-1 mb-3">${art.resumen}</p>
+              
+              <div class="border-top border-secondary pt-3 mt-auto d-flex align-items-center justify-content-between">
+                <div class="small text-secondary font-mono">
+                  <span class="text-info fw-bold">${art.autor}</span><br>
+                  <span>${art.fecha}</span>
+                </div>
+                <button type="button" class="btn btn-outline-info btn-sm btn-leer" data-id="${art.id}">
+                  Leer Crónica &rarr;
+                </button>
+              </div>
+
+              ${esAdmin ? `
+              <div class="mt-2 pt-2 border-top border-secondary-subtle d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-sm btn-outline-warning btn-editar-art py-0 px-2" data-id="${art.id}">
+                  ✏️ Editar
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger btn-eliminar-art py-0 px-2" data-id="${art.id}">
+                  🗑️ Eliminar
+                </button>
+              </div>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      // Eventos para abrir modal de lectura
+      contenedor.querySelectorAll(".btn-leer").forEach(btn => {
+        btn.addEventListener("click", function() {
+          const id = parseInt(this.getAttribute("data-id"), 10);
+          abrirModalArticulo(id);
+        });
+      });
+
+      // Eventos para Admin: Editar y Eliminar
+      if (esAdmin) {
+        contenedor.querySelectorAll(".btn-editar-art").forEach(btn => {
+          btn.addEventListener("click", function() {
+            const id = parseInt(this.getAttribute("data-id"), 10);
+            abrirEditorModificar(id);
+          });
+        });
+
+        contenedor.querySelectorAll(".btn-eliminar-art").forEach(btn => {
+          btn.addEventListener("click", function() {
+            const id = parseInt(this.getAttribute("data-id"), 10);
+            eliminarArticulo(id);
+          });
+        });
+      }
+    }
+
+    function abrirModalArticulo(id) {
+      const articulos = obtenerArticulos();
+      const art = articulos.find(a => a.id === id);
+      if (!art) return;
+
+      document.getElementById("modalArticuloCategoria").className = `badge ${art.badgeColor} mb-1`;
+      document.getElementById("modalArticuloCategoria").textContent = art.nombreCategoria;
+      document.getElementById("modalArticuloTitulo").textContent = art.titulo;
+      document.getElementById("modalArticuloMeta").textContent = `Por ${art.autor} • ${art.fecha} • ${art.tiempoLectura}`;
+      document.getElementById("modalArticuloImg").src = art.imagen;
+      document.getElementById("modalArticuloImg").alt = art.titulo;
+      document.getElementById("modalArticuloCuerpo").innerHTML = art.cuerpo;
+
+      modalLecturaInstancia.show();
+    }
+
+    /* ============ MODO ADMIN: CREAR, EDITAR, ELIMINAR ============ */
+    function abrirEditorCrear() {
+      document.getElementById("modalEditorTitulo").textContent = "✨ Redactar Nueva Crónica";
+      document.getElementById("editArtId").value = "";
+      document.getElementById("editArtTitulo").value = "";
+      document.getElementById("editArtCategoria").value = "preservacion";
+      document.getElementById("editArtAutor").value = sesionActiva ? sesionActiva.nombre : "Equipo PixelVault";
+      document.getElementById("editArtTiempo").value = "5 min de lectura";
+      document.getElementById("editArtImagen").value = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80";
+      document.getElementById("editArtResumen").value = "";
+      document.getElementById("editArtCuerpo").value = "<p class=\"lead text-light\">Introducción a la crónica...</p>\n<p>Desarrollo del tema con reflexiones sobre el coleccionismo físico...</p>";
+
+      const archivoInput = document.getElementById("editArtImagenArchivo");
+      if (archivoInput) archivoInput.value = "";
+      const contPreview = document.getElementById("contPreviewArtImagen");
+      const imgPreview  = document.getElementById("previewArtImagen");
+      if (contPreview && imgPreview) {
+        imgPreview.src = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80";
+        contPreview.classList.remove("d-none");
+      }
+      
+      const alerta = document.getElementById("alertaEditorArticulo");
+      alerta.classList.add("d-none");
+      alerta.textContent = "";
+
+      modalEditorInstancia.show();
+    }
+
+    function abrirEditorModificar(id) {
+      const articulos = obtenerArticulos();
+      const art = articulos.find(a => a.id === id);
+      if (!art) return;
+
+      document.getElementById("modalEditorTitulo").textContent = "✏️ Editar Crónica Editorial";
+      document.getElementById("editArtId").value = art.id;
+      document.getElementById("editArtTitulo").value = art.titulo;
+      document.getElementById("editArtCategoria").value = art.categoria;
+      document.getElementById("editArtAutor").value = art.autor;
+      document.getElementById("editArtTiempo").value = art.tiempoLectura;
+      document.getElementById("editArtImagen").value = art.imagen;
+      document.getElementById("editArtResumen").value = art.resumen;
+      document.getElementById("editArtCuerpo").value = art.cuerpo.trim();
+
+      const archivoInput = document.getElementById("editArtImagenArchivo");
+      if (archivoInput) archivoInput.value = "";
+      const contPreview = document.getElementById("contPreviewArtImagen");
+      const imgPreview  = document.getElementById("previewArtImagen");
+      if (contPreview && imgPreview) {
+        if (art.imagen) {
+          imgPreview.src = art.imagen;
+          contPreview.classList.remove("d-none");
+        } else {
+          contPreview.classList.add("d-none");
+        }
+      }
+
+      const alerta = document.getElementById("alertaEditorArticulo");
+      alerta.classList.add("d-none");
+      alerta.textContent = "";
+
+      modalEditorInstancia.show();
+    }
+
+    function guardarArticuloFormulario(e) {
+      e.preventDefault();
+
+      const idVal     = document.getElementById("editArtId").value;
+      const titulo    = document.getElementById("editArtTitulo").value.trim();
+      const categoria = document.getElementById("editArtCategoria").value;
+      const autor     = document.getElementById("editArtAutor").value.trim();
+      const tiempo    = document.getElementById("editArtTiempo").value.trim();
+      const imagen    = document.getElementById("editArtImagen").value.trim();
+      const resumen   = document.getElementById("editArtResumen").value.trim();
+      const cuerpo    = document.getElementById("editArtCuerpo").value.trim();
+      const alerta    = document.getElementById("alertaEditorArticulo");
+
+      if (!titulo || !autor || !tiempo || !imagen || !resumen || !cuerpo) {
+        alerta.className = "alert alert-warning mb-3";
+        alerta.textContent = "Por favor, completa todos los campos obligatorios (*).";
+        alerta.classList.remove("d-none");
+        return;
+      }
+
+      const cfg = CATEGORIA_CONFIG[categoria] || { nombre: "General", badge: "text-bg-secondary" };
+      let articulos = obtenerArticulos();
+
+      if (idVal) {
+        // Modo Edición
+        const idNum = parseInt(idVal, 10);
+        const idx = articulos.findIndex(a => a.id === idNum);
+        if (idx !== -1) {
+          articulos[idx].titulo          = titulo;
+          articulos[idx].categoria       = categoria;
+          articulos[idx].nombreCategoria = cfg.nombre;
+          articulos[idx].badgeColor      = cfg.badge;
+          articulos[idx].autor           = autor;
+          articulos[idx].tiempoLectura   = tiempo;
+          articulos[idx].imagen          = imagen;
+          articulos[idx].resumen         = resumen;
+          articulos[idx].cuerpo          = cuerpo;
+        }
+        registrarHistorial("Crónicas", "Edición de Crónica", `Se actualizó la crónica editorial "${titulo}" (${cfg.nombre}).`);
+      } else {
+        // Modo Creación
+        const nuevoId = Date.now();
+        const fechaHoy = new Intl.DateTimeFormat('es-CL', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date());
+        const nuevoArticulo = {
+          id: nuevoId,
+          slug: titulo.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""),
+          categoria: categoria,
+          nombreCategoria: cfg.nombre,
+          badgeColor: cfg.badge,
+          titulo: titulo,
+          autor: autor,
+          fecha: fechaHoy,
+          tiempoLectura: tiempo,
+          imagen: imagen,
+          resumen: resumen,
+          cuerpo: cuerpo
+        };
+        articulos.unshift(nuevoArticulo);
+        registrarHistorial("Crónicas", "Nueva Crónica Publicada", `Se publicó la crónica "${titulo}" (${cfg.nombre}) por ${autor}.`);
+      }
+
+      guardarArticulos(articulos);
+      modalEditorInstancia.hide();
+      renderizarArticulos(categoriaActiva);
+    }
+
+    function eliminarArticulo(id) {
+      if (!confirm("¿Estás seguro de que deseas eliminar esta crónica editorial? Esta acción no se puede deshacer.")) {
+        return;
+      }
+
+      let articulos = obtenerArticulos();
+      const cronica = articulos.find(a => a.id === id);
+      articulos = articulos.filter(a => a.id !== id);
+      guardarArticulos(articulos);
+      registrarHistorial("Crónicas", "Eliminación de Crónica", `Se eliminó la crónica "${cronica ? cronica.titulo : id}".`);
+      renderizarArticulos(categoriaActiva);
+    }
+
+    function iniciarFiltros() {
+      const botones = document.querySelectorAll(".btn-filtro-blog");
+      botones.forEach(btn => {
+        btn.addEventListener("click", function () {
+          botones.forEach(b => {
+            b.classList.remove("active", "btn-primary");
+            b.classList.add("btn-outline-info");
+          });
+          this.classList.add("active", "btn-primary");
+          this.classList.remove("btn-outline-info");
+
+          categoriaActiva = this.getAttribute("data-categoria");
+          renderizarArticulos(categoriaActiva);
+        });
+      });
+    }
+
+    /* ============ BOLETÍN / RADAR DE REPOSICIÓN INTELIGENTE (HU-17) ============ */
+    function iniciarBoletin(sesion) {
+      const seccionBoletin = document.getElementById("seccionBoletin");
+      if (!seccionBoletin) return;
+
+      // Si es Administrador o Staff: la sección de boletín permanece oculta
+      if (sesion && (sesion.rol === "admin" || sesion.rol === "editor" || sesion.rol === "operador" || sesion.rol === "repartidor" || sesion.rol === "almacenista")) {
+        seccionBoletin.classList.add("d-none");
+        return;
+      }
+
+      // Si es Cliente logueado: suscripción rápida en 1 clic
+      if (sesion && sesion.rol === "user") {
+        seccionBoletin.classList.remove("d-none");
+        document.getElementById("bloqueBoletinAnonimo").classList.add("d-none");
+        const bloqueCliente = document.getElementById("bloqueBoletinCliente");
+        bloqueCliente.classList.remove("d-none");
+
+        const userEmail = sesion.email || `${sesion.usuario}@pixelvault.cl`;
+        document.getElementById("clienteNombreBoletin").textContent = sesion.nombre;
+        document.getElementById("clienteEmailBoletin").textContent = userEmail;
+
+        const btn1Clic = document.getElementById("btnSuscripcion1Clic");
+        const alerta   = document.getElementById("alertaBoletin");
+
+        btn1Clic.addEventListener("click", function () {
+          alerta.className = "alert alert-success mb-3";
+          alerta.innerHTML = `⚡ <strong>¡Radar de Reposición Activado!</strong> Con 1 solo clic has registrado tu correo <u>${userEmail}</u>. Te avisaremos apenas entre stock de videojuegos físicos.`;
+          alerta.classList.remove("d-none");
+          btn1Clic.disabled = true;
+          btn1Clic.innerHTML = "✅ ¡Suscrito al Radar de Reposición!";
+          btn1Clic.classList.replace("btn-primary", "btn-success");
+          registrarHistorial("Suscripciones", "Suscripción Radar (1-Clic)", `Cliente ${sesion.nombre} (${userEmail}) se suscribió al Radar de Reposición.`);
+        });
+        return;
+      }
+
+      // Si es visitante Anónimo: solicitar correo manualmente
+      seccionBoletin.classList.remove("d-none");
+      document.getElementById("bloqueBoletinAnonimo").classList.remove("d-none");
+      document.getElementById("bloqueBoletinCliente").classList.add("d-none");
+
+      const form = document.getElementById("formBoletin");
+      const input = document.getElementById("emailBoletin");
+      const alerta = document.getElementById("alertaBoletin");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = input.value.trim().toLowerCase();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+          alerta.className = "alert alert-warning mb-3";
+          alerta.textContent = "Por favor, ingresa un correo electrónico válido.";
+          alerta.classList.remove("d-none");
+          input.focus();
+          return;
+        }
+
+        alerta.className = "alert alert-success mb-3";
+        alerta.textContent = `¡Listo! Has quedado suscrito al Boletín 16-Bit con el correo "${email}". Te avisaremos ante cada nuevo lote físico.`;
+        alerta.classList.remove("d-none");
+        registrarHistorial("Suscripciones", "Suscripción Boletín (Web)", `Visitante anónimo (${email}) se suscribió al Boletín 16-Bit.`);
+        form.reset();
+      });
+    }
+
+    function registrarHistorial(categoria, accion, detalle) {
+      try {
+        const sesion = leerSesion();
+        const autor = sesion ? `${sesion.nombre} (@${sesion.usuario} - ${sesion.rol})` : "Invitado / Anónimo";
+        const registros = JSON.parse(localStorage.getItem(KEY_HISTORIAL) || "[]");
+        const nuevo = {
+          id: "HIST-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+          fecha: new Date().toISOString(),
+          fechaLegible: new Date().toLocaleString("es-CL"),
+          categoria: categoria,
+          usuario: autor,
+          accion: accion,
+          detalle: detalle
+        };
+        registros.unshift(nuevo);
+        if (registros.length > 200) registros.pop();
+        localStorage.setItem(KEY_HISTORIAL, JSON.stringify(registros));
+      } catch (e) {
+        console.warn("No se pudo registrar historial:", e);
+      }
+    }
+  </script>
+</body>
+</html>
